@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Visual Analytics - Lecture 2</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="assets/css/reveal.min.css">
+  <link rel="stylesheet" href="assets/css/default.css" id="theme">
+  <link rel="stylesheet" href="assets/css/zenburn.css">
+  <link rel="stylesheet" href="assets/css/vis.style.css">
+
+
+  <style type="text/css">
+    .axis {
+      fill: none;
+      stroke: #ff2f1;
+      stroke-width: 1px;
+    }
+
+    text {
+      stroke: none;
+      fill: #fff;
+      font-size: 10px;
+      font-family: "Helvetica Neue"
+    }
+
+    .label {
+      fill: #414241;
+    }
+    .node {
+      cursor:pointer;
+    }
+
+    .selected {
+      stroke: #ff2f1;
+      stroke-width: 1px;
+    }
+
+    .dot {
+      cursor: pointer;
+    }
+
+    p {
+      font-size: .8em;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+  <section id="start">
+    <h2>Visual Analytics
+    </h2>
+    <div id="slide1_graph" style="width: 500px; height: 270px; margin: 0 auto;">
+    </div>
+    <h2>VISUALISATION ON THE WEB</h2>
+    <div>
+      <br>
+    </div>
+    <div>Alfie Abdul-Rahman &amp; Eamonn Maguire</div>
+  </section>
+  <section>
+    <h2>WHAT YOU'LL LEARN</h2>
+    <div>
+      <br>
+    </div>
+    <h3 class="absolute-element" style="position: absolute; width: 192px; height: 50px; z-index: 8; left: 153px; top: 251px;">The Basics</h3>
+    <div>
+      <br>
+    </div>
+    <div class="absolute-element" style="position: absolute; width: 412px; height: 46px; z-index: 5; left: 53px; top: 349px;">HTML, CSS, SVG &amp; JavaScript</div>
+    <div>
+      <br>
+    </div>
+    <h3>
+      <br>
+    </h3>
+    <h3 class="absolute-element" style="position: absolute; width: 276px; height: 50px; z-index: 6; left: 588px; top: 250px;">More Advanced</h3>
+    <div>
+      <br>
+    </div>
+    <p class="absolute-element" style="position: absolute; width: 474px; height: 46px; z-index: 7; left: 484px; top: 343px;">D3.js - <br>Data Driven Documents</p>
+  </section>
+  <section>
+    <h2>Who are we?</h2>
+    <div class="absolute-element" style="position: absolute; width: 212.631299734748px; height: 346px; z-index: 4; left: 605px; top: 131px; max-height: none; max-width: none;">
+      <img src="http://www.oerc.ox.ac.uk/sites/default/files/styles/person/public/people/eamonn.jpg">
+      <br>
+    </div>
+    <div class="absolute-element" style="position: absolute; width: 209.95313881520778px; height: 345px; z-index: 4; left: 108px; top: 134px; max-height: none; max-width: none;">
+      <img src="http://www.oerc.ox.ac.uk/sites/default/files/styles/person/public/people/Alfie.jpg">
+      <br>
+    </div>
+    <div class="absolute-element" style="position: absolute; width: 452px; height: 39px; z-index: 5; left: 481px; top: 408px;">DPhil Student, Computer Science</div>
+    <div class="absolute-element" style="position: absolute; width: 265px; height: 39px; z-index: 4; left: 86px; top: 408px;">Research Associate</div>
+    <div class="absolute-element" style="position: absolute; width: 413.0503978779841px; height: 39px; z-index: 7; left: 19px; top: 367px; max-height: none; max-width: none;">
+      <b>Dr. Alfie Abdul-Rahman</b>
+    </div>
+    <div class="absolute-element" style="position: absolute; width: 416.2060123784262px; height: 39px; z-index: 8; left: 505px; top: 365px; max-height: none; max-width: none;">
+      <b>Eamonn Maguire</b>
+    </div>
+  </section>
+</section>
+<section id="outline">
+  <h2>Outline</h2>
+
+  <div>
+    <b style="text-align: left;">
+      <br>
+    </b>
+  </div>
+  <div>
+						<span style="text-align: left;">
+							<div>
+								<span style="text-align: left;">
+									<br>
+								</span>
+              </div>Getting started with </span>
+    <span style="text-align: left;">HTML,</span>
+    <span style="text-align: left;">CSS,</span>
+    <span style="text-align: left;">SVG</span>
+    <span style="text-align: left;"> &amp; </span>
+    <span style="text-align: left;">JavaScript</span>
+    <br>
+    <span style="text-align: left;">Manipulating elements in the browser with </span>
+    <span style="text-align: left;">JavaScript</span>
+    <br>
+    <span style="text-align: left;">Quick start guide and Hello World! in D3</span>
+    <br>
+    <span style="text-align: left;">Introduction to drawing in the browser with </span>
+    <span style="text-align: left;">D3</span>
+    <br>
+    <span style="text-align: left;">Accessing your data from files with D3</span>
+    <br>
+    <span style="text-align: left;">Interaction &amp; animation</span>
+    <br>
+    <span style="text-align: left;">Worked through examples</span>
+    <br>
+  </div>
+</section>
+<section id="whatis-d3">
+  <h2>Introducing D3</h2>
+
+  <div style="text-align: left;">
+    <p>D3 (Data-Driven Documents):</p>
+    <ul>
+      <li>A JavaScript library that utilizes SVG, HTML and CS for creating data visualization on the web</li>
+      <li>Created by <a href="http://bost.ocks.org/mike/">Mike Bostock</a>, <a
+          href="http://vadim.ogievetsky.com/">Vadim Ogievetsky</a> and <a
+          href="http://homes.cs.washington.edu/~jheer/">Jeff Heer</a></li>
+      <li>With D3, you can:</li>
+      <ul>
+        <li>Easily load your data into the browser</li>
+        <li>Access and manipulate your data through the Document Object Model (DOM)</li>
+        <li>Transform and </li>
+      </ul>
+      <li>Download the latest version of D3 (<a href="http://d3js.org/" target="_blank">http://d3js.org/</a>)</li>
+    </ul>
+  </div>
+</section>
+<section id="gettingstarted-html">
+  <h2>Getting Started: HTML</h2>
+
+  <div style="text-align: left;">
+    <p>HTML (Hypertext Markup Language):</p>
+    <ul>
+      <li>Structure content for web browsers</li>
+      <li>Stored in plain text file with <i>.html</i> extension</li>
+      <li>"Mark up" content to specify <i>semantic structure</i> by adding <i>tags</i> to create <i>elements</i>
+      </li>
+    </ul>
+        <pre><code data-trim> &lt;!DOCTYPE&gt;
+          &lt;html&gt;
+          &lt;head&gt;
+          &lt;title&gt;Visual Analytics&lt;/title&gt;
+          &lt;/head&gt;
+          &lt;body&gt;
+          &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+          &lt;p class="desc"&gt;Examples of &lt;em&gt;visualisation&lt;/em&gt;:&lt;/p&gt;
+          &lt;!-- Some comments describing what is happening --&gt;
+          &lt;div id="list1" class="desc"&gt;
+          &lt;ul&gt;
+          &lt;li&gt;Parallel coordinates&lt;/li&gt;
+          &lt;li&gt;Scatter plots&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;/body&gt;
+          &lt;/html&gt;</code></pre>
+  </div>
+</section>
+<section id="gettingstarted-dom">
+  <h2>Getting Started: DOM</h2>
+
+  <div>
+    <p style="text-align: left;">
+      DOM (Document Object Model):</p>
+
+    <div style="text-align: left;">
+      <ul>
+        <li>Hierarchical structure of HTML</li>
+        <li>Each pair of bracketed tags is an <i>element</i></li>
+        <li>Refer to elements' relative relationships to each other in terms of: parent, child, sibling,
+          ancestor and descendant
+        </li>
+        <li>In the previous example:</li>
+        <ul>
+          <li><code>body</code> is the parent element to its children - <code>h1</code>, <code>p</code> and
+            <code>div</code> (which are siblings to each other)
+          </li>
+          <li>And all elements are descendants of <code>html</code></li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</section>
+<section id="gettingstarted-dev-tools">
+  <h2>Getting Started: Developer Tools</h2>
+
+  <div style="text-align: left;">
+    <ul>
+      <li>Nowadays, every modern-day browser has built-in developer tools</li>
+      <li>Examples: Chrome, Firefox, Safari, etc.</li>
+      <li>Can view source code of an HTML page by right-click on the page then select <i>View page source</i>
+        (e.g. Chrome and Safari)
+      </li>
+      <li>See the DOM by the <i>inspecting</i> the element</li>
+      <li>For example in Chrome or Safari, right-click on the page then select <i>Inspect element</i></li>
+    </ul>
+  </div>
+</section>
+<section id="dev-tools">
+  <h2>Example: Developer Tools</h2>
+  <img src="assets/img/developer-tool.png" height="770px"></img>
+</section>
+<section id="gettingstarted-css">
+  <h2>Getting Started: CSS</h2>
+
+  <div>
+    <p style="text-align: left;">
+      CSS (Cascading Style Sheets):</p>
+
+    <div style="text-align: left;">
+      <ul>
+        <li>The visual representation of the document structure</li>
+        <li>Consists of <i>selectors</i> and <i>properties</i></li>
+      </ul>
+    </div>
+  </div>
+					<pre><code data-trim>selector {
+            property: value;
+            property: value;
+            }
+
+            selectorA,
+            selectorB,
+            selectorC {
+            property: value;
+            property: value;
+            }</code></pre>
+</section>
+<section id="css-selectors">
+  <h2>CSS-Style Selectors</h2>
+
+  <p style="text-align: left;"><b>Type selectors</b>: match DOM elements with the same name</p>
+					<pre><code data-trim>
+            p /* Selects all paragraphs */
+          </code></pre>
+  <p style="text-align: left;"><b>Descendant selectors</b>: match elements contained by another elements</p>
+					<pre><code data-trim>
+            div p /* Selects p elements contained in a div */
+          </code></pre>
+  <p style="text-align: left;"><b>Class selectors</b>: match elements of any type assigned to a specific class</p>
+					<pre><code data-trim>
+            .desc /* Selects elements with class "desc" */
+            .desc.highlight /* Selects hightlighted desc */
+          </code></pre>
+  <p style="text-align: left;"><b>ID selectors</b>: match the element with the specific ID</p>
+					<pre><code data-trim>
+            #list1 /* Selects element with ID "list1" */
+          </code></pre>
+  <p style="text-align: left;"><b>Combination</b>: combined to target specific elements</p>
+					<pre><code data-trim>
+            div.desc /* Selects divs with class "desc" only */
+          </code></pre>
+</section>
+<section id="referencing-styles">
+  <h2>Referencing Styles</h2>
+
+  <div style="text-align: left;">
+    <p>Three ways to apply CSS styles rules to <b>HTML</b> document:</p>
+    <ul>
+      <li>Embed the CSS in the HTML</li>
+    </ul><pre><code data-trim>&lt;head&gt;
+    &lt;style type="text/css"&gt;
+    h1 { font-size: 16px; }
+    &lt;/style&gt;
+    &lt;/head&gt;</code></pre>
+    <ul>
+      <li>Reference an external stylesheet from the HTML</li>
+    </ul>
+        <pre><code data-trim>&lt;head&gt;
+          &lt;link rel="stylesheet" href="style.css"&gt;
+          &lt;/head&gt;
+        </code></pre>
+    <ul>
+      <li>Attach inline styles</li>
+    </ul>
+    <pre><code data-trim>&lt;p style="color: red; font-size: 24px;&gt;An example of inline style&lt;/p&gt;</code></pre>
+  </div>
+</section>
+<section id="gettingstarted-svg">
+  <h2>Getting Started: SVG</h2>
+
+  <div>
+    <p style="text-align: left;">
+      SVG (Scalable Vector Graphics):</p>
+
+    <div style="text-align: left;">
+      <ul>
+        <li>A text-based image format that is defined using markup code same as HTML</li>
+        <li>You can include SVG code directly inside any HTML document or</li>
+        <li>insert it dynamically into the DOM</li>
+        <li>SVG is <b>XML-based</b> therefore all elements must have a closing tag</li>
+        <li>Coordinate system starts at the top-left corner</li>
+      </ul>
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <marker id="triangle"
+                viewBox="0 0 10 10" refX="0" refY="5"
+                markerUnits="strokeWidth"
+                markerWidth="4" markerHeight="3"
+                orient="auto" fill="gray">
+          <path d="M 0 0 L 10 5 L 0 10 z"/>
+        </marker>
+        <svg x="0" y="0">
+          <g transform="translate(100, 10)">
+            <rect x="10" y="10" width="500" height="150" stroke-width="1" stroke="black"
+                  fill="white"></rect>
+            <line x1="25" y1="25" x2="450" y2="25" stroke="gray" marker-end="url(#triangle)"
+                  stroke-width="3"></line>
+            <line x1="25" y1="25" x2="25" y2="120" stroke="gray" marker-end="url(#triangle)"
+                  stroke-width="3"></line>
+            <circle cx="25" cy="25" r="5" fill="red"></circle>
+            <text x="30" y="40" font-family="serif" font-size="16" fill="black">0,0</text>
+          </g>
+        </svg>
+      </svg>
+    </div>
+  </div>
+</section>
+<section id="example-svg">
+  <h2>Example: SVG</h2>
+
+  <div style="text-align: left;">
+    <svg width="800" height="220">
+      <rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"></rect>
+      <g transform="scale(3) translate(100, 10)">
+        <circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)" stroke="rgba(127, 201, 127, 0.5)"
+                stroke-width="5"></circle>
+        <ellipse cx="65" cy="25" rx="35" ry="15" fill="rgba(190, 174, 212, 0.7)"
+                 stroke="rgba(190, 174, 212, 0.5)" stroke-width="5"></ellipse>
+        <rect x="85" y="5" width="40" height="40" fill="rgba(253, 192, 134, 0.7)"
+              stroke="rgba(253, 192, 134, 0.5)" stroke-width="5"></rect>
+      </g>
+    </svg>
+    <br><pre><code data-trim>&lt;svg width="800" height="220"&gt;
+    &lt;rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"&gt;&lt;/rect&gt;
+    &lt;g transform="scale(3) translate(100, 10)"&gt;
+    &lt;circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)"
+    stroke="rgba(127, 201, 127, 0.5)" stroke-width="5"&gt;&lt;/circle&gt;
+    &lt;ellipse cx="65" cy="25" rx="35" ry="15"
+    fill="rgba(190, 174, 212, 0.7)" stroke="rgba(190, 174, 212, 0.5)"
+    stroke-width="5"&gt;&lt;/ellipse&gt;
+    &lt;rect x="85" y="5" width="40" height="40"
+    fill="rgba(253, 192, 134, 0.7)" stroke="rgba(253, 192, 134, 0.5)"
+    stroke-width="5"&gt;&lt;/rect&gt;
+    &lt;/g&gt;
+    &lt;/svg&gt;</code></pre>
+  </div>
+</section>
+<section id="gettingstarted-js">
+  <h2>Getting Started: JavaScript</h2>
+
+  <div style="text-align: left;">
+    <ul>
+      <li>Scripting language for manipulating the DOM after a page has been loaded in the browser</li>
+      <li>Type the code directly in the JavaScript console or</li>
+      <li>Load the script to the browser using a web page</li>
+      <li>Two ways to reference the scripts:</li>
+      <ul>
+        <li>Directly in the HTML, between two <code>script</code> tags</li>
+      </ul>
+            <pre><code data-trim>&lt;body&gt;
+              &lt;script type="text/javascript"&gt;
+              alert("Hello, world!");
+              &lt;/script&gt;
+              &lt;/body&gt;</code></pre>
+      <ul>
+        <li>Stored in a separate file with a <i>.js</i> suffix, and then referenced in the HTML</li>
+      </ul>
+            <pre><code data-trim>&lt;head&gt;
+              &lt;title&gt;Page Title&lt;/title&gt;
+              &lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;
+              &lt;/head&gt;</code></pre>
+    </ul>
+  </div>
+</section>
+<section id="example-javascript">
+  <h2>Example: JavaScript</h2>
+					<pre><code data-trim>/* JSON example */
+            var jsonChocolate = [
+            {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
+            {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
+
+            function displayCocoaButter() {
+            var index; // Another way of doing comments
+            for (index = 0; index < jsonChocolate.length; index++) {
+            var _p = document.createElement("p");
+            var _text = document.createTextNode("Cocoa butter content: "
+            + jsonChocolate[index].cocoa_butter);
+            _p.appendChild(_text);
+            document.body.appendChild(_p);
+            }
+            }</code></pre>
+</section>
+<section id="setup">
+  <h2>Setup</h2>
+
+  <div style="text-align: left;">
+    <ul>
+      <li>Download the latest version of D3 (<a href="http://d3js.org/" target="_blank">http://d3js.org/</a>)</li>
+							<pre><code data-trim>project-folder/
+                d3/
+                d3.v3.js
+                d3.v3.min.js (optional)
+              </code></pre>
+      <li>Reference it in your code</li>
+							<pre><code data-trim>&lt;!DOCTYPE&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                &lt;meta charset="utf-8"/&gt;
+                &lt;title&gt;My D3 Template&lt;/title&gt;
+                &lt;script type="text/javascript" src="d3/d3.v3.js"&gt;&lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;script type="text/javascript"&gt;
+                // Here is where my D3 code lives
+                &lt;/script&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;</code></pre>
+    </ul>
+  </div>
+</section>
+<section id="setup-2">
+  <h2>Setup</h2>
+
+  <div style="text-align: left;">
+    <ul>
+      <li>You may also need to set-up a web server if your D3 code is using external datafiles due to some
+        browsers' restrictions
+      </li>
+      <li>Some of the web servers you can use:</li>
+      <ul>
+        <li>Node.js (<a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a>):</li>
+        <ul>
+          <li>Install Node.js and run <code>npm install http-server -g</code></li>
+          <li>Type <code>http-server</code> and this will start a http server from the current directory</li>
+        </ul>
+        <li>Python (<a href="http://www.python.org/" target="_blank">http://www.python.org/</a>)</li>
+        <ul>
+          <li>Install Python and type <code>python -m SimpleHTTPServer 8080</code></li>
+        </ul>
+      </ul>
+    </ul>
+  </div>
+</section>
+<section id="letsdraw">
+  <h2>Drawing shapes using D3</h2>
+
+  <div class="example-container">
+    <div id="dot-plot-1" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+                            <pre><code>var svg = d3.select(placement).append("svg")
+                              .attr("width", width)
+                              .attr("height", height)
+                              .append("g");
+
+                              svg.append("circle")
+                              .style("fill", "#27aae1")
+                              .attr("cx", 40)
+                              .attr("cy", 50)
+                              .attr("r", 15);
+
+                              svg.append("path")
+                              .attr("d", d3.svg.symbol()
+                              .size(200)
+                              .type("cross"))
+                              .style("fill", "#27aae1")
+                              .attr("transform", "translate(90,50)");
+                              ....
+                            </code></pre>
+    </div>
+  </div>
+
+</section>
+
+<section id="data-joins">
+  <section id="enter-s1">
+    <h2>D3: Data Joins</h2>
+    <p style="font-size: .8em">Through this piece of code, we can draw a circle. But just one.</p>
+    <div id="enter-example-1" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+        <pre><code>var svg = d3.select("body").append("svg")
+          .attr("width", 400)
+          .attr("height", 400)
+          .append("g");
+
+          svg.append("circle")
+          .attr("r", 20)
+          .attr("cx", 30)
+          .attr("cy", 40)
+          .style("fill", "#27aae1");
+        </code></pre>
+    </div>
+  </section>
+  <section id="enter-s2">
+    <div id="enter-example-2" class="canvas pull-left"></div>
+    <p style="font-size: .8em">But what if we want to draw a circle for every data point?.</p>
+    <div class="explanation pull-right">
+    <pre><code>var svg = d3.select("body").append("svg")
+      .attr("width", 400)
+      .attr("height", 400)
+      .append("g");
+
+      var data = [{x:160, y:190}, {x:30, y:200}, {x:300, y:100}];
+
+      svg.selectAll("data-circle").data(data).enter().append("circle")
+      .attr("r", 10)
+      .attr("cx", function(d) {
+      return d.x;
+      }).attr("cy", function(d) {
+      return d.y;
+      }).style("fill", "#F179D1");
+    </code></pre>
+    </div>
+  </section>
+
+
+  <section id="enter-3">
+    <div class="pull-left" style="width:300px">
+        <pre><code>svg.selectAll("data-circle")
+          .data(data)
+          .enter()
+          .append("circle")
+          .attr("r", 10)
+          .attr("cx", function(d) {
+          return d.x;
+          })
+          .attr("cy", function(d) {
+          return d.y;
+          })
+          .style("fill", "#F179D1");
+        </code></pre>
+    </div>
+
+    <div class="pull-right" style="width: 600px; text-align: left">
+      <pre><code>svg.selectAll("circle")</code></pre>
+
+      <p style="font-size: .7em;">How can I select something that doesn't yet exist?</p>
+      <p style="font-size: .7em;">In D3, we are saying <br/><span style="color:#27aae1; font-weight: lighter">"I want all circles to correspond to data"</span><br/>and<br/><span style="color:#27aae1; font-weight: lighter">there will be one circle per data item</span>.</p>
+
+      <pre><code>.attr("r", 10)</code></pre>
+      <p style="font-size: .7em;">We set the radius of the circle with <span style="color: #27aae1">color</span>.</p>
+
+      <pre><code>.data(data).enter()</code></pre>
+      <p style="font-size: .7em;">Here we take the <span style="color: #27aae1">data</span>, <span style="color: #27aae1">enter</span> it and <span style="color: #27aae1">append</span> circles items for each data item.
+
+        <pre><code>var data = [{x:160, y:190}, {x:30, y:200}, {x:300, y:100}];
+          // d.y accesses the y variable of each data item d
+          attr("cy", function(d) { return d.y;})</code></pre>
+      <p style="font-size: .7em;">We can access each individual data item property using a function which can pass through a data element <span style="color: #27aae1">d</span>.
+      </p>
+    </div>
+  </section>
+
+  <section id="enter-4">
+    <h2>The Enter/Update/Exit Pattern</h2>
+    <img src="assets/img/d3-enter-exit.png" alt="Enter-Exit-Update" style="background: none; border: none; box-shadow: none"/>
+  </section>
+
+  <section id="enter-5">
+    <h2>Enter/update pattern</h2>
+    <div class="pull-left" style="width:450px">
+        <pre><code>var svg = d3.select(placement).append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .append("g");
+
+          update([{x:30, y:60}]);
+
+          function update(data) {
+          var rect = enter_svg.selectAll("rect")
+          .data(data);
+
+          rect.enter().append("rect")
+          .style("fill", "#fff")
+          .attr("height", 20)
+          .attr("width", 0)
+          .transition()
+          .attr("width", 25);
+
+          rect
+          .attr("x", function(d) { return d.x; })
+          .attr("y", function(d) { return d.y; });
+
+          rect.exit().attr("width", 25).transition()
+          .attr("width", 0)
+          .remove();
+          }
+
+        </code></pre>
+    </div>
+    <div class="pull-right" style="width: 500px; text-align: left; font-size: .8em">
+      <div id="update-pattern"></div>
+      We want to:
+      <ul>
+        <li>tell d3 to refer to all rectangle objects as data;</li>
+        <li>enter our data;</li>
+        <li>update the data that's changed; and</li>
+        <li>exit the join</li>
+      </ul>
+    </div>
+  </section>
+</section>
+
+
+<section id="plottingdata">
+  <h2>An example: Plotting some data</h2>
+                    <pre><code>var data = [
+                      {x: 10.0, y: 9.14},
+                      {x: 15.0, y: 18.14},
+                      {x: 13.0, y: 28.74},
+                      {x: 49.0, y: 35.77},
+                      {x: 11.0, y: 9.26},
+                      {x: 23.0, y: 18.10},
+                      {x: 43.0, y: 16.13},
+                      {x: 65.0, y: 13.10},
+                      {x: 12.0, y: 19.13},
+                      {x: 30.0, y: 70.26},
+                      {x: 25.0, y: 40.74}
+                      ];</code></pre>
+
+  <p>Data is just an array of dictionary objects.</p>
+
+  <p>Let's plot it...</p>
+</section>
+<section id="basicplot">
+  <h2>Basic step, let's just plot the data</h2>
+
+  <div class="example-container">
+    <div id="dot-plot-2" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+                            <pre><code>var svg = d3.select(placement).append("svg")
+                              .attr("width", width)
+                              .attr("height", height)
+                              .append("g");
+
+                              svg.selectAll("circle")
+                              .data(data)
+                              .enter().append("circle")
+                              .attr("class", "dot")
+                              .attr("cx", function (d) {
+                              return d.x;
+                              })
+                              .attr("cy", function (d) {
+                              return d.y;
+                              })
+                              .attr("r", 5);
+                            </code></pre>
+    </div>
+
+    <div class="cf"></div>
+    <p style="font-size: .8em">Fantastic...but this wouldn't work well if we had X/Y coordinates greater than our
+      canvas size.</p>
+  </div>
+</section>
+<section id="scales">
+
+  <section id="scale-1">
+    <h2>Enter Scales...</h2>
+    <p>“Scales are functions that map from an input domain to an output range.” Mike Bostock</p>
+    <ol style="font-size: .8em; list-style: none">
+      <li>Quantitative (see <a href="https://github.com/mbostock/d3/wiki/Quantitative-Scales" target="_blank">here for details</a>)</li>
+      <ol style="margin-left: 90px">
+        <li>Linear</li>
+        <li>Log</li>
+        <li>Power</li>
+        <li>Identity</li>
+      </ol>
+      <li>Ordinal (see <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales" target="_blank">here for details</a>)</li>
+      <ol style="margin-left: 90px">
+        <li>e.g. colors d3.scale.category10() creates a scale mapping Strings etc. to a colour e.g.
+                    <pre><code>var colors = d3.scale.category10()
+                      var colourForMe = colors("Visual Analytics"); // will output </code></pre>
+        </li>
+        <LI>or define your your range
+                    <pre><code>var myScale = d3.scale.ordinal().domain(["eamonn", "alfie", "prof. chen"]).range(["DPhil", "Researcher", "Professor"]);
+                      myScale("eamonn"); // will output "DPhil"</code></pre>
+        </LI>
+      </ol></li>
+    </ol>
+  </section>
+
+  <section id="scale-2">
+    <h2>Bringing scales in to our plot...</h2>
+    <div id="dot-plot-3" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+                    <pre><code>var margin = {top: 20, right: 20, bottom: 20, left: 30};
+                      var x = d3.scale.linear()
+                      .domain(d3.extent(data, function (d) {
+                      return d.x;
+                      }))
+                      .range([0, width - margin.left - margin.right]);
+
+                      var y = d3.scale.linear()
+                      .domain(d3.extent(data, function (d) {
+                      return height - margin.top - d.y;
+                      }))
+                      .range([height - margin.top - margin.bottom, 0]);
+
+                      // Now, modify the X and Y positions of the circle using the scale...
+                      svg.selectAll("circle")
+                      .data(data)
+                      .enter().append("circle")
+                      .attr("class", "dot")
+                      .attr("cx", function (d) {
+                      return x(d.x);
+                      })
+                      .attr("cy", function (d) {
+                      return y(d.y);
+                      })
+                      .attr("r", 5);</code></pre>
+    </div>
+    <div class="cf"></div>
+    <p style="font-size: .8em">Wouldn't it be great if we now knew something about the value range...</p>
+  </section>
+
+</section>
+<section id="axes">
+  <h2>Enter Axes...</h2>
+
+  <div id="dot-plot-4" class="canvas pull-left"></div>
+  <div class="explanation pull-right">
+                    <pre><code>var xAxis = d3.svg.axis()
+                      .scale(x)
+                      .orient("bottom")
+                      .tickPadding(4);
+
+                      var yAxis = d3.svg.axis()
+                      .scale(y)
+                      .orient("left")
+                      .tickPadding(10);
+
+                      svg.append("g")
+                      .attr("class", "x axis")
+                      .attr("transform", "translate(0," + y.range()[0] + ")")
+                      .call(xAxis);
+
+                      svg.append("g")
+                      .attr("class", "y axis")
+                      .call(yAxis);</code></pre>
+  </div>
+</section>
+
+<section>
+  <h2>Quick Start Guide</h2>
+  <ul>
+    <li>Download <a href="http://www.jetbrains.com/webstorm/download/index.html"
+                    target="_blank">WebStorm </a> and install on your machine</li>
+    <li>Open WebStorm and choose <em>Create New Project</em></li>
+    <li>Specify the project name and location. In the <em>Project type</em> option, select
+      <em>Empty Project</em></li>
+  </ul>
+  <img src="assets/img/startScreen.png" height="350px"/>
+  <p style="text-align: left;">Note: You can install WebStorm in the
+    <em>scratch</em> folder found in your <em>Home</em> directory. Follow the instructions in the
+    <em>Install-Linux-tar.txt</em> included in the downloaded <em>WebStorm</em> folder.</p>
+</section>
+<section>
+  <h2>Quick Start Guide</h2>
+  <ul>
+    <li>In the project that you have created, created a new directory called <em>assets
+    </em> containing three other directories: <em>css</em>, <em>data</em> and <em>js</em>
+    </li>
+    <li>Put the <a href="http://d3js.org/" target="_blank">D3</a> you have downloaded into
+      the directory <em>lib</em> inside <em>js</em>. The <em>lib</em> directory would
+      contain all your external libraries</li>
+  </ul>
+  <img src="assets/img/directories-with-d3.png" height="500px"/>
+</section>
+<section>
+  <h2>Quick Start Guide</h2>
+  <p>You can now start to create your first Hello World! in D3</p>
+  <img src="assets/img/createFileWithTemplate.png" height="500px"/>
+</section>
+<section>
+  <h2>Hello World! in D3</h2>
+  <p style="text-align: left;">We start with the HTML, where we have:</p>
+                    <pre><code data-trim>&lt;!DOCTYPE html&gt;
+                      &lt;html&gt;
+                      &lt;head&gt;
+                      &lt;title&gt;Hello World!&lt;/title&gt;
+                      &lt;!-- Note: Change the path to where you have saved your D3 library --&gt;
+                      &lt;script type="text/javascript" src="assets/js/lib/d3.v3.js"&gt;&lt;/script&gt;
+                      &lt;/head&gt;
+                      &lt;body&gt;
+                      &lt;!-- A &lt;div&gt;&lt;/div&gt; to hold my SVG --&gt;
+                      &lt;div id="helloWorldCanvas"&gt;&lt;/div&gt;
+                      &lt;!-- Here is where I call my D3 code to create my Hello World! --&gt;
+                      &lt;!-- Note: Change the path to where you have saved your JavaScript --&gt;
+                      &lt;script type="text/javascript" src="assets/js/helloWorld.js"&gt;&lt;/script&gt;
+                      &lt;/body&gt;
+                      &lt;/html&gt;</code></pre>
+  <p style="text-align: left;">You can save this as <em>HelloWorld.html</em><p>
+</section>
+<section>
+  <h2>Hello World! in D3</h2>
+  <p style="text-align: left;">Now we start writing the Hello World! in D3</p>
+                    <pre><code> // create the SVG container
+                      var svg = d3.select("#helloWorldCanvas").append("svg")
+                      .attr("width", 500).attr("height", 300);
+
+                      // add the text that we want to display
+                      svg.append("text")
+                      .attr("x", 150).attr("y", 57)
+                      .attr("fill", "red").attr("font-size", "25px")
+                      .attr("font-family", "sans-serif")
+                      .text("Hello World!");
+
+                      // now let's add a circle to accompany the text
+                      svg.append("circle")
+                      .style("fill", "#27aae1")
+                      .atrr("cx", 100).attr("cy", 50)
+                      .attr("r", 15);</code></pre>
+  <p style="text-align: left;">You can save this as <em>helloWorld.js</em></p>
+</section>
+<section>
+  <h2>Hello World! in D3</h2>
+  <img src="assets/img/helloWorld.png" height="550px"/>
+</section>
+<section>
+  <h2>Quick Start Guide</h2>
+  <p style="text-align: left;">So in WebStorm you will have something that looks like this:</p>
+  <img src="assets/img/finalFileStructure.png" height="550px"/>
+</section>
+
+<section id="data-loading-example">
+
+  <section>
+    <h2>Loading Data</h2>
+    <p>Get my data in to D3...</p>
+  </section>
+  <section>
+    <h2>Loading Data</h2>
+    <div style="text-align: left; font-size: .8em">
+      <ul>
+        <li>D3 has a built-in method to help load CSV and JSON files</li>
+        <li>Example of loading CSV data</li>
+							<pre><code data-trim>
+                d3.csv("chocolate.csv", function(csvData) {
+                console.log(csvData);
+                });
+              </code></pre>
+        <li>Example of loading JSON data</li>
+							<pre><code data-trim>
+                d3.json("chocolate.json", function(jsonData) {
+                console.log(jsonData);
+                });
+              </code></pre>
+        <li>Note: <code>d3.csv()</code> and <code>d3.json()</code> are <i>asynchronous</i> methods,
+          where the rest of your code is executed as your browser waits for the file to be downloaded. <br/><br/>A callback, represented by the <em>function</em> call is what is executed when the data has been retrieved successfully.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="data-loading-1">
+    <h2>chocolates.json</h2>
+
+<pre><code>{
+  "chocolates": [
+  {
+  "name": "Dairy Milk",
+  "price": 45,
+  "rating": 2
+  }, ...
+  ]}</code></pre>
+
+
+
+    <p>This is how we get access to it... </p>
+<pre><code>// this is how we process it
+  d3.json("assets/data/chocolate.json", function (data) {
+  chocolates = data.chocolates;
+  // then we process the JSON, drawing each data item.
+  }</code></pre>
+  </section>
+
+  <section id="data-code">
+    <h2>Apply This Function</h2>
+                        <pre><code>function loadAndDisplayData(placement, w, h){
+                          width = w; height = h;
+
+                          d3.select(placement).html("");
+
+                          d3.json("assets/data/chocolate.json", function (data) {
+                          data = data.chocolates;
+
+
+                          var svg = d3.select(placement).append("svg").attr("width", width).attr("height", height).append("g")
+                          .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+
+                          var x = VisualAnalytics.lecture2.calculateXScale(data, width);
+                          var y = VisualAnalytics.lecture2.calculateYScale(data, height);
+
+                          var xAxis = d3.svg.axis().scale(x).orient("bottom").tickPadding(2);
+                          var yAxis = d3.svg.axis().scale(y).orient("left").tickPadding(2);
+
+                          svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")").call(xAxis);
+                          svg.append("g").attr("class", "y axis").call(yAxis);
+
+
+                          svg.append("text")
+                          .attr("fill", "#414241")
+                          .attr("text-anchor", "end")
+                          .attr("x", width / 2)
+                          .attr("y", height - 35)
+                          .text("Price in pence (£)");
+
+                          var chocolate = svg.selectAll("g.node").data(data, function (d) {
+                          return d.name;
+                          });
+
+                          var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
+                          .attr('transform', function (d) {
+                          return "translate(" + x(d.price) + "," + y(d.rating) + ")";
+                          });
+
+                          chocolateEnter.append("circle")
+                          .attr("r", 5)
+                          .attr("class", "dot")
+                          .style("fill", function (d) {
+                          return colors(d.manufacturer);
+                          });
+
+                          chocolateEnter
+                          .append("text")
+                          .style("text-anchor", "middle")
+                          .attr("dy", -10)
+                          .text(function (d) {
+                          return d.name;
+                          })
+                          }</code></pre>
+  </section>
+  <section id="data-loading-2">
+    <h2>Giving us this</h2>
+
+    <div id="dot-plot-loading" style="height: 400px">
+    </div>
+
+    <div style="font-size: .7em">
+      <p>You can access all the code for this <a href="http://jsfiddle.net/eamonnmag/Q567s/" target="_blank">here</a>, with commentary!</p>
+      <p>Now that we have our base, we can do all other sorts of exciting stuff! Like include mouse overs, zoom, brushing and animation!</p>
+    </div>
+  </section>
+</section>
+
+<section id="mouse-title">
+
+  <section id="mouse-intro">
+    <h2>Mouse Events</h2>
+    <p>I want to click on things...</p>
+  </section>
+
+  <section id="event-types">
+    <h2>Mouse Event Types</h2>
+
+                        <pre><code>myItem.on("mouseover",function (d) {
+                          // do something on mouseover
+                          }).on("mouseout", function (d) {
+                          // do something on mouseout
+                          }).on("click", function (d) {
+                          // do something on click
+                          }).on("mousemove", function(d) {
+                          // do something on mouse move
+                          }).on("mousedown", function(d) {
+                          // do something on mouse down
+                          }).on("mouseup", function(d) {
+                          // do something on mouse up (a mouse 'click' is a 'mousedown' and 'mouseup' event)
+                          })
+
+                        </code></pre>
+  </section>
+
+  <section id="mouse-event-our-code">
+    <h2>Attaching mouse events to our plot...</h2>
+
+                        <pre><code>var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
+                          .attr('transform', function (d) {
+                          return "translate(" + x(d.price) + "," + (height + 100) + ")";
+                          });
+                          ...</code></pre>
+    <p>For each node, we have a circle and a text item. </p>
+
+                    <pre><code>// add a circle
+                      chocolateEnter.append("circle")
+                      .attr("r", 5)
+                      .attr("class", "dot")
+                      .style("fill", function (d) {
+                      return colors(d.manufacturer);
+                      });
+
+                      // add text
+                      chocolateEnter
+                      .append("text")
+                      .style("text-anchor", "middle")
+                      .attr("dy", -10)
+                      .text(function (d) {
+                      return d.name;
+                      })</code></pre>
+  </section>
+
+  <section id="mouse-event-example">
+    <h2>Attaching mouse events to our plot...</h2>
+
+                    <pre><code>chocolateEnter.on("mouseover",function (d) {
+                      d3.select(this).style("stroke-width", "1px").style("stroke", "white");
+                      }).on("mouseout", function (d) {
+                      d3.select(this).style("stroke", "none");
+                      }).on("click", function(d) {
+                      alert("Hi, you clicked on " + d.name);
+                      });
+                    </code></pre>
+    <div id="mouse-event-plot" style="height: 400px"></div>
+
+    <p>See <a href="http://jsfiddle.net/eamonnmag/Q567s/" target="_blank">here</a> for example source code</p>
+  </section>
+
+</section>
+
+<section id="zooming">
+  <section id="zooming-title">
+    <h2>Zooming</h2>
+    <p>Show me things, close up...</p><br/>
+
+  </section>
+
+  <section id="zoom-explain">
+    <p style="font-size: .7em; text-align: left">Zooming is a complicated thing to do in most frameworks.
+      In D3, it's pretty easy once you start thinking about things in terms of transforms and scales.</p>
+
+                        <pre><code>
+                          var zoom = d3.behavior.zoom() // we first define our zoom behaviour
+                          .x(x) // assign our x scale
+                          .y(y) // assign our y scale
+                          .scaleExtent([1, 5]) // how far we can scale in or out
+                          .on("zoom", function() { // what happens when we zoom
+                          // we want to select all our nodes and make them bigger according to the scale factor recorded by d3, computed
+                          // from the users interaction with the mouse (d3.event.scale). We want the position to stay relatively constant as well.
+                          // this is achieved through the use of the x and y scales to position the component appropriately.
+                          svg.selectAll("g.chocolatenode").attr("transform",
+                          function(d){
+                          // we can still get access to the data properties of the items, so pulling out the price and rating
+                          // is very easy.
+                          return "translate(" + x(d.price) + "," + y(d.rating) + ")scale(" + d3.event.scale + ")"
+                          });
+                          });</code></pre>
+
+    <p>Then, we call it from our SVG component.</p>
+                        <pre><code> svg = d3.select(placement).append("svg")
+                          .attr("width", width)
+                          .attr("height", height)
+                          .append("g")
+                          .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+                          .call(zoom);</code></pre>
+  </section>
+
+  <section id="zooming-example-1">
+    <p>This works...</p>
+
+    <div id="zooming-1" style="height: 400px"></div>
+    <p>...but there's an issue. The zooming is attached only to the groups, not the whole
+      display, so we have to be focused on a node for zooming to be activate. Not ideal...</p>
+  </section>
+
+  <section id="zooming-example-2">
+    <p>By adding a rectangle component as a container, the zoom events are now caught on the whole display</p>
+                         <pre><code>svg = d3.select(placement).append("svg")
+                           .attr("width", width)
+                           .attr("height", height)
+                           .append("g")
+                           .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+                           .call(zoom)
+                           .append('rect')
+                           .attr('width', width)
+                           .attr('height', height)
+                           .attr('fill', 'rgba(1,1,1,0)');</code></pre>
+    <div id="zooming-2" style="height: 400px"></div>
+  </section>
+</section>
+
+<section id="brushing">
+  <section id="brushing-title">
+    <h2>Brushing</h2>
+    <p>Select items and tell me more...</p>
+  </section>
+
+  <section id="brushing-explain">
+    <h2>What is brushing</h2>
+
+    <p>Only the coolest thing ever :)</p>
+
+    <div id="brushing-1" style="height: 400px"></div>
+  </section>
+
+  <section id="brushing-how">
+    <p>How to add it...</p>
+                        <pre><code>brush = d3.svg.brush()
+                          .x(zoom.x())
+                          .y(zoom.y())
+                          // When the brushing event is started, this function is called
+                          .on("brushstart", function() {
+                          console.log("Resetting selected var");
+                          selected = {};
+                          })
+
+                          // whilst brushing is happening, this function is called
+                          .on("brush", VisualAnalytics.lecture2.brushed)
+
+                          // when finished, brushend is called
+                          .on("brushend", function() {
+                          console.log("Selected");
+                          // output the keys of the selection
+                          console.log(Object.keys(selected))
+                          });
+                        </code></pre>
+    <p>Now, let's add the brush to the container...</p>
+                        <pre><code>svg.append("g")
+                          .attr("class", "brush")
+                          .call(brush);</code></pre>
+  </section>
+  <section>
+    <p>The extent from D3 returns back a 2D array with the top left to bottom right coordinates</p>
+    <img src="assets/img/brushing-extent.png" style="border:none; background: none; box-shadow: none;"/>
+
+                    <pre><code>brushed: function() {
+                      var extent = brush.extent();
+                      d3.selectAll("g.chocolatenode").select("circle").style("fill", function (d) {
+                      d.selected = (d.x > x(extent[0][0]) && d.x < x(extent[1][0]))
+                      && (d.y < y(extent[0][1]) && d.y > y(extent[1][1]));
+
+                      if(d.selected) {
+                      selected[d.name] = d;
+                      }
+                      return d.selected ? "#27aae1" : colors(d.manufacturer);
+                      });
+                      }
+                    </code></pre>
+    <p>This code grabs the extent from the brush and calculates which elements are within the bounds.</p>
+  </section>
+</section>
+
+
+<section id="animation">
+  <section id="animation-title">
+    <h2>Animation</h2>
+    <p>Make things dance...</p>
+  </section>
+
+  <section>
+    <p>D3 has a great framework for animation and does a lot of work for you. </p>
+
+    <p>The patterns shown here and generalisable to lots of other use cases...</p>
+  </section>
+
+  <section id="final-scatter">
+
+    <h2>A nice animating set of updating data...</h2>
+    <div id="dot-plot-animated" class="canvas pull-left" style="height: 600px">
+    </div>
+    <div class="explanation pull-right" style="font-size: .8em; text-align: left">
+      See <a href="http://jsfiddle.net/eamonnmag/47TtN/" target="_blank">here</a> for the
+      full example with all code.
+    </div>
+  </section>
+
+  <section id="animation-how">
+    <h2>How do we do it?</h2>
+
+    <p>Transitions... we move from one state to another. e.g. position, color, size</p>
+                        <pre><code>function changeAttribute(selector, attribute, x) {
+                          d3.select(selector).transition().duration(100).delay(500).ease("elastic").attr(attribute, x);
+                          }
+
+                          function changeStyle(selector, styleType, color) {
+                          d3.select(selector).transition().duration(100).delay(500).ease("linear").style(styleType, color);
+                          }
+
+                        </code></pre>
+    <p>You can see these, as always <a href="http://jsfiddle.net/eamonnmag/KWe65/" target="_blank">here</a> </p>
+  </section>
+
+  <section id="dancing-pixels">
+    <h2>Some fun with animations</h2>
+
+  </section>
+
+  <section id="animation-connect4">
+    <h2>Connect4 anyone?</h2>
+
+    <p>All with D3 and transitions... check it out <a href="http://jsfiddle.net/eamonnmag/HnGxd/7/" target="_blank">here</a></p>
+
+    <div id="connect4" style="width: 500px; height: 500px; margin: 0 auto;">
+
+    </div>
+  </section>
+
+  <section id="connect4-how">
+    <h2>How do we do it?</h2>
+
+    <p>Transitions... </p>
+
+                        <pre><code>var circle = connect4_svg.append("circle").attr("class", "row-" + lastRow + " token-" + tokenCount).attr("r", 25).style("fill", function () {
+                          return red ? "#e74c3c" : "#f1c40f"
+                          }).attr("cx", 0).attr("cy", -100);
+
+                          d3.select("circle.token-" + tokenCount)
+                          .transition()
+                          .duration(100)
+                          .delay((tokenCount + 1) * 500)
+                          .attr("cx", item.x);
+                        </code></pre>
+    <p>When finished, we want to remove everything, row by row....easy</p>
+                        <pre><code>emptyGrid: function () {
+                          for (var rowIndex = 5; rowIndex >= 0; rowIndex--) {
+                          d3.selectAll("circle.row-" + rowIndex).transition().duration(1000).delay(25000 - (rowIndex * 50)).ease("elastic").attr("cy", 600);
+                          }
+                          }</code></pre>
+  </section>
+</section>
+
+<section id="your-project">
+
+  <section>
+    <h2>Project</h2>
+  </section>
+
+  <section>
+    <h2>Your task, should you accept it...</h2>
+
+    <p style="text-align: left">Will be to take a time data set with a large number of variables and render it using parallel coordinates...<br/>
+      We've covered all that will be needed to implement parallel coordinates in these lectures...</p>
+    <br/>
+    <p style="text-align: left">The visualization should support the following functionality:</p>
+    <br/>
+    <ol>
+      <li>Level 1 (S-): Load your data and render it using parallel coordinates - the first level will deal with numeric data only. You should also provide brushing functionality.</li>
+      <li>Level 2 (S): Deal with ordinal axes (regions) and colour lines based on the region. Provide brushing and axis swapping functionality.</li>
+      <li>Level 3 (S+): Display N parallel coordinates with brushing and axis swapping working between them.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>A bit like this...</h2>
+    <img src="assets/img/parallel-coords.png" style="border: none; box-shadow: none; background: none"/>
+  </section>
+
+  <section>
+    <h2>Further notes...</h2>
+
+    <p  style="text-align: left">There are implementations of parallel coordinates already done (see <a href="http://bl.ocks.org/jasondavies/1341281" target="_blank">here</a>). However none have the ability to communicate across 2 or more plots.</p>
+    <br/>
+    <p>This can be the basis, but you should ensure that if you use other peoples code that you reference it properly!</p>
+  </section>
+
+  <section id="submission">
+    <h2 class="absolute-element" style="position: absolute; width: 308px; height: 54px; z-index: 4; left: 324px; top: 20px;">Submission</h2>
+
+    <div class="absolute-element" style="font-size: .7em; position: absolute; width: 441px; height: 117px; z-index: 4; left: 455px; top: 400px; max-height: none; max-width: none;">A short summary (1 page) detailing your implementation, existing examples your adapted, functionalities completed and the estimated number of hours you spent. Also, one or more screenshots (taking up no more than 2 A4 pages)<br>
+    </div>
+    <div class="absolute-element" style="position: absolute; width: 400px; height: 39px; z-index: 4; left: 12px; top: 402px; font-size: .7em">Your documented source code (HTML, JS and CSS) - remember to indicate any sections of code taken from examples.<br>
+    </div>
+    <img src="http://www.themeister.se/images/slide2.png" style="width: 321px; height: 188px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 39px; top: 163px; border: none; background: none; box-shadow: none" class="absolute-element">
+    <img src="https://cdn1.iconfinder.com/data/icons/CS5/512/ACP_PDF%202_file_document.png" class="absolute-element" style="position: absolute; max-height: none; max-width: none; width: 186px; height: 186px; z-index: 4; left: 569px; top: 159px; border: none; background: none; box-shadow: none">
+  </section>
+
+</section>
+
+<section>
+  <p style="text-align: left">
+    There are a huge number of examples online. Check them out. The best way to learn about D3 is to play with it.<br/>
+  </p>
+  <div align="center">
+    <img src="assets/img/d3-screenshot.png" style="background: none; border: none; box-shadow: none">
+  </div>
+</section>
+
+<section id="resources">
+  <h2>Further Reading</h2>
+  <div style="text-align: left;">
+    <ul>
+      <li>Mike Dewar, <i>Getting Started with D3</i>, O'Reilly Media, 2012</li>
+      <li>Scott Murray, <i>Interactive data visualization for the web</i>, O'Reilly, 2013</li>
+      <li>David Flanagan, <i>JavaScript: The definitive guide</i>, O'Reilly, 2011</li>
+      <li>John Resig and Bear Bibeault, <i>Secrets of the JavaScript Ninja</i>, Manning, 2013</li>
+    </ul>
+    <p>Also check out the following links...</p>
+    <ul>
+      <li>HTML5 (<a href="http://www.w3.org/TR/html5/" target="_blank">http://www.w3.org/TR/html5/</a>)</li>
+      <li>CSS (<a href="http://www.w3.org/Style/CSS/learning" target="_blank">http://www.w3.org/Style/CSS/learning</a>)</li>
+      <li>SVG (<a href="http://www.w3.org/Graphics/SVG/)" target="_blank">http://www.w3.org/Graphics/SVG/)</a></li>
+      <li>jQuery (<a href="http://jquery.com/" target="_blank">http://jquery.com/</a>)</li>
+      <li>JSON (<a href="http://www.json.org/" target="_blank">http://www.json.org/</a></li>
+      <li>Node.js (<a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a>)</li>
+      <li>Python (<a href="http://www.python.org/" target="_blank">http://www.python.org/</a>)</li>
+    </ul>
+  </div>
+</section>
+</div>
+<script src="assets/js/lib/head.min.js"></script>
+<script src="assets/js/lib/reveal.min.js"></script>
+<script src="assets/js/lib/d3.v3.js"></script>
+<script src="assets/js/d3-lecture1.js"></script>
+<script src="assets/js/d3-lecture2.js"></script>
+
+<script src="assets/js/graph.js"></script>
+<script src="assets/js/d3-lecture2-connect4.js"></script>
+
+<script>
+  Reveal.initialize({
+    transition: 'linear',
+    dependencies: [
+      { src: 'assets/js/lib/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    ]
+  });
+
+  Reveal.addEventListener( 'slidechanged', function( event ) {
+
+    if(event.currentSlide.id === "start") {
+      createNetworkVisualization('assets/data/sample-network.json','#slide1_graph', 500, 270);
+    }
+
+    if (event.currentSlide.id === "letsdraw") {
+      VisualAnalytics.charts.plotDotPlot1("#dot-plot-1", 400, 400);
+    }
+
+    if (event.currentSlide.id === "basicplot") {
+      VisualAnalytics.charts.plotDotPlot2("#dot-plot-2", 400, 400);
+    }
+
+    if (event.currentSlide.id === "scale-2") {
+      VisualAnalytics.charts.plotDotPlot3("#dot-plot-3", 400, 400);
+    }
+
+    if (event.currentSlide.id === "axes") {
+      VisualAnalytics.charts.plotDotPlot4("#dot-plot-4", 400, 400);
+    }
+
+    if (event.currentSlide.id === "enter-s1") {
+      d3.select("#enter-example-1").html("");
+      var svg = d3.select("#enter-example-1").append("svg")
+          .attr("width", 400)
+          .attr("height", 400)
+          .append("g");
+
+      svg.append("circle").attr("r", 20).attr("cx", 30).attr("cy", 40).style("fill", "#27aae1");
+    }            var circleRow = Connect4.utils.getRandomInt(0, 7);
+
+    if (event.currentSlide.id === "enter-s2") {
+      d3.select("#enter-example-2").html("");
+      var svg = d3.select("#enter-example-2").append("svg")
+          .attr("width", 400)
+          .attr("height", 400)
+          .append("g");
+
+      var data = [{x:160, y:190}, {x:30, y:200}, {x:300, y:100}];
+
+      svg.selectAll("circle").data(data).enter().append("circle")
+          .attr("r", 10)
+          .attr("cx", function(d) {
+            return d.x;
+          }).attr("cy", function(d) {
+            return d.y;
+          }).style("fill", "#27aae1");
+
+
+    }
+
+    if(event.currentSlide.id ==="data-loading-2") {
+      VisualAnalytics.lecture2.loadAndDisplay("#dot-plot-loading", 800, 400);
+    }
+
+    if(event.currentSlide.id ==="mouse-event-example") {
+      VisualAnalytics.lecture2.loadAndDisplay("#mouse-event-plot", 800, 300, true, false, false);
+    }
+
+    if(event.currentSlide.id ==="zooming-example-1") {
+      VisualAnalytics.lecture2.loadAndDisplay("#zooming-1", 800, 300, true, true, false);
+    }
+
+    if(event.currentSlide.id ==="zooming-example-2") {
+      VisualAnalytics.lecture2.loadAndDisplay("#zooming-2", 800, 300, true, true, true);
+    }
+
+    if(event.currentSlide.id ==="brushing-explain") {
+      VisualAnalytics.lecture2.loadAndDisplay("#brushing-1", 800, 300, true, false, false, true);
+    }
+
+    if(event.currentSlide.id ==="animation-connect4") {
+      Connect4.utils.draw("#connect4", 500, 500);
+    }
+
+    if(event.currentSlide.id === "final-scatter") {
+      VisualAnalytics.lecture2.animateScatterPlot("#dot-plot-animated", 400, 600);
+
+      setInterval(function() {
+        for(var chocolateIndex in chocolates) {
+          chocolates[chocolateIndex].rating = VisualAnalytics.lecture2.getRandomInt(0,5);
+          chocolates[chocolateIndex].price = VisualAnalytics.lecture2.getRandomInt(0,100);
+        }
+
+        VisualAnalytics.lecture2.update(chocolates);
+
+      }, 3000);
+    }
+  } );
+
+</script>
+
+</body>
+</html>

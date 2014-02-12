@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <script src="assets/js/lib/d3.v3.js"></script>
+    <script src="assets/js/d3-lecture1.js"></script>
+
+    <link rel="stylesheet" href="assets/css/default.css" id="theme">
+    <link rel="stylesheet" href="assets/css/vis.style.css">
+</head>
+<body>
+
+<div class="cf"></div>
+<div class="example-container">
+    <div id="dot-plot-1" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+        Let's plot some shapes.
+
+        <code><pre>
+var svg = d3.select(placement).append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
+
+        svg.append("circle")
+            .style("fill", "#27aae1")
+            .attr("cx", 40)
+            .attr("cy", 50)
+            .attr("r", 15);
+
+        svg.append("path")
+            .attr("d", d3.svg.symbol()
+                .size(200)
+                .type("cross"))
+            .style("fill", "#27aae1")
+            .attr("transform", "translate(90,50)");
+        </pre></code>
+    </div>
+</div>
+
+<div class="example-container">
+    <div id="dot-plot-2" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+        We just plot the data to the canvas
+    </div>
+</div>
+<div class="cf"></div>
+<div class="example-container">
+    <div id="dot-plot-3" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+        We just plot the data to the canvas
+    </div>
+</div>
+<div class="cf"></div>
+<div class="example-container">
+    <div id="dot-plot-4" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+        We just plot the data to the canvas
+    </div>
+</div>
+<div class="cf"></div>
+<div class="example-container">
+    <div id="dot-plot-5" class="canvas pull-left"></div>
+    <div class="explanation pull-right">
+        We just plot the data to the canvas
+    </div>
+</div>
+<div class="cf"></div>
+
+</body>
+
+<script>
+        VisualAnalytics.charts.plotDotPlot1("#dot-plot-1", 400, 400);
+    VisualAnalytics.charts.plotDotPlot2("#dot-plot-2", 400, 400);
+    VisualAnalytics.charts.plotDotPlot3("#dot-plot-3", 400, 400);
+    VisualAnalytics.charts.plotDotPlot4("#dot-plot-4", 400, 400);
+    VisualAnalytics.charts.plotDotPlot5("#dot-plot-5", 400, 400);
+</script>
+</html>

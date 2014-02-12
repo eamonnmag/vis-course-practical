@@ -1,0 +1,77 @@
+#graph-view {
+    position: absolute;
+    float: left;
+    left: 40px;
+}
+
+.link {
+    fill: none;
+    stroke: #aaa;
+    opacity: .5;
+    stroke-width: 1px;
+}
+
+circle.dot {
+    fill: white;
+}
+
+.axis text {
+    font: 10px sans-serif;
+    fill: white;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke:white;
+    shape-rendering: crispEdges;
+}
+
+.pull-left {
+    position: relative;
+    float: left;
+}
+
+.pull-right {
+    position: relative;
+    float: right;
+}
+
+.canvas {
+    width: 50%;
+    border-right: 2px #0d99a5 solid;
+}
+
+.example-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.explanation {
+    width: 50%;
+    padding: 10px;
+    font-family: "Helvetica Neue", 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    color: white;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+.reveal code {
+    font-family: monospace;
+    font-size: .7em;
+}
+
+
+.brush .extent {
+    fill-opacity: .1;
+    stroke: #fff;
+    shape-rendering: crispEdges;
+}
