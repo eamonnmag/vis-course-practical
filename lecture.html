@@ -132,7 +132,9 @@
     <span style="text-align: left;">Manipulating elements in the browser with </span>
     <span style="text-align: left;">JavaScript</span>
     <br>
-    <span style="text-align: left;">Quick start guide and Hello World! in D3</span>
+    <span style="text-align: left;">Quick start guide</span>
+    <br>
+    <span style="text-align: left;">Hello World! in D3</span>
     <br>
     <span style="text-align: left;">Introduction to drawing in the browser with </span>
     <span style="text-align: left;">D3</span>
@@ -151,283 +153,355 @@
   <div style="text-align: left;">
     <p>D3 (Data-Driven Documents):</p>
     <ul>
-      <li>A JavaScript library that utilizes SVG, HTML and CS for creating data visualization on the web</li>
-      <li>Created by <a href="http://bost.ocks.org/mike/">Mike Bostock</a>, <a
-          href="http://vadim.ogievetsky.com/">Vadim Ogievetsky</a> and <a
-          href="http://homes.cs.washington.edu/~jheer/">Jeff Heer</a></li>
+      <li>A JavaScript library that utilizes SVG, HTML and CSS for creating data visualization on the web</li>
+      <li>Created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a>, <a
+          href="http://vadim.ogievetsky.com/" target="_blank">Vadim Ogievetsky</a> and <a
+          href="http://homes.cs.washington.edu/~jheer/" target="_blank">Jeff Heer</a></li>
       <li>With D3, you can:</li>
       <ul>
         <li>Easily load your data into the browser</li>
-        <li>Access and manipulate your data through the Document Object Model (DOM)</li>
-        <li>Transform and </li>
+        <li>Inspect and manipulate your data through the Document Object Model (DOM)</li>
+        <li>Include interaction and animation in your visualization easily</li>
       </ul>
       <li>Download the latest version of D3 (<a href="http://d3js.org/" target="_blank">http://d3js.org/</a>)</li>
     </ul>
   </div>
 </section>
 <section id="gettingstarted-html">
-  <h2>Getting Started: HTML</h2>
-
-  <div style="text-align: left;">
-    <p>HTML (Hypertext Markup Language):</p>
-    <ul>
-      <li>Structure content for web browsers</li>
-      <li>Stored in plain text file with <i>.html</i> extension</li>
-      <li>"Mark up" content to specify <i>semantic structure</i> by adding <i>tags</i> to create <i>elements</i>
-      </li>
-    </ul>
-        <pre><code data-trim> &lt;!DOCTYPE&gt;
-          &lt;html&gt;
-          &lt;head&gt;
-          &lt;title&gt;Visual Analytics&lt;/title&gt;
-          &lt;/head&gt;
-          &lt;body&gt;
-          &lt;h1&gt;Visual Analytics&lt;/h1&gt;
-          &lt;p class="desc"&gt;Examples of &lt;em&gt;visualisation&lt;/em&gt;:&lt;/p&gt;
-          &lt;!-- Some comments describing what is happening --&gt;
-          &lt;div id="list1" class="desc"&gt;
-          &lt;ul&gt;
-          &lt;li&gt;Parallel coordinates&lt;/li&gt;
-          &lt;li&gt;Scatter plots&lt;/li&gt;
-          &lt;/ul&gt;
-          &lt;/div&gt;
-          &lt;/body&gt;
-          &lt;/html&gt;</code></pre>
-  </div>
-</section>
-<section id="gettingstarted-dom">
-  <h2>Getting Started: DOM</h2>
-
-  <div>
-    <p style="text-align: left;">
-      DOM (Document Object Model):</p>
-
+  <section>
+    <h2>Getting Started: HTML</h2>
     <div style="text-align: left;">
+      <p>HTML (Hypertext Markup Language):</p>
       <ul>
-        <li>Hierarchical structure of HTML</li>
-        <li>Each pair of bracketed tags is an <i>element</i></li>
-        <li>Refer to elements' relative relationships to each other in terms of: parent, child, sibling,
-          ancestor and descendant
+        <li>Is used to structure content for web browsers</li>
+        <li>Saved as plain text file with <i>.html</i> extension</li>
+        <li>Many different revisions of the HTML standard</li>
+        <li>HTML5 is the current revision</li>
+        <li>The DOCTYPE declaration defines the document type:
+          <ul>
+            <li><code>&lt;!DOCTYPE html&gt;</code> is the doctype for HTML5</li>
+          </ul>
         </li>
-        <li>In the previous example:</li>
-        <ul>
-          <li><code>body</code> is the parent element to its children - <code>h1</code>, <code>p</code> and
-            <code>div</code> (which are siblings to each other)
-          </li>
-          <li>And all elements are descendants of <code>html</code></li>
-        </ul>
+        <li>"Mark up" content to specify <i>semantic structure</i> by adding <i>tags</i> to create
+          <i>elements</i>
+        </li>
       </ul>
     </div>
-  </div>
+  </section>
+  <section>
+    <h2>Example: HTML</h2>
+    <pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;!-- The content between the &lt;html&gt; and &lt;/html&gt; describes the web page --&gt;
+ &lt;head&gt;
+  &lt;!-- &lt;head&gt;&lt;/head&gt; handles all the head elements --&gt;
+  &lt;!-- Tags that can be inside &lt;head&gt; element: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;, &lt;noscript&gt;, &lt;base&gt; --&gt;
+  &lt;title&gt;Visual Analytics&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;!-- The content between the &lt;body&gt; and &lt;/body&gt; is the visible page content --&gt;
+  &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+  &lt;p class="desc"&gt;Examples of &lt;em&gt;visualisation&lt;/em&gt;:&lt;/p&gt;
+  &lt;!-- Valid class or id: Must start with a letter and can be followed by letter, digits, hypens and underscores --&gt;
+  &lt;div id="iAmUnique1" class="desc"&gt;
+   &lt;ul&gt;
+    &lt;li&gt;Parallel coordinates&lt;/li&gt;
+    &lt;li&gt;Scatter plots&lt;/li&gt;
+   &lt;/ul&gt;
+  &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </section>
+  <section>
+    <h2>Example: HTML</h2>
+    <img src="assets/img/gettingStartedHtml.png" height="450px"/>
+  </section>
 </section>
 <section id="gettingstarted-dev-tools">
-  <h2>Getting Started: Developer Tools</h2>
-
-  <div style="text-align: left;">
-    <ul>
-      <li>Nowadays, every modern-day browser has built-in developer tools</li>
-      <li>Examples: Chrome, Firefox, Safari, etc.</li>
-      <li>Can view source code of an HTML page by right-click on the page then select <i>View page source</i>
-        (e.g. Chrome and Safari)
-      </li>
-      <li>See the DOM by the <i>inspecting</i> the element</li>
-      <li>For example in Chrome or Safari, right-click on the page then select <i>Inspect element</i></li>
-    </ul>
-  </div>
+  <section>
+    <h2>Getting Started: Developer Tools</h2>
+    <div style="text-align: left;">
+      <ul>
+        <li>Nowadays, every modern-day browser has built-in developer tools</li>
+        <li>Examples: Chrome, Firefox, Safari, etc.</li>
+        <li>Can view source code of an HTML page by right-click on the page then select <i>View page source</i>
+          (e.g. Chrome and Safari)
+        </li>
+        <li>See the DOM by the <i>inspecting</i> the element</li>
+        <li>For example in Chrome or Safari, right-click on the page then select <i>Inspect element</i></li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <h2>Example: Developer Tools</h2>
+    <img src="assets/img/developer-tool.png" height="770px"></img>
+  </section>
 </section>
-<section id="dev-tools">
-  <h2>Example: Developer Tools</h2>
-  <img src="assets/img/developer-tool.png" height="770px"></img>
+<section id="gettingstarted-dom">
+  <section>
+    <h2>Getting Started: DOM</h2>
+    <div>
+      <p style="text-align: left;">DOM (Document Object Model):</p>
+      <div style="text-align: left;">
+        <ul>
+          <li>Hierarchical structure of HTML</li>
+          <li>Each pair of bracketed tags is an <i>element</i></li>
+          <li>Refer to elements' relative relationships to each other in terms of: parent, child, sibling,
+            ancestor and descendant
+          </li>
+          <li>In the previous example:</li>
+          <ul>
+            <li><code>body</code> is the parent element to its children - <code>h1</code>, <code>p</code> and
+              <code>div</code> (which are siblings to each other)
+            </li>
+            <li>And all elements are descendants of <code>html</code></li>
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Example: DOM</h2>
+    <img src="assets/img/gettingStartedDom.png" height="650px"/>
+  </section>
 </section>
 <section id="gettingstarted-css">
-  <h2>Getting Started: CSS</h2>
-
-  <div>
-    <p style="text-align: left;">
-      CSS (Cascading Style Sheets):</p>
-
+  <section>
+    <h2>Getting Started: CSS</h2>
     <div style="text-align: left;">
+      <p>CSS (Cascading Style Sheets):</p>
       <ul>
         <li>The visual representation of the document structure</li>
         <li>Consists of <i>selectors</i> and <i>properties</i></li>
       </ul>
+<pre><code data-trim>selector {
+ property: value;
+}
+
+selectorA, selectorB {
+ property: value;
+}</code></pre>
+      <ul><li>For example:</li></ul>
+      <pre><code data-trim>p {
+ font-size: 24px;
+}
+
+h1, .desc {
+ color: #F179D1;
+ font-weight: bold;
+}</code></pre>
     </div>
-  </div>
-					<pre><code data-trim>selector {
-            property: value;
-            property: value;
-            }
-
-            selectorA,
-            selectorB,
-            selectorC {
-            property: value;
-            property: value;
-            }</code></pre>
-</section>
-<section id="css-selectors">
-  <h2>CSS-Style Selectors</h2>
-
-  <p style="text-align: left;"><b>Type selectors</b>: match DOM elements with the same name</p>
+  </section>
+  <section id="css-selectors">
+    <h2>CSS-Style Selectors</h2>
+    <p style="text-align: left;"><b>Type selectors</b>: match DOM elements with the same name</p>
+					<pre><code data-trim>p  /* Selects all paragraphs */</code></pre>
+    <p style="text-align: left;"><b>Descendant selectors</b>: match elements contained by another elements</p>
+					<pre><code data-trim>div p  /* Selects p elements contained in a div */</code></pre>
+    <p style="text-align: left;"><b>Class selectors</b>: match elements of any type assigned to a specific class</p>
 					<pre><code data-trim>
-            p /* Selects all paragraphs */
-          </code></pre>
-  <p style="text-align: left;"><b>Descendant selectors</b>: match elements contained by another elements</p>
-					<pre><code data-trim>
-            div p /* Selects p elements contained in a div */
-          </code></pre>
-  <p style="text-align: left;"><b>Class selectors</b>: match elements of any type assigned to a specific class</p>
-					<pre><code data-trim>
-            .desc /* Selects elements with class "desc" */
-            .desc.highlight /* Selects hightlighted desc */
-          </code></pre>
-  <p style="text-align: left;"><b>ID selectors</b>: match the element with the specific ID</p>
-					<pre><code data-trim>
-            #list1 /* Selects element with ID "list1" */
-          </code></pre>
-  <p style="text-align: left;"><b>Combination</b>: combined to target specific elements</p>
-					<pre><code data-trim>
-            div.desc /* Selects divs with class "desc" only */
-          </code></pre>
-</section>
-<section id="referencing-styles">
-  <h2>Referencing Styles</h2>
-
-  <div style="text-align: left;">
-    <p>Three ways to apply CSS styles rules to <b>HTML</b> document:</p>
-    <ul>
-      <li>Embed the CSS in the HTML</li>
-    </ul><pre><code data-trim>&lt;head&gt;
-    &lt;style type="text/css"&gt;
-    h1 { font-size: 16px; }
-    &lt;/style&gt;
-    &lt;/head&gt;</code></pre>
-    <ul>
-      <li>Reference an external stylesheet from the HTML</li>
-    </ul>
-        <pre><code data-trim>&lt;head&gt;
-          &lt;link rel="stylesheet" href="style.css"&gt;
-          &lt;/head&gt;
-        </code></pre>
-    <ul>
-      <li>Attach inline styles</li>
-    </ul>
-    <pre><code data-trim>&lt;p style="color: red; font-size: 24px;&gt;An example of inline style&lt;/p&gt;</code></pre>
-  </div>
+.desc            /* Selects elements with class "desc" */
+.desc.highlight  /* Selects hightlighted desc */</code></pre>
+    <p style="text-align: left;"><b>ID selectors</b>: match the element with the specific ID</p>
+					<pre><code data-trim>#iAmUnique1  /* Selects element with ID "iAmUnique1" */</code></pre>
+    <p style="text-align: left;"><b>Combination</b>: combined to target specific elements</p>
+					<pre><code data-trim>div.desc  /* Selects divs with class "desc" only */</code></pre>
+  </section>
+  <section id="referencing-styles">
+    <h2>Referencing Styles</h2>
+    <div style="text-align: left;">
+      <p>Three ways to apply CSS styles rules to <b>HTML</b> document:</p>
+      <ul>
+        <li>Embed the CSS in the HTML</li>
+      </ul>
+      <pre><code data-trim>
+&lt;head&gt;
+ &lt;style type="text/css"&gt;
+  h1 { font-size: 16px; }
+ &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+      <ul>
+        <li>Reference an external stylesheet from the HTML</li>
+      </ul>
+        <pre><code data-trim>
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+      <ul>
+        <li>Attach inline styles</li>
+      </ul>
+      <pre><code data-trim>&lt;p style="color: red; font-size: 24px;&gt;An example of inline style&lt;/p&gt;</code></pre>
+    </div>
+  </section>
 </section>
 <section id="gettingstarted-svg">
-  <h2>Getting Started: SVG</h2>
-
-  <div>
-    <p style="text-align: left;">
-      SVG (Scalable Vector Graphics):</p>
-
+  <section>
+    <h2>Getting Started: SVG</h2>
+    <div>
+      <p style="text-align: left;">
+        SVG (Scalable Vector Graphics):</p>
+      <div style="text-align: left;">
+        <ul>
+          <li>A text-based image format that is defined using markup code same as HTML</li>
+          <li>You can include SVG code directly inside any HTML document or</li>
+          <li>insert it dynamically into the DOM using JavaScript</li>
+          <li>SVG is <b>XML-based</b> therefore all elements must have a closing tag:</li>
+        </ul>
+            <pre><code data-trim>
+&lt;element&gt;&lt;/element&gt;   &lt;!-- Element with closing tag --&gt;
+&lt;element/&gt;            &lt;!-- Element with self-closing tag --&gt;
+            </code></pre>
+        <ul>
+          <li>Coordinate system starts at the top-left corner</li>
+        </ul>
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="160">
+          <marker id="triangle"
+                  viewBox="0 0 10 10" refX="0" refY="5"
+                  markerUnits="strokeWidth"
+                  markerWidth="4" markerHeight="3"
+                  orient="auto" fill="gray">
+            <path d="M 0 0 L 10 5 L 0 10 z"/>
+          </marker>
+          <svg x="0" y="0">
+            <g transform="translate(100, 10)">
+              <rect x="10" y="10" width="500" height="150" stroke-width="1" stroke="black"
+                    fill="white"></rect>
+              <line x1="25" y1="25" x2="450" y2="25" stroke="gray" marker-end="url(#triangle)"
+                    stroke-width="3"></line>
+              <line x1="25" y1="25" x2="25" y2="120" stroke="gray" marker-end="url(#triangle)"
+                    stroke-width="3"></line>
+              <circle cx="25" cy="25" r="5" fill="red"></circle>
+              <text x="30" y="40" font-family="serif" font-size="16" fill="black">0,0</text>
+            </g>
+          </svg>
+        </svg>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>SVG Elements and Shapes</h2>
     <div style="text-align: left;">
       <ul>
-        <li>A text-based image format that is defined using markup code same as HTML</li>
-        <li>You can include SVG code directly inside any HTML document or</li>
-        <li>insert it dynamically into the DOM</li>
-        <li>SVG is <b>XML-based</b> therefore all elements must have a closing tag</li>
-        <li>Coordinate system starts at the top-left corner</li>
+        <li>An SVG image begins with <code>&lt;svg&gt;</code> element</li>
+        <li>The width and height of the SVG image can be defined by the width and height attributes</li>
+        <li>Some of the pre-defined shapes in SVG:
+          <ul>
+            <li>Rectangle <code>&lt;rect&gt;</code></li>
+            <li>Circle <code>&lt;circle&gt;</code></li>
+            <li>Ellipse <code>&lt;ellipse&gt;</code></li>
+            <li>Line <code>&lt;line&gt;</code></li>
+            <li>Polyline <code>&lt;polyline&gt;</code></li>
+            <li>Polygon <code>&lt;polygon&gt;</code></li>
+            <li>Path <code>&lt;path&gt;</code></li>
+          </ul>
+        </li>
+        <li>SVG also renders text using <code>&lt;text&gt;</code> element</li>
+        <li>You can group together your SVG shapes using <code>&lt;g&gt;</code> element</li>
       </ul>
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-        <marker id="triangle"
-                viewBox="0 0 10 10" refX="0" refY="5"
-                markerUnits="strokeWidth"
-                markerWidth="4" markerHeight="3"
-                orient="auto" fill="gray">
-          <path d="M 0 0 L 10 5 L 0 10 z"/>
-        </marker>
-        <svg x="0" y="0">
-          <g transform="translate(100, 10)">
-            <rect x="10" y="10" width="500" height="150" stroke-width="1" stroke="black"
-                  fill="white"></rect>
-            <line x1="25" y1="25" x2="450" y2="25" stroke="gray" marker-end="url(#triangle)"
-                  stroke-width="3"></line>
-            <line x1="25" y1="25" x2="25" y2="120" stroke="gray" marker-end="url(#triangle)"
-                  stroke-width="3"></line>
-            <circle cx="25" cy="25" r="5" fill="red"></circle>
-            <text x="30" y="40" font-family="serif" font-size="16" fill="black">0,0</text>
-          </g>
-        </svg>
-      </svg>
     </div>
-  </div>
-</section>
-<section id="example-svg">
-  <h2>Example: SVG</h2>
+  </section>
+  <section>
+    <h2>Styling SVG Elements and Shapes</h2>
+    <div style="text-align: left;">
+      <ul>
+        <li>Default style is black fill with no stroke</li>
+        <li>You can use SVG properties such as <code>fill</code>, <code>stroke</code> and <code>opacity</code> to
+          style your SVG elements and shapes</li>
+        <li>For example using inline styles:</li>
+      </ul><pre><code>&lt;rect x="85" y="5" width="40" height="40" fill="red" stroke="blue" stroke-width="5" /&gt;</code></pre>
+      <ul>
+        <li>Or through the CSS approach:</li>
+      </ul><pre><code>&lt;rect x="85" y="5" width="40" height="40" class="mySvgStyle" /&gt;</code></pre>
+      <pre><code>.mySvgStyle {
+ fill: red;
+ stroke: blue;
+ stroke-width: 5;
+}
+</code></pre>
 
-  <div style="text-align: left;">
-    <svg width="800" height="220">
-      <rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"></rect>
-      <g transform="scale(3) translate(100, 10)">
-        <circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)" stroke="rgba(127, 201, 127, 0.5)"
-                stroke-width="5"></circle>
-        <ellipse cx="65" cy="25" rx="35" ry="15" fill="rgba(190, 174, 212, 0.7)"
-                 stroke="rgba(190, 174, 212, 0.5)" stroke-width="5"></ellipse>
-        <rect x="85" y="5" width="40" height="40" fill="rgba(253, 192, 134, 0.7)"
-              stroke="rgba(253, 192, 134, 0.5)" stroke-width="5"></rect>
-      </g>
-    </svg>
-    <br><pre><code data-trim>&lt;svg width="800" height="220"&gt;
-    &lt;rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"&gt;&lt;/rect&gt;
-    &lt;g transform="scale(3) translate(100, 10)"&gt;
-    &lt;circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)"
-    stroke="rgba(127, 201, 127, 0.5)" stroke-width="5"&gt;&lt;/circle&gt;
-    &lt;ellipse cx="65" cy="25" rx="35" ry="15"
-    fill="rgba(190, 174, 212, 0.7)" stroke="rgba(190, 174, 212, 0.5)"
+    </div>
+  </section>
+  <section>
+    <h2>Example: SVG</h2>
+    <div style="text-align: left;">
+      <svg width="800" height="220">
+        <rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"></rect>
+        <g transform="scale(3) translate(100, 10)">
+          <circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)" stroke="rgba(127, 201, 127, 0.5)"
+                  stroke-width="5"></circle>
+          <ellipse cx="65" cy="25" rx="35" ry="15" fill="rgba(190, 174, 212, 0.7)"
+                   stroke="rgba(190, 174, 212, 0.5)" stroke-width="5"></ellipse>
+          <rect x="85" y="5" width="40" height="40" fill="rgba(253, 192, 134, 0.7)"
+                stroke="rgba(253, 192, 134, 0.5)" stroke-width="5"></rect>
+        </g>
+      </svg>
+      <br><pre><code data-trim>&lt;svg width="800" height="220"&gt;
+ &lt;!-- The order when the elements are called determines the ordering of the objects --&gt;
+ &lt;rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"&gt;&lt;/rect&gt;
+ &lt;!-- &lt;g&gt; groups the shapes together allowing you to transform and style the whole group as a single shape --&gt;
+ &lt;g transform="scale(3) translate(100, 10)"&gt;
+  &lt;circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)" stroke="rgba(127, 201, 127, 0.5)"
+    stroke-width="5"&gt;&lt;/circle&gt;
+  &lt;ellipse cx="65" cy="25" rx="35" ry="15" fill="rgba(190, 174, 212, 0.7)" stroke="rgba(190, 174, 212, 0.5)"
     stroke-width="5"&gt;&lt;/ellipse&gt;
-    &lt;rect x="85" y="5" width="40" height="40"
-    fill="rgba(253, 192, 134, 0.7)" stroke="rgba(253, 192, 134, 0.5)"
+  &lt;rect x="85" y="5" width="40" height="40" fill="rgba(253, 192, 134, 0.7)" stroke="rgba(253, 192, 134, 0.5)"
     stroke-width="5"&gt;&lt;/rect&gt;
-    &lt;/g&gt;
-    &lt;/svg&gt;</code></pre>
-  </div>
+ &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+    </div>
+  </section>
 </section>
 <section id="gettingstarted-js">
-  <h2>Getting Started: JavaScript</h2>
-
-  <div style="text-align: left;">
-    <ul>
-      <li>Scripting language for manipulating the DOM after a page has been loaded in the browser</li>
-      <li>Type the code directly in the JavaScript console or</li>
-      <li>Load the script to the browser using a web page</li>
-      <li>Two ways to reference the scripts:</li>
+  <section>
+    <h2>Getting Started: JavaScript</h2>
+    <div style="text-align: left;">
       <ul>
-        <li>Directly in the HTML, between two <code>script</code> tags</li>
-      </ul>
+        <li>Scripting language for manipulating the DOM after a page has been loaded in the browser</li>
+        <li>Type the code directly in the JavaScript console or</li>
+        <li>Load the script to the browser using a web page</li>
+        <li>Two ways to reference the scripts:</li>
+        <ul>
+          <li>Directly in the HTML, between two <code>script</code> tags</li>
+        </ul>
             <pre><code data-trim>&lt;body&gt;
-              &lt;script type="text/javascript"&gt;
-              alert("Hello, world!");
-              &lt;/script&gt;
-              &lt;/body&gt;</code></pre>
-      <ul>
-        <li>Stored in a separate file with a <i>.js</i> suffix, and then referenced in the HTML</li>
-      </ul>
+ &lt;script type="text/javascript"&gt;
+  alert("Hello, world!");
+ &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        <ul>
+          <li>Stored in a separate file with a <i>.js</i> suffix, and then referenced in the HTML</li>
+        </ul>
             <pre><code data-trim>&lt;head&gt;
-              &lt;title&gt;Page Title&lt;/title&gt;
-              &lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;
-              &lt;/head&gt;</code></pre>
-    </ul>
-  </div>
-</section>
-<section id="example-javascript">
-  <h2>Example: JavaScript</h2>
-					<pre><code data-trim>/* JSON example */
-            var jsonChocolate = [
-            {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
-            {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
+ &lt;title&gt;Page Title&lt;/title&gt;
+  &lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <h2>More JavaScript</h2>
+  </section>
+  <section>
+    <h2>Example: JavaScript</h2>
+      <pre><code data-trim>/* JSON example */
+var jsonChocolate = [
+ {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
+ {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
 
-            function displayCocoaButter() {
-            var index; // Another way of doing comments
-            for (index = 0; index < jsonChocolate.length; index++) {
-            var _p = document.createElement("p");
-            var _text = document.createTextNode("Cocoa butter content: "
-            + jsonChocolate[index].cocoa_butter);
-            _p.appendChild(_text);
-            document.body.appendChild(_p);
-            }
-            }</code></pre>
+function displayCocoaButter() {
+ var index; // Another way of doing comments
+ for (index = 0; index < jsonChocolate.length; index++) {
+  var _p = document.createElement("p");
+  var _text = document.createTextNode("Cocoa butter content: " + jsonChocolate[index].cocoa_butter);
+  _p.appendChild(_text);
+  document.body.appendChild(_p);
+ }
+}</code></pre>
+  </section>
+  <section>
+    <h2>Example: JavaScript</h2>
+    <img src="assets/img/gettingStartedJavaScript.png" height="450px"/>
+  </section>
 </section>
 <section id="setup">
   <h2>Setup</h2>
