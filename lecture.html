@@ -344,7 +344,7 @@ h1, .desc {
         <ul>
           <li>A text-based image format that is defined using markup code same as HTML</li>
           <li>You can include SVG code directly inside any HTML document or</li>
-          <li>insert it dynamically into the DOM using JavaScript</li>
+          <li>Insert it dynamically into the DOM using JavaScript</li>
           <li>SVG is <b>XML-based</b> therefore all elements must have a closing tag:</li>
         </ul>
             <pre><code data-trim>
@@ -479,21 +479,24 @@ h1, .desc {
     </div>
   </section>
   <section>
-    <h2>More JavaScript</h2>
-  </section>
-  <section>
     <h2>Example: JavaScript</h2>
-      <pre><code data-trim>/* JSON example */
+      <pre><code data-trim style="max-height: 100%">/* Declaring a variable of an array of objects */
 var jsonChocolate = [
  {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
  {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
 
+/* A function to loop through the array and display the cocoa butter content */
 function displayCocoaButter() {
- var index; // Another way of doing comments
+ var index;
+ // Loop through array of JSON objects
  for (index = 0; index < jsonChocolate.length; index++) {
+  /* Create a &lt;p&gt; element */
   var _p = document.createElement("p");
+  /* Get the cocoa butter content and add it to the &lt;text&gt; node */
   var _text = document.createTextNode("Cocoa butter content: " + jsonChocolate[index].cocoa_butter);
+  /* Add the created &lt;text&gt; node to the &lt;p&gt; element */
   _p.appendChild(_text);
+ /* Add the created &lt;p&gt; element to &lt;body&gt; */
   document.body.appendChild(_p);
  }
 }</code></pre>
@@ -503,82 +506,144 @@ function displayCocoaButter() {
     <img src="assets/img/gettingStartedJavaScript.png" height="450px"/>
   </section>
 </section>
-<section id="setup">
-  <h2>Setup</h2>
-
-  <div style="text-align: left;">
+<section id="gettingstarted-quickstart">
+  <section>
+    <h2>Quick Start Guide</h2>
     <ul>
-      <li>Download the latest version of D3 (<a href="http://d3js.org/" target="_blank">http://d3js.org/</a>)</li>
-							<pre><code data-trim>project-folder/
-                d3/
-                d3.v3.js
-                d3.v3.min.js (optional)
-              </code></pre>
-      <li>Reference it in your code</li>
-							<pre><code data-trim>&lt;!DOCTYPE&gt;
-                &lt;html&gt;
-                &lt;head&gt;
-                &lt;meta charset="utf-8"/&gt;
-                &lt;title&gt;My D3 Template&lt;/title&gt;
-                &lt;script type="text/javascript" src="d3/d3.v3.js"&gt;&lt;/script&gt;
-                &lt;/head&gt;
-                &lt;body&gt;
-                &lt;script type="text/javascript"&gt;
-                // Here is where my D3 code lives
-                &lt;/script&gt;
-                &lt;/body&gt;
-                &lt;/html&gt;</code></pre>
+      <li>Download <a href="http://www.jetbrains.com/webstorm/download/index.html"
+                      target="_blank">WebStorm</a> and install on your machine</li>
+      <li>Open WebStorm and choose <em>Create New Project</em></li>
+      <li>Specify the project name and location. In the <em>Project type</em> option, select
+        <em>Empty Project</em></li>
     </ul>
-  </div>
-</section>
-<section id="setup-2">
-  <h2>Setup</h2>
-
-  <div style="text-align: left;">
+    <img src="assets/img/startScreen.png" height="350px"/>
+    <p style="text-align: left;">Note: You can install WebStorm in the
+      <em>scratch</em> folder found in your <em>Home</em> directory. Follow the instructions in the
+      <em>Install-Linux-tar.txt</em> included in the downloaded <em>WebStorm</em> folder.</p>
+  </section>
+  <section>
+    <h2>Quick Start Guide</h2>
     <ul>
-      <li>You may also need to set-up a web server if your D3 code is using external datafiles due to some
-        browsers' restrictions
+      <li>In the project that you have created, created a new directory called <em>assets
+      </em> containing three other directories: <em>css</em>, <em>data</em> and <em>js</em>
       </li>
-      <li>Some of the web servers you can use:</li>
-      <ul>
-        <li>Node.js (<a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a>):</li>
-        <ul>
-          <li>Install Node.js and run <code>npm install http-server -g</code></li>
-          <li>Type <code>http-server</code> and this will start a http server from the current directory</li>
-        </ul>
-        <li>Python (<a href="http://www.python.org/" target="_blank">http://www.python.org/</a>)</li>
-        <ul>
-          <li>Install Python and type <code>python -m SimpleHTTPServer 8080</code></li>
-        </ul>
-      </ul>
+      <li>Download <a href="http://d3js.org/" target="_blank">D3</a> into
+        the directory <em>lib</em> inside <em>js</em>. The <em>lib</em> directory would
+        contain all your external libraries</li>
     </ul>
-  </div>
+    <img src="assets/img/directories-with-d3.png" height="500px"/>
+  </section>
+  <section>
+    <h2>Quick Start Guide</h2>
+    <p>You can now start to create your first Hello World! in D3</p>
+    <img src="assets/img/createFileWithTemplate.png" height="500px"/>
+  </section>
+  <section>
+    <h2>Hello World! in D3</h2>
+    <p style="text-align: left;">We start with the HTML, where we have:</p>
+                    <pre><code data-trim>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Hello World!&lt;/title&gt;
+  &lt;!-- Reference the D3 library --&gt;
+  &lt;!-- Note: Change the path to where you have saved your D3 library --&gt;
+  &lt;script type="text/javascript" src="assets/js/lib/d3.v3.js"&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;!-- A &lt;div&gt;&lt;/div&gt; to hold my SVG --&gt;
+  &lt;div id="helloWorldCanvas"&gt;&lt;/div&gt;
+   &lt;!-- Here is where I call my D3 code to create my Hello World! --&gt;
+   &lt;!-- Note: Change the path to where you have saved your JavaScript --&gt;
+   &lt;script type="text/javascript" src="assets/js/helloWorld.js"&gt;&lt;/script&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p style="text-align: left;">You can save this as <em>HelloWorld.html</em><p>
+  </section>
+  <section>
+    <h2>Hello World! in D3</h2>
+    <p style="text-align: left;">Now we can start writing the Hello World! in D3</p>
+<pre><code data-trim style="max-height: 100%">// create the SVG container
+var svg = d3.select("#helloWorldCanvas")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 300);
+
+// add the text that we want to display
+svg.append("text")
+   .attr("x", 150).attr("y", 57)
+   .attr("fill", "red")
+   .attr("font-size", "25px").attr("font-family", "sans-serif")
+   .text("Hello World!");
+
+// now let's add a circle to accompany the text
+svg.append("circle")
+   .style("fill", "#27aae1")
+   .attr("cx", 100).attr("cy", 50)
+   .attr("r", 15);</code></pre>
+    <p style="text-align: left;">You can save this as <em>helloWorld.js</em></p>
+  </section>
+  <section>
+    <h2>Hello World! in D3</h2>
+    <img src="assets/img/helloWorld.png" height="550px"/>
+  </section>
+  <section>
+    <h2>Quick Start Guide</h2>
+    <p style="text-align: left;">So in WebStorm you will have something that looks like this:</p>
+    <img src="assets/img/finalFileStructure.png" height="550px"/>
+  </section>
+  <section>
+    <h2>Setup</h2>
+    <div style="text-align: left;">
+      <ul>
+        <li>You may also need to set-up a web server if your D3 code is using external datafiles due to some
+          browsers' restrictions
+        </li>
+        <li>Some of the web servers you can use:</li>
+        <ul>
+          <li>Node.js (<a href="http://nodejs.org/" target="_blank">http://nodejs.org/</a>):</li>
+          <ul>
+            <li>Install Node.js and run <code>npm install http-server -g</code></li>
+            <li>Type <code>http-server</code> and this will start a http server from the current directory</li>
+          </ul>
+          <li>Python (<a href="http://www.python.org/" target="_blank">http://www.python.org/</a>)</li>
+          <ul>
+            <li>Install Python and type <code>python -m SimpleHTTPServer 8080</code></li>
+          </ul>
+        </ul>
+        <li>However if you are using WebStorm, Node.js is included in the IDE</li>
+      </ul>
+    </div>
+  </section>
 </section>
+
+<section>
+  <h2>Dissecting Our Hello World!</h2>
+</section>
+
 <section id="letsdraw">
   <h2>Drawing shapes using D3</h2>
 
   <div class="example-container">
     <div id="dot-plot-1" class="canvas pull-left"></div>
     <div class="explanation pull-right">
-                            <pre><code>var svg = d3.select(placement).append("svg")
-                              .attr("width", width)
-                              .attr("height", height)
-                              .append("g");
+      <pre><code data-trim style="max-height: 100%">var svg = d3.select(placement).append("svg")
+   .attr("width", width)
+   .attr("height", height)
+   .append("g");
 
-                              svg.append("circle")
-                              .style("fill", "#27aae1")
-                              .attr("cx", 40)
-                              .attr("cy", 50)
-                              .attr("r", 15);
+svg.append("circle")
+   .style("fill", "#27aae1")
+   .attr("cx", 40)
+   .attr("cy", 50)
+   .attr("r", 15);
 
-                              svg.append("path")
-                              .attr("d", d3.svg.symbol()
-                              .size(200)
-                              .type("cross"))
-                              .style("fill", "#27aae1")
-                              .attr("transform", "translate(90,50)");
-                              ....
-                            </code></pre>
+svg.append("path")
+   .attr("d", d3.svg.symbol()
+   .size(200)
+   .type("cross"))
+   .style("fill", "#27aae1")
+   .attr("transform", "translate(90,50)");
+   ....</code></pre>
     </div>
   </div>
 
@@ -591,56 +656,53 @@ function displayCocoaButter() {
     <div id="enter-example-1" class="canvas pull-left"></div>
     <div class="explanation pull-right">
         <pre><code>var svg = d3.select("body").append("svg")
-          .attr("width", 400)
-          .attr("height", 400)
-          .append("g");
+   .attr("width", 400)
+   .attr("height", 400)
+   .append("g");
 
-          svg.append("circle")
-          .attr("r", 20)
-          .attr("cx", 30)
-          .attr("cy", 40)
-          .style("fill", "#27aae1");
-        </code></pre>
+svg.append("circle")
+   .attr("r", 20)
+   .attr("cx", 30)
+   .attr("cy", 40)
+   .style("fill", "#27aae1");</code></pre>
     </div>
   </section>
   <section id="enter-s2">
     <div id="enter-example-2" class="canvas pull-left"></div>
-    <p style="font-size: .8em">But what if we want to draw a circle for every data point?.</p>
+    <p style="font-size: .8em">But what if we want to draw a circle for every data point?</p>
     <div class="explanation pull-right">
     <pre><code>var svg = d3.select("body").append("svg")
-      .attr("width", 400)
-      .attr("height", 400)
-      .append("g");
+   .attr("width", 400)
+   .attr("height", 400)
+   .append("g");
 
-      var data = [{x:160, y:190}, {x:30, y:200}, {x:300, y:100}];
+var data = [{x:160, y:190}, {x:30, y:200},
+            {x:300, y:100}];
 
-      svg.selectAll("data-circle").data(data).enter().append("circle")
-      .attr("r", 10)
-      .attr("cx", function(d) {
+svg.selectAll("data-circle").data(data)
+   .enter().append("circle")
+   .attr("r", 10)
+   .attr("cx", function(d) {
       return d.x;
-      }).attr("cy", function(d) {
+   }).attr("cy", function(d) {
       return d.y;
-      }).style("fill", "#F179D1");
-    </code></pre>
+    }).style("fill", "#F179D1");</code></pre>
     </div>
   </section>
-
-
   <section id="enter-3">
     <div class="pull-left" style="width:300px">
         <pre><code>svg.selectAll("data-circle")
-          .data(data)
-          .enter()
-          .append("circle")
-          .attr("r", 10)
-          .attr("cx", function(d) {
-          return d.x;
-          })
-          .attr("cy", function(d) {
-          return d.y;
-          })
-          .style("fill", "#F179D1");
-        </code></pre>
+   .data(data)
+   .enter()
+   .append("circle")
+   .attr("r", 10)
+   .attr("cx", function(d) {
+      return d.x;
+   })
+   .attr("cy", function(d) {
+      return d.y;
+   })
+   .style("fill", "#F179D1");</code></pre>
     </div>
 
     <div class="pull-right" style="width: 600px; text-align: left">
@@ -656,8 +718,8 @@ function displayCocoaButter() {
       <p style="font-size: .7em;">Here we take the <span style="color: #27aae1">data</span>, <span style="color: #27aae1">enter</span> it and <span style="color: #27aae1">append</span> circles items for each data item.
 
         <pre><code>var data = [{x:160, y:190}, {x:30, y:200}, {x:300, y:100}];
-          // d.y accesses the y variable of each data item d
-          attr("cy", function(d) { return d.y;})</code></pre>
+// d.y accesses the y variable of each data item d
+attr("cy", function(d) { return d.y;})</code></pre>
       <p style="font-size: .7em;">We can access each individual data item property using a function which can pass through a data element <span style="color: #27aae1">d</span>.
       </p>
     </div>
@@ -671,34 +733,31 @@ function displayCocoaButter() {
   <section id="enter-5">
     <h2>Enter/update pattern</h2>
     <div class="pull-left" style="width:450px">
-        <pre><code>var svg = d3.select(placement).append("svg")
-          .attr("width", width)
-          .attr("height", height)
-          .append("g");
+        <pre><code data-trim style="max-height: 100%">var svg = d3.select(placement).append("svg")
+   .attr("width", width)
+   .attr("height", height)
+   .append("g");
 
-          update([{x:30, y:60}]);
+update([{x:30, y:60}]);
 
-          function update(data) {
-          var rect = enter_svg.selectAll("rect")
-          .data(data);
+function update(data) {
+  var rect = enter_svg.selectAll("rect")
+                   .data(data);
 
-          rect.enter().append("rect")
-          .style("fill", "#fff")
-          .attr("height", 20)
-          .attr("width", 0)
-          .transition()
-          .attr("width", 25);
+  rect.enter().append("rect")
+     .style("fill", "#fff")
+     .attr("height", 20)
+     .attr("width", 0)
+     .transition()
+     .attr("width", 25);
 
-          rect
-          .attr("x", function(d) { return d.x; })
-          .attr("y", function(d) { return d.y; });
+  rect.attr("x", function(d) { return d.x; })
+     .attr("y", function(d) { return d.y; });
 
-          rect.exit().attr("width", 25).transition()
-          .attr("width", 0)
-          .remove();
-          }
-
-        </code></pre>
+  rect.exit().attr("width", 25).transition()
+     .attr("width", 0)
+     .remove();
+}</code></pre>
     </div>
     <div class="pull-right" style="width: 500px; text-align: left; font-size: .8em">
       <div id="update-pattern"></div>
@@ -716,19 +775,19 @@ function displayCocoaButter() {
 
 <section id="plottingdata">
   <h2>An example: Plotting some data</h2>
-                    <pre><code>var data = [
-                      {x: 10.0, y: 9.14},
-                      {x: 15.0, y: 18.14},
-                      {x: 13.0, y: 28.74},
-                      {x: 49.0, y: 35.77},
-                      {x: 11.0, y: 9.26},
-                      {x: 23.0, y: 18.10},
-                      {x: 43.0, y: 16.13},
-                      {x: 65.0, y: 13.10},
-                      {x: 12.0, y: 19.13},
-                      {x: 30.0, y: 70.26},
-                      {x: 25.0, y: 40.74}
-                      ];</code></pre>
+  <pre><code>var data = [
+   {x: 10.0, y: 9.14},
+   {x: 15.0, y: 18.14},
+   {x: 13.0, y: 28.74},
+   {x: 49.0, y: 35.77},
+   {x: 11.0, y: 9.26},
+   {x: 23.0, y: 18.10},
+   {x: 43.0, y: 16.13},
+   {x: 65.0, y: 13.10},
+   {x: 12.0, y: 19.13},
+   {x: 30.0, y: 70.26},
+   {x: 25.0, y: 40.74}
+];</code></pre>
 
   <p>Data is just an array of dictionary objects.</p>
 
@@ -740,23 +799,22 @@ function displayCocoaButter() {
   <div class="example-container">
     <div id="dot-plot-2" class="canvas pull-left"></div>
     <div class="explanation pull-right">
-                            <pre><code>var svg = d3.select(placement).append("svg")
-                              .attr("width", width)
-                              .attr("height", height)
-                              .append("g");
+    <pre><code>var svg = d3.select(placement).append("svg")
+   .attr("width", width)
+   .attr("height", height)
+   .append("g");
 
-                              svg.selectAll("circle")
-                              .data(data)
-                              .enter().append("circle")
-                              .attr("class", "dot")
-                              .attr("cx", function (d) {
-                              return d.x;
-                              })
-                              .attr("cy", function (d) {
-                              return d.y;
-                              })
-                              .attr("r", 5);
-                            </code></pre>
+svg.selectAll("circle")
+   .data(data)
+   .enter().append("circle")
+   .attr("class", "dot")
+   .attr("cx", function (d) {
+      return d.x;
+   })
+   .attr("cy", function (d) {
+      return d.y;
+   })
+   .attr("r", 5);</code></pre>
     </div>
 
     <div class="cf"></div>
@@ -780,13 +838,15 @@ function displayCocoaButter() {
       <li>Ordinal (see <a href="https://github.com/mbostock/d3/wiki/Ordinal-Scales" target="_blank">here for details</a>)</li>
       <ol style="margin-left: 90px">
         <li>e.g. colors d3.scale.category10() creates a scale mapping Strings etc. to a colour e.g.
-                    <pre><code>var colors = d3.scale.category10()
-                      var colourForMe = colors("Visual Analytics"); // will output </code></pre>
+<pre><code>var colors = d3.scale.category10()
+var colourForMe = colors("Visual Analytics"); // will output </code></pre>
         </li>
-        <LI>or define your your range
-                    <pre><code>var myScale = d3.scale.ordinal().domain(["eamonn", "alfie", "prof. chen"]).range(["DPhil", "Researcher", "Professor"]);
-                      myScale("eamonn"); // will output "DPhil"</code></pre>
-        </LI>
+        <li>or define your your range
+<pre><code>var myScale = d3.scale.ordinal()
+                      .domain(["eamonn", "alfie", "prof. chen"])
+                      .range(["DPhil", "Researcher", "Professor"]);
+myScale("eamonn"); // will output "DPhil"</code></pre>
+        </li>
       </ol></li>
     </ol>
   </section>
@@ -795,31 +855,31 @@ function displayCocoaButter() {
     <h2>Bringing scales in to our plot...</h2>
     <div id="dot-plot-3" class="canvas pull-left"></div>
     <div class="explanation pull-right">
-                    <pre><code>var margin = {top: 20, right: 20, bottom: 20, left: 30};
-                      var x = d3.scale.linear()
-                      .domain(d3.extent(data, function (d) {
-                      return d.x;
-                      }))
-                      .range([0, width - margin.left - margin.right]);
+<pre><code data-trim style="max-height: 100%">var margin = {top: 20, right: 20,
+              bottom: 20, left: 30};
+var x = d3.scale.linear()
+        .domain(d3.extent(data, function (d) {
+          return d.x;
+        }))
+        .range([0, width - margin.left - margin.right]);
 
-                      var y = d3.scale.linear()
-                      .domain(d3.extent(data, function (d) {
-                      return height - margin.top - d.y;
-                      }))
-                      .range([height - margin.top - margin.bottom, 0]);
+var y = d3.scale.linear()
+        .domain(d3.extent(data, function (d) {
+          return height - margin.top - d.y;
+        }))
+        .range([height - margin.top - margin.bottom, 0]);
 
-                      // Now, modify the X and Y positions of the circle using the scale...
-                      svg.selectAll("circle")
-                      .data(data)
-                      .enter().append("circle")
-                      .attr("class", "dot")
-                      .attr("cx", function (d) {
-                      return x(d.x);
-                      })
-                      .attr("cy", function (d) {
-                      return y(d.y);
-                      })
-                      .attr("r", 5);</code></pre>
+// Now, modify the X and Y positions of
+// the circle using the scale...
+svg.selectAll("circle")
+   .data(data).enter().append("circle")
+   .attr("class", "dot")
+   .attr("cx", function (d) {
+      return x(d.x);
+   })
+   .attr("cy", function (d) {
+      return y(d.y);
+   }).attr("r", 5);</code></pre>
     </div>
     <div class="cf"></div>
     <p style="font-size: .8em">Wouldn't it be great if we now knew something about the value range...</p>
@@ -831,109 +891,26 @@ function displayCocoaButter() {
 
   <div id="dot-plot-4" class="canvas pull-left"></div>
   <div class="explanation pull-right">
-                    <pre><code>var xAxis = d3.svg.axis()
-                      .scale(x)
-                      .orient("bottom")
-                      .tickPadding(4);
+<pre><code data-trim style="max-height: 100%">var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom")
+      .tickPadding(4);
 
-                      var yAxis = d3.svg.axis()
-                      .scale(y)
-                      .orient("left")
-                      .tickPadding(10);
+var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickPadding(10);
 
-                      svg.append("g")
-                      .attr("class", "x axis")
-                      .attr("transform", "translate(0," + y.range()[0] + ")")
-                      .call(xAxis);
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + y.range()[0] + ")")
+  .call(xAxis);
 
-                      svg.append("g")
-                      .attr("class", "y axis")
-                      .call(yAxis);</code></pre>
+svg.append("g")
+  .attr("class", "y axis")
+  .call(yAxis);</code></pre>
   </div>
 </section>
-
-<section>
-  <h2>Quick Start Guide</h2>
-  <ul>
-    <li>Download <a href="http://www.jetbrains.com/webstorm/download/index.html"
-                    target="_blank">WebStorm </a> and install on your machine</li>
-    <li>Open WebStorm and choose <em>Create New Project</em></li>
-    <li>Specify the project name and location. In the <em>Project type</em> option, select
-      <em>Empty Project</em></li>
-  </ul>
-  <img src="assets/img/startScreen.png" height="350px"/>
-  <p style="text-align: left;">Note: You can install WebStorm in the
-    <em>scratch</em> folder found in your <em>Home</em> directory. Follow the instructions in the
-    <em>Install-Linux-tar.txt</em> included in the downloaded <em>WebStorm</em> folder.</p>
-</section>
-<section>
-  <h2>Quick Start Guide</h2>
-  <ul>
-    <li>In the project that you have created, created a new directory called <em>assets
-    </em> containing three other directories: <em>css</em>, <em>data</em> and <em>js</em>
-    </li>
-    <li>Put the <a href="http://d3js.org/" target="_blank">D3</a> you have downloaded into
-      the directory <em>lib</em> inside <em>js</em>. The <em>lib</em> directory would
-      contain all your external libraries</li>
-  </ul>
-  <img src="assets/img/directories-with-d3.png" height="500px"/>
-</section>
-<section>
-  <h2>Quick Start Guide</h2>
-  <p>You can now start to create your first Hello World! in D3</p>
-  <img src="assets/img/createFileWithTemplate.png" height="500px"/>
-</section>
-<section>
-  <h2>Hello World! in D3</h2>
-  <p style="text-align: left;">We start with the HTML, where we have:</p>
-                    <pre><code data-trim>&lt;!DOCTYPE html&gt;
-                      &lt;html&gt;
-                      &lt;head&gt;
-                      &lt;title&gt;Hello World!&lt;/title&gt;
-                      &lt;!-- Note: Change the path to where you have saved your D3 library --&gt;
-                      &lt;script type="text/javascript" src="assets/js/lib/d3.v3.js"&gt;&lt;/script&gt;
-                      &lt;/head&gt;
-                      &lt;body&gt;
-                      &lt;!-- A &lt;div&gt;&lt;/div&gt; to hold my SVG --&gt;
-                      &lt;div id="helloWorldCanvas"&gt;&lt;/div&gt;
-                      &lt;!-- Here is where I call my D3 code to create my Hello World! --&gt;
-                      &lt;!-- Note: Change the path to where you have saved your JavaScript --&gt;
-                      &lt;script type="text/javascript" src="assets/js/helloWorld.js"&gt;&lt;/script&gt;
-                      &lt;/body&gt;
-                      &lt;/html&gt;</code></pre>
-  <p style="text-align: left;">You can save this as <em>HelloWorld.html</em><p>
-</section>
-<section>
-  <h2>Hello World! in D3</h2>
-  <p style="text-align: left;">Now we start writing the Hello World! in D3</p>
-                    <pre><code> // create the SVG container
-                      var svg = d3.select("#helloWorldCanvas").append("svg")
-                      .attr("width", 500).attr("height", 300);
-
-                      // add the text that we want to display
-                      svg.append("text")
-                      .attr("x", 150).attr("y", 57)
-                      .attr("fill", "red").attr("font-size", "25px")
-                      .attr("font-family", "sans-serif")
-                      .text("Hello World!");
-
-                      // now let's add a circle to accompany the text
-                      svg.append("circle")
-                      .style("fill", "#27aae1")
-                      .atrr("cx", 100).attr("cy", 50)
-                      .attr("r", 15);</code></pre>
-  <p style="text-align: left;">You can save this as <em>helloWorld.js</em></p>
-</section>
-<section>
-  <h2>Hello World! in D3</h2>
-  <img src="assets/img/helloWorld.png" height="550px"/>
-</section>
-<section>
-  <h2>Quick Start Guide</h2>
-  <p style="text-align: left;">So in WebStorm you will have something that looks like this:</p>
-  <img src="assets/img/finalFileStructure.png" height="550px"/>
-</section>
-
 <section id="data-loading-example">
 
   <section>
