@@ -627,9 +627,9 @@ svg.append("circle")
     <div id="dot-plot-1" class="canvas pull-left"></div>
     <div class="explanation pull-right">
       <pre><code data-trim style="max-height: 100%">var svg = d3.select(placement).append("svg")
-   .attr("width", width)
-   .attr("height", height)
-   .append("g");
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
 
 svg.append("circle")
    .style("fill", "#27aae1")
@@ -656,9 +656,9 @@ svg.append("path")
     <div id="enter-example-1" class="canvas pull-left"></div>
     <div class="explanation pull-right">
         <pre><code>var svg = d3.select("body").append("svg")
-   .attr("width", 400)
-   .attr("height", 400)
-   .append("g");
+            .attr("width", 400)
+            .attr("height", 400)
+            .append("g");
 
 svg.append("circle")
    .attr("r", 20)
@@ -672,9 +672,9 @@ svg.append("circle")
     <p style="font-size: .8em">But what if we want to draw a circle for every data point?</p>
     <div class="explanation pull-right">
     <pre><code>var svg = d3.select("body").append("svg")
-   .attr("width", 400)
-   .attr("height", 400)
-   .append("g");
+            .attr("width", 400)
+            .attr("height", 400)
+            .append("g");
 
 var data = [{x:160, y:190}, {x:30, y:200},
             {x:300, y:100}];
@@ -734,9 +734,9 @@ attr("cy", function(d) { return d.y;})</code></pre>
     <h2>Enter/update pattern</h2>
     <div class="pull-left" style="width:450px">
         <pre><code data-trim style="max-height: 100%">var svg = d3.select(placement).append("svg")
-   .attr("width", width)
-   .attr("height", height)
-   .append("g");
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
 
 update([{x:30, y:60}]);
 
@@ -800,9 +800,9 @@ function update(data) {
     <div id="dot-plot-2" class="canvas pull-left"></div>
     <div class="explanation pull-right">
     <pre><code>var svg = d3.select(placement).append("svg")
-   .attr("width", width)
-   .attr("height", height)
-   .append("g");
+            .attr("width", width)
+            .attr("height", height)
+            .append("g");
 
 svg.selectAll("circle")
    .data(data)
@@ -892,14 +892,14 @@ svg.selectAll("circle")
   <div id="dot-plot-4" class="canvas pull-left"></div>
   <div class="explanation pull-right">
 <pre><code data-trim style="max-height: 100%">var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom")
-      .tickPadding(4);
+            .scale(x)
+            .orient("bottom")
+            .tickPadding(4);
 
 var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .tickPadding(10);
+            .scale(y)
+            .orient("left")
+            .tickPadding(10);
 
 svg.append("g")
   .attr("class", "x axis")
@@ -923,17 +923,15 @@ svg.append("g")
       <ul>
         <li>D3 has a built-in method to help load CSV and JSON files</li>
         <li>Example of loading CSV data</li>
-							<pre><code data-trim>
-                d3.csv("chocolate.csv", function(csvData) {
-                console.log(csvData);
-                });
-              </code></pre>
+<pre><code data-trim>
+d3.csv("chocolate.csv", function(csvData) {
+            console.log(csvData);
+});</code></pre>
         <li>Example of loading JSON data</li>
-							<pre><code data-trim>
-                d3.json("chocolate.json", function(jsonData) {
-                console.log(jsonData);
-                });
-              </code></pre>
+<pre><code data-trim>
+d3.json("chocolate.json", function(jsonData) {
+            console.log(jsonData);
+});</code></pre>
         <li>Note: <code>d3.csv()</code> and <code>d3.json()</code> are <i>asynchronous</i> methods,
           where the rest of your code is executed as your browser waits for the file to be downloaded. <br/><br/>A callback, represented by the <em>function</em> call is what is executed when the data has been retrieved successfully.</li>
       </ul>
@@ -943,80 +941,59 @@ svg.append("g")
   <section id="data-loading-1">
     <h2>chocolates.json</h2>
 
-<pre><code>{
-  "chocolates": [
-  {
+<pre><code>{ "chocolates": [{
   "name": "Dairy Milk",
   "price": 45,
   "rating": 2
   }, ...
-  ]}</code></pre>
-
-
+]}</code></pre>
 
     <p>This is how we get access to it... </p>
 <pre><code>// this is how we process it
-  d3.json("assets/data/chocolate.json", function (data) {
+d3.json("assets/data/chocolate.json", function (data) {
   chocolates = data.chocolates;
   // then we process the JSON, drawing each data item.
-  }</code></pre>
+}</code></pre>
   </section>
 
   <section id="data-code">
     <h2>Apply This Function</h2>
-                        <pre><code>function loadAndDisplayData(placement, w, h){
-                          width = w; height = h;
+<pre><code>function loadAndDisplayData(placement, w, h) {
+  width = w; height = h;
 
-                          d3.select(placement).html("");
+  d3.select(placement).html("");
 
-                          d3.json("assets/data/chocolate.json", function (data) {
-                          data = data.chocolates;
+  d3.json("assets/data/chocolate.json", function (data) {
+    data = data.chocolates;
 
+    var svg = d3.select(placement).append("svg").attr("width", width).attr("height", height).append("g")
+                .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
 
-                          var svg = d3.select(placement).append("svg").attr("width", width).attr("height", height).append("g")
-                          .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+    var x = VisualAnalytics.lecture2.calculateXScale(data, width);
+    var y = VisualAnalytics.lecture2.calculateYScale(data, height);
 
-                          var x = VisualAnalytics.lecture2.calculateXScale(data, width);
-                          var y = VisualAnalytics.lecture2.calculateYScale(data, height);
+    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickPadding(2);
+    var yAxis = d3.svg.axis().scale(y).orient("left").tickPadding(2);
 
-                          var xAxis = d3.svg.axis().scale(x).orient("bottom").tickPadding(2);
-                          var yAxis = d3.svg.axis().scale(y).orient("left").tickPadding(2);
+    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")").call(xAxis);
+    svg.append("g").attr("class", "y axis").call(yAxis);
 
-                          svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")").call(xAxis);
-                          svg.append("g").attr("class", "y axis").call(yAxis);
+    svg.append("text").attr("fill", "#414241").attr("text-anchor", "end")
+        .attr("x", width / 2).attr("y", height - 35).text("Price in pence (£)");
 
+    var chocolate = svg.selectAll("g.node").data(data, function (d) { return d.name; });
 
-                          svg.append("text")
-                          .attr("fill", "#414241")
-                          .attr("text-anchor", "end")
-                          .attr("x", width / 2)
-                          .attr("y", height - 35)
-                          .text("Price in pence (£)");
+    var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
+                                  .attr('transform', function (d) {
+                                      return "translate(" + x(d.price) + "," + y(d.rating) + ")";
+                                  });
 
-                          var chocolate = svg.selectAll("g.node").data(data, function (d) {
-                          return d.name;
-                          });
+    chocolateEnter.append("circle").attr("r", 5).attr("class", "dot")
+                  .style("fill", function (d) { return colors(d.manufacturer); });
 
-                          var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
-                          .attr('transform', function (d) {
-                          return "translate(" + x(d.price) + "," + y(d.rating) + ")";
-                          });
-
-                          chocolateEnter.append("circle")
-                          .attr("r", 5)
-                          .attr("class", "dot")
-                          .style("fill", function (d) {
-                          return colors(d.manufacturer);
-                          });
-
-                          chocolateEnter
-                          .append("text")
-                          .style("text-anchor", "middle")
-                          .attr("dy", -10)
-                          .text(function (d) {
-                          return d.name;
-                          })
-                          }</code></pre>
+    chocolateEnter.append("text").style("text-anchor", "middle").attr("dy", -10)
+                  .text(function (d) { return d.name; });
+}</code></pre>
   </section>
   <section id="data-loading-2">
     <h2>Giving us this</h2>
@@ -1040,63 +1017,59 @@ svg.append("g")
 
   <section id="event-types">
     <h2>Mouse Event Types</h2>
-
-                        <pre><code>myItem.on("mouseover",function (d) {
-                          // do something on mouseover
-                          }).on("mouseout", function (d) {
-                          // do something on mouseout
-                          }).on("click", function (d) {
-                          // do something on click
-                          }).on("mousemove", function(d) {
-                          // do something on mouse move
-                          }).on("mousedown", function(d) {
-                          // do something on mouse down
-                          }).on("mouseup", function(d) {
-                          // do something on mouse up (a mouse 'click' is a 'mousedown' and 'mouseup' event)
-                          })
-
-                        </code></pre>
+<pre><code>myItem.on("mouseover",function (d) {
+      // do something on mouseover
+      }).on("mouseout", function (d) {
+      // do something on mouseout
+      }).on("click", function (d) {
+      // do something on click
+      }).on("mousemove", function(d) {
+      // do something on mouse move
+      }).on("mousedown", function(d) {
+      // do something on mouse down
+      }).on("mouseup", function(d) {
+      // do something on mouse up (a mouse 'click' is a 'mousedown' and 'mouseup' event)
+      })</code></pre>
   </section>
 
   <section id="mouse-event-our-code">
     <h2>Attaching mouse events to our plot...</h2>
 
-                        <pre><code>var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
-                          .attr('transform', function (d) {
-                          return "translate(" + x(d.price) + "," + (height + 100) + ")";
-                          });
-                          ...</code></pre>
+<pre><code>var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
+      .attr('transform', function (d) {
+            return "translate(" + x(d.price) + "," + (height + 100) + ")";
+      });
+      ...</code></pre>
+
     <p>For each node, we have a circle and a text item. </p>
 
-                    <pre><code>// add a circle
-                      chocolateEnter.append("circle")
-                      .attr("r", 5)
-                      .attr("class", "dot")
-                      .style("fill", function (d) {
-                      return colors(d.manufacturer);
-                      });
+<pre><code>// add a circle
+chocolateEnter.append("circle")
+      .attr("r", 5)
+      .attr("class", "dot")
+      .style("fill", function (d) {
+            return colors(d.manufacturer);
+      });
 
-                      // add text
-                      chocolateEnter
-                      .append("text")
-                      .style("text-anchor", "middle")
-                      .attr("dy", -10)
-                      .text(function (d) {
-                      return d.name;
-                      })</code></pre>
+// add text
+chocolateEnter.append("text")
+      .style("text-anchor", "middle")
+      .attr("dy", -10)
+      .text(function (d) {
+            return d.name;
+})</code></pre>
   </section>
 
   <section id="mouse-event-example">
     <h2>Attaching mouse events to our plot...</h2>
 
-                    <pre><code>chocolateEnter.on("mouseover",function (d) {
-                      d3.select(this).style("stroke-width", "1px").style("stroke", "white");
-                      }).on("mouseout", function (d) {
-                      d3.select(this).style("stroke", "none");
-                      }).on("click", function(d) {
-                      alert("Hi, you clicked on " + d.name);
-                      });
-                    </code></pre>
+<pre><code>chocolateEnter.on("mouseover",function (d) {
+      d3.select(this).style("stroke-width", "1px").style("stroke", "white");
+  }).on("mouseout", function (d) {
+      d3.select(this).style("stroke", "none");
+  }).on("click", function(d) {
+      alert("Hi, you clicked on " + d.name);
+  });</code></pre>
     <div id="mouse-event-plot" style="height: 400px"></div>
 
     <p>See <a href="http://jsfiddle.net/eamonnmag/Q567s/" target="_blank">here</a> for example source code</p>
@@ -1115,30 +1088,29 @@ svg.append("g")
     <p style="font-size: .7em; text-align: left">Zooming is a complicated thing to do in most frameworks.
       In D3, it's pretty easy once you start thinking about things in terms of transforms and scales.</p>
 
-                        <pre><code>
-                          var zoom = d3.behavior.zoom() // we first define our zoom behaviour
-                          .x(x) // assign our x scale
-                          .y(y) // assign our y scale
-                          .scaleExtent([1, 5]) // how far we can scale in or out
-                          .on("zoom", function() { // what happens when we zoom
-                          // we want to select all our nodes and make them bigger according to the scale factor recorded by d3, computed
-                          // from the users interaction with the mouse (d3.event.scale). We want the position to stay relatively constant as well.
-                          // this is achieved through the use of the x and y scales to position the component appropriately.
-                          svg.selectAll("g.chocolatenode").attr("transform",
-                          function(d){
-                          // we can still get access to the data properties of the items, so pulling out the price and rating
-                          // is very easy.
-                          return "translate(" + x(d.price) + "," + y(d.rating) + ")scale(" + d3.event.scale + ")"
-                          });
-                          });</code></pre>
+<pre><code>var zoom = d3.behavior.zoom() // we first define our zoom behaviour
+      .x(x) // assign our x scale
+      .y(y) // assign our y scale
+      .scaleExtent([1, 5]) // how far we can scale in or out
+      .on("zoom", function() { // what happens when we zoom
+            // we want to select all our nodes and make them bigger according to the scale factor recorded by d3,
+            // computed from the users interaction with the mouse (d3.event.scale). We want the position to stay
+            // relatively constant as well. This is achieved through the use of the x and y scales to position
+            // the component appropriately.
+            svg.selectAll("g.chocolatenode").attr("transform", function(d){
+                  // we can still get access to the data properties of the items,
+                  // so pulling out the price and rating is very easy.
+                  return "translate(" + x(d.price) + "," + y(d.rating) + ")scale(" + d3.event.scale + ")"
+            });
+      });</code></pre>
 
     <p>Then, we call it from our SVG component.</p>
-                        <pre><code> svg = d3.select(placement).append("svg")
-                          .attr("width", width)
-                          .attr("height", height)
-                          .append("g")
-                          .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
-                          .call(zoom);</code></pre>
+<pre><code> svg = d3.select(placement).append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+      .call(zoom);</code></pre>
   </section>
 
   <section id="zooming-example-1">
@@ -1151,16 +1123,16 @@ svg.append("g")
 
   <section id="zooming-example-2">
     <p>By adding a rectangle component as a container, the zoom events are now caught on the whole display</p>
-                         <pre><code>svg = d3.select(placement).append("svg")
-                           .attr("width", width)
-                           .attr("height", height)
-                           .append("g")
-                           .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
-                           .call(zoom)
-                           .append('rect')
-                           .attr('width', width)
-                           .attr('height', height)
-                           .attr('fill', 'rgba(1,1,1,0)');</code></pre>
+<pre><code>svg = d3.select(placement).append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+      .call(zoom)
+      .append('rect')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('fill', 'rgba(1,1,1,0)');</code></pre>
     <div id="zooming-2" style="height: 400px"></div>
   </section>
 </section>
@@ -1181,47 +1153,42 @@ svg.append("g")
 
   <section id="brushing-how">
     <p>How to add it...</p>
-                        <pre><code>brush = d3.svg.brush()
-                          .x(zoom.x())
-                          .y(zoom.y())
-                          // When the brushing event is started, this function is called
-                          .on("brushstart", function() {
-                          console.log("Resetting selected var");
-                          selected = {};
-                          })
-
-                          // whilst brushing is happening, this function is called
-                          .on("brush", VisualAnalytics.lecture2.brushed)
-
-                          // when finished, brushend is called
-                          .on("brushend", function() {
-                          console.log("Selected");
-                          // output the keys of the selection
-                          console.log(Object.keys(selected))
-                          });
-                        </code></pre>
+<pre><code>brush = d3.svg.brush()
+      .x(zoom.x())
+      .y(zoom.y())
+      // When the brushing event is started, this function is called
+      .on("brushstart", function() {
+            console.log("Resetting selected var");
+            selected = {};
+      })
+      // whilst brushing is happening, this function is called
+      .on("brush", VisualAnalytics.lecture2.brushed)
+      // when finished, brushend is called
+      .on("brushend", function() {
+            console.log("Selected");
+            // output the keys of the selection
+            console.log(Object.keys(selected))
+      });</code></pre>
     <p>Now, let's add the brush to the container...</p>
-                        <pre><code>svg.append("g")
-                          .attr("class", "brush")
-                          .call(brush);</code></pre>
+<pre><code>svg.append("g")
+      .attr("class", "brush")
+      .call(brush);</code></pre>
   </section>
   <section>
     <p>The extent from D3 returns back a 2D array with the top left to bottom right coordinates</p>
     <img src="assets/img/brushing-extent.png" style="border:none; background: none; box-shadow: none;"/>
 
-                    <pre><code>brushed: function() {
-                      var extent = brush.extent();
-                      d3.selectAll("g.chocolatenode").select("circle").style("fill", function (d) {
-                      d.selected = (d.x > x(extent[0][0]) && d.x < x(extent[1][0]))
-                      && (d.y < y(extent[0][1]) && d.y > y(extent[1][1]));
-
-                      if(d.selected) {
-                      selected[d.name] = d;
-                      }
-                      return d.selected ? "#27aae1" : colors(d.manufacturer);
-                      });
-                      }
-                    </code></pre>
+<pre><code>brushed: function() {
+      var extent = brush.extent();
+      d3.selectAll("g.chocolatenode").select("circle").style("fill", function (d) {
+            d.selected = (d.x > x(extent[0][0]) && d.x < x(extent[1][0]))
+                  && (d.y < y(extent[0][1]) && d.y > y(extent[1][1]));
+            if(d.selected) {
+                  selected[d.name] = d;
+            }
+            return d.selected ? "#27aae1" : colors(d.manufacturer);
+      });
+}</code></pre>
     <p>This code grabs the extent from the brush and calculates which elements are within the bounds.</p>
   </section>
 </section>
@@ -1254,15 +1221,13 @@ svg.append("g")
     <h2>How do we do it?</h2>
 
     <p>Transitions... we move from one state to another. e.g. position, color, size</p>
-                        <pre><code>function changeAttribute(selector, attribute, x) {
-                          d3.select(selector).transition().duration(100).delay(500).ease("elastic").attr(attribute, x);
-                          }
+<pre><code>function changeAttribute(selector, attribute, x) {
+      d3.select(selector).transition().duration(100).delay(500).ease("elastic").attr(attribute, x);
+}
 
-                          function changeStyle(selector, styleType, color) {
-                          d3.select(selector).transition().duration(100).delay(500).ease("linear").style(styleType, color);
-                          }
-
-                        </code></pre>
+function changeStyle(selector, styleType, color) {
+      d3.select(selector).transition().duration(100).delay(500).ease("linear").style(styleType, color);
+}</code></pre>
     <p>You can see these, as always <a href="http://jsfiddle.net/eamonnmag/KWe65/" target="_blank">here</a> </p>
   </section>
 
@@ -1286,22 +1251,23 @@ svg.append("g")
 
     <p>Transitions... </p>
 
-                        <pre><code>var circle = connect4_svg.append("circle").attr("class", "row-" + lastRow + " token-" + tokenCount).attr("r", 25).style("fill", function () {
-                          return red ? "#e74c3c" : "#f1c40f"
-                          }).attr("cx", 0).attr("cy", -100);
+<pre><code>var circle = connect4_svg.append("circle").attr("class", "row-" + lastRow + " token-" + tokenCount)
+            .attr("r", 25).style("fill", function () {
+                  return red ? "#e74c3c" : "#f1c40f"
+            }).attr("cx", 0).attr("cy", -100);
 
-                          d3.select("circle.token-" + tokenCount)
-                          .transition()
-                          .duration(100)
-                          .delay((tokenCount + 1) * 500)
-                          .attr("cx", item.x);
-                        </code></pre>
+d3.select("circle.token-" + tokenCount)
+      .transition()
+      .duration(100)
+      .delay((tokenCount + 1) * 500)
+      .attr("cx", item.x);</code></pre>
     <p>When finished, we want to remove everything, row by row....easy</p>
-                        <pre><code>emptyGrid: function () {
-                          for (var rowIndex = 5; rowIndex >= 0; rowIndex--) {
-                          d3.selectAll("circle.row-" + rowIndex).transition().duration(1000).delay(25000 - (rowIndex * 50)).ease("elastic").attr("cy", 600);
-                          }
-                          }</code></pre>
+<pre><code>emptyGrid: function () {
+      for (var rowIndex = 5; rowIndex >= 0; rowIndex--) {
+            d3.selectAll("circle.row-" + rowIndex).transition()
+              .duration(1000).delay(25000 - (rowIndex * 50)).ease("elastic").attr("cy", 600);
+      }
+}</code></pre>
   </section>
 </section>
 
