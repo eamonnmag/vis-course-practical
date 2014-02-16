@@ -234,7 +234,7 @@
   </section>
   <section>
     <h2>Example: Developer Tools</h2>
-    <img src="assets/img/developer-tool.png" height="770px"></img>
+    <img src="assets/img/developer-tool.png" height="770px"/>
   </section>
 </section>
 <section id="gettingstarted-dom">
@@ -416,9 +416,7 @@ h1, .desc {
  fill: red;
  stroke: blue;
  stroke-width: 5;
-}
-</code></pre>
-
+}</code></pre>
     </div>
   </section>
   <section>
@@ -496,7 +494,7 @@ function displayCocoaButter() {
   var _text = document.createTextNode("Cocoa butter content: " + jsonChocolate[index].cocoa_butter);
   /* Add the created &lt;text&gt; node to the &lt;p&gt; element */
   _p.appendChild(_text);
- /* Add the created &lt;p&gt; element to &lt;body&gt; */
+  /* Add the created &lt;p&gt; element to &lt;body&gt; */
   document.body.appendChild(_p);
  }
 }</code></pre>
@@ -617,7 +615,118 @@ svg.append("circle")
 </section>
 
 <section>
-  <h2>Dissecting Our Hello World!</h2>
+  <section>
+    <h2>Hello World! in D3</h2>
+  </section>
+  <section>
+    <h2>First We Create The Container</h2>
+
+    <div class="example-container">
+      <div class="pull-left">
+        <img src="assets/img/helloWorld-step1.png" height="377px"/>
+      </div>
+      <div class="explanation pull-right">
+<pre><code data-trim style="max-height: 100%">// create the SVG container
+var svg = d3.select("#helloWorldCanvas")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 300);</code></pre>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Then We Render The Text</h2>
+
+    <div class="example-container">
+      <div class="pull-left">
+        <img src="assets/img/helloWorld-step2.png" height="377px"/>
+      </div>
+      <div class="explanation pull-right">
+<pre><code data-trim style="max-height: 100%">// create the SVG container
+var svg = d3.select("#helloWorldCanvas")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 300);
+
+// add the text that we want to display
+svg.append("text")
+   .attr("x", 150).attr("y", 57)
+   .attr("fill", "red")
+   .attr("font-size", "25px")
+   .attr("font-family", "sans-serif")
+   .text("Hello World!");</code></pre>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>And Later We Append The Circle</h2>
+
+    <div class="example-container">
+      <div class="pull-left">
+        <img src="assets/img/helloWorld-step3.png" height="377px"/>
+      </div>
+      <div class="explanation pull-right">
+<pre><code data-trim style="max-height: 100%">// create the SVG container
+var svg = d3.select("#helloWorldCanvas")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 300);
+
+// add the text that we want to display
+svg.append("text")
+   .attr("x", 150).attr("y", 57)
+   .attr("fill", "red")
+   .attr("font-size", "25px")
+   .attr("font-family", "sans-serif")
+   .text("Hello World!");
+
+// now let's add a circle to accompany the text
+svg.append("circle")
+   .style("fill", "#27aae1")
+   .attr("cx", 100).attr("cy", 50)
+   .attr("r", 15);</code></pre>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Using CSS Style Rule in D3</h2>
+
+    <div class="example-container">
+      <div class="pull-left">
+        <img src="assets/img/helloWorld-step4.png" height="377px"/>
+      </div>
+      <div class="explanation pull-right">
+        <div>
+          <p>Our style properties:</p>
+<pre><code>.myStyle {
+  fill: red;
+  font-size: 25px;
+  font-family: sans-serif;
+}</code></pre>
+        </div>
+        <div>
+          <p>Our JavaScript:</p>
+<pre><code data-trim style="max-height: 100%">// create the SVG container
+var svg = d3.select("#helloWorldCanvas")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 300);
+
+// add the text that we want to display
+svg.append("text")
+   .attr("x", 150).attr("y", 57)
+   .attr("class", "myStyle")
+   .text("Hello World!");
+
+// now let's add a circle to accompany the text
+svg.append("circle")
+   .style("fill", "#27aae1")
+   .attr("cx", 100).attr("cy", 50)
+   .attr("r", 15);</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>
 
 <section id="letsdraw">
@@ -638,9 +747,7 @@ svg.append("circle")
    .attr("r", 15);
 
 svg.append("path")
-   .attr("d", d3.svg.symbol()
-   .size(200)
-   .type("cross"))
+   .attr("d", d3.svg.symbol().size(200).type("cross"))
    .style("fill", "#27aae1")
    .attr("transform", "translate(90,50)");
    ....</code></pre>
@@ -1348,6 +1455,7 @@ d3.select("circle.token-" + tokenCount)
     </ul>
   </div>
 </section>
+</div>
 </div>
 <script src="assets/js/lib/head.min.js"></script>
 <script src="assets/js/lib/reveal.min.js"></script>
