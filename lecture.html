@@ -631,6 +631,16 @@ var svg = d3.select("#helloWorldCanvas")
             .append("svg")
             .attr("width", 500)
             .attr("height", 300);</code></pre>
+        <div style="text-align: left; font-size: .8em;">
+          <ul>
+            <li><code>select()</code>: select the first matching element</li>
+            <li><code>append()</code>: create a new element, add it to the container as its last child and return
+              back a new selection with the appended elements</li>
+            <li><code>attr():</code> get (or set) attribute values </li>
+          </ul>
+          <p>For more information check out <a href="https://github.com/mbostock/d3/wiki/API-Reference"
+                                               target="_blank">D3 API</a></p>
+        </div>
       </div>
     </div>
   </section>
@@ -697,7 +707,7 @@ svg.append("circle")
       </div>
       <div class="explanation pull-right">
         <div>
-          <p>Our style properties:</p>
+          <p style="font-size: .8em;">Our style properties:</p>
 <pre><code>.myStyle {
   fill: red;
   font-size: 25px;
@@ -705,7 +715,7 @@ svg.append("circle")
 }</code></pre>
         </div>
         <div>
-          <p>Our JavaScript:</p>
+          <p style="font-size: .8em;">Our JavaScript:</p>
 <pre><code data-trim style="max-height: 100%">// create the SVG container
 var svg = d3.select("#helloWorldCanvas")
             .append("svg")
