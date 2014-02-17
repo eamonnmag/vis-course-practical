@@ -189,6 +189,27 @@
     </div>
   </section>
   <section>
+    <h2>HTML Elements and Attributes</h2>
+    <div style="text-align: left;">
+      <ul>
+        <li>Elements are entities for structuring the HTML documents</li>
+        <li>Most of the elements are defined with a <i>start tag</i>, an <i>end tag</i> and the content in between</li>
+      </ul>
+<pre><code data-trim>&lt;element&gt;Content in between&lt;/element&gt;   &lt;!-- Element with closing tag --&gt;</code></pre>
+      <ul>
+        <li>For example:</li>
+      </ul>
+<pre><code data-trim>&lt;h1&gt;Hello World!&lt;/h1&gt;</code></pre>
+      <ul>
+        <li>Elements can have attributes to provide extra information about them</li>
+        <li>The attributes are defined in the <i>start tag</i> and are in <i>name</i>/<i>value</i> pairs:
+          <b>name = "value"</b></li>
+        <li>For example:</li>
+      </ul>
+<pre><code data-trim>&lt;h1 class="myStyle"&gt;Hello World!&lt;/h1&gt;</code></pre>
+    </div>
+  </section>
+  <section>
     <h2>Example: HTML</h2>
     <pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -347,8 +368,7 @@ h1, .desc {
           <li>Insert it dynamically into the DOM using JavaScript</li>
           <li>SVG is <b>XML-based</b> therefore all elements must have a closing tag:</li>
         </ul>
-            <pre><code data-trim>
-&lt;element&gt;&lt;/element&gt;   &lt;!-- Element with closing tag --&gt;
+            <pre><code data-trim>&lt;element&gt;&lt;/element&gt;   &lt;!-- Element with closing tag --&gt;
 &lt;element/&gt;            &lt;!-- Element with self-closing tag --&gt;
             </code></pre>
         <ul>
@@ -479,19 +499,19 @@ h1, .desc {
   <section>
     <h2>Example: JavaScript</h2>
       <pre><code data-trim style="max-height: 100%">/* Declaring a variable of an array of objects */
-var jsonChocolate = [
+var myChocolate = [
  {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
  {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
 
 /* A function to loop through the array and display the cocoa butter content */
 function displayCocoaButter() {
  var index;
- // Loop through array of JSON objects
- for (index = 0; index < jsonChocolate.length; index++) {
+ // Loop through the array of objects
+ for (index = 0; index < myChocolate.length; index++) {
   /* Create a &lt;p&gt; element */
   var _p = document.createElement("p");
   /* Get the cocoa butter content and add it to the &lt;text&gt; node */
-  var _text = document.createTextNode("Cocoa butter content: " + jsonChocolate[index].cocoa_butter);
+  var _text = document.createTextNode("Cocoa butter content: " + myChocolate[index].cocoa_butter);
   /* Add the created &lt;text&gt; node to the &lt;p&gt; element */
   _p.appendChild(_text);
   /* Add the created &lt;p&gt; element to &lt;body&gt; */
@@ -695,6 +715,13 @@ svg.append("circle")
    .style("fill", "#27aae1")
    .attr("cx", 100).attr("cy", 50)
    .attr("r", 15);</code></pre>
+        <div style="text-align: left; font-size: .8em;">
+          <ul>
+            <li><code>style()</code>: sets the CSS style property</li>
+          </ul>
+          <p>For more information check out <a href="https://github.com/mbostock/d3/wiki/API-Reference"
+                                               target="_blank">D3 API</a></p>
+        </div>
       </div>
     </div>
   </section>
