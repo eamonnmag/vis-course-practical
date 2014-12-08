@@ -75,7 +75,7 @@
     <div>
       <br>
     </div>
-    <div class="absolute-element" style="position: absolute; width: 412px; height: 46px; z-index: 5; left: 53px; top: 349px;">HTML, CSS, SVG &amp; JavaScript</div>
+    <div class="absolute-element" style="position: absolute; width: 412px; height: 46px; z-index: 5; left: 53px; top: 349px;">HTML, CSS, SVG, &amp; JavaScript</div>
     <div>
       <br>
     </div>
@@ -125,7 +125,7 @@
               </div>Getting started with </span>
     <span style="text-align: left;">HTML,</span>
     <span style="text-align: left;">CSS,</span>
-    <span style="text-align: left;">SVG</span>
+    <span style="text-align: left;">SVG,</span>
     <span style="text-align: left;"> &amp; </span>
     <span style="text-align: left;">JavaScript</span>
     <br>
@@ -153,9 +153,9 @@
   <div style="text-align: left;">
     <p>D3 (Data-Driven Documents):</p>
     <ul>
-      <li>A JavaScript library that utilizes SVG, HTML and CSS for creating data visualization on the web</li>
+      <li>A JavaScript library that utilizes SVG, HTML, and CSS for creating data visualization on the web</li>
       <li>Created by <a href="http://bost.ocks.org/mike/" target="_blank">Mike Bostock</a>, <a
-          href="http://vadim.ogievetsky.com/" target="_blank">Vadim Ogievetsky</a> and <a
+          href="http://vadim.ogievetsky.com/" target="_blank">Vadim Ogievetsky</a>, and <a
           href="http://homes.cs.washington.edu/~jheer/" target="_blank">Jeff Heer</a></li>
       <li>With D3, you can:</li>
       <ul>
@@ -193,7 +193,7 @@
     <div style="text-align: left;">
       <ul>
         <li>Elements are entities for structuring the HTML documents</li>
-        <li>Most of the elements are defined with a <i>start tag</i>, an <i>end tag</i> and the content in between</li>
+        <li>Most of the elements are defined with a <i>start tag</i>, an <i>end tag</i>, and the content in between</li>
       </ul>
 <pre><code data-trim>&lt;element&gt;Content in between&lt;/element&gt;   &lt;!-- Element with closing tag --&gt;</code></pre>
       <ul>
@@ -216,14 +216,16 @@
  &lt;!-- The content between the &lt;html&gt; and &lt;/html&gt; describes the web page --&gt;
  &lt;head&gt;
   &lt;!-- &lt;head&gt;&lt;/head&gt; handles all the head elements --&gt;
+  &lt;!-- &lt;head&gt;&lt;/head&gt; also provides the information about the page --&gt;
   &lt;!-- Tags that can be inside &lt;head&gt; element: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;, &lt;script&gt;, &lt;noscript&gt;, &lt;base&gt; --&gt;
+  &lt;!-- &lt;title&gt;&lt;/title&gt; gives the title of the page --&gt;
   &lt;title&gt;Visual Analytics&lt;/title&gt;
  &lt;/head&gt;
  &lt;body&gt;
   &lt;!-- The content between the &lt;body&gt; and &lt;/body&gt; is the visible page content --&gt;
   &lt;h1&gt;Visual Analytics&lt;/h1&gt;
   &lt;p class="desc"&gt;Examples of &lt;em&gt;visualisation&lt;/em&gt;:&lt;/p&gt;
-  &lt;!-- Valid class or id: Must start with a letter and can be followed by letter, digits, hypens and underscores --&gt;
+  &lt;!-- Valid class or id: Must start with a letter and can be followed by letter, digits, hypens, and underscores --&gt;
   &lt;div id="iAmUnique1" class="desc"&gt;
    &lt;ul&gt;
     &lt;li&gt;Parallel coordinates&lt;/li&gt;
@@ -328,7 +330,7 @@ h1, .desc {
     <p style="text-align: left;"><b>Combination</b>: combined to target specific elements</p>
 					<pre><code data-trim>div.desc  /* Selects divs with class "desc" only */</code></pre>
   </section>
-  <section id="referencing-styles">
+  <section id="referencing-styles-1">
     <h2>Referencing Styles</h2>
     <div style="text-align: left;">
       <p>Three ways to apply CSS styles rules to <b>HTML</b> document:</p>
@@ -342,16 +344,71 @@ h1, .desc {
  &lt;/style&gt;
 &lt;/head&gt;</code></pre>
       <ul>
+        <li>For example:</li>
+      </ul>
+<pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+ &lt;title&gt;Visual Analytics&lt;/title&gt;
+ &lt;!-- Embedding the CSS in the HTML --&gt;
+ &lt;style type="text/css"&gt;
+  h1 { font-size: 16px; }
+ &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+  </section>
+  <section id="referencing-styles-2">
+    <h2>Referencing Styles</h2>
+    <div style="text-align: left;">
+      <p>Three ways to apply CSS styles rules to <b>HTML</b> document:</p>
+      <ul>
         <li>Reference an external stylesheet from the HTML</li>
       </ul>
         <pre><code data-trim>
 &lt;head&gt;
-  &lt;link rel="stylesheet" href="style.css"&gt;
+ &lt;link rel="stylesheet" href="style.css"&gt;
 &lt;/head&gt;</code></pre>
+      <ul>
+        <li>For example:</li>
+      </ul>
+<pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Visual Analytics&lt;/title&gt;
+  &lt;!-- Reference an external stylesheet from the HTML --&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+  </section>
+  <section id="referencing-styles-3">
+    <h2>Referencing Styles</h2>
+    <div style="text-align: left;">
+      <p>Three ways to apply CSS styles rules to <b>HTML</b> document:</p>
       <ul>
         <li>Attach inline styles</li>
       </ul>
-      <pre><code data-trim>&lt;p style="color: red; font-size: 24px;&gt;An example of inline style&lt;/p&gt;</code></pre>
+      <pre><code data-trim>&lt;h1 style="color: red; font-size: 24px;"&gt;An example of inline style&lt;/h1&gt;</code></pre>
+      <ul>
+        <li>For example:</li>
+      </ul>
+<pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;Visual Analytics&lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;!-- Attach inline styles --&gt;
+  &lt;h1 style="color: red; font-size: 24px;"&gt;Visual Analytics&lt;/h1&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
     </div>
   </section>
 </section>
@@ -404,6 +461,23 @@ h1, .desc {
       <ul>
         <li>An SVG image begins with <code>&lt;svg&gt;</code> element</li>
         <li>The width and height of the SVG image can be defined by the width and height attributes</li>
+      </ul>
+      <ul>
+        <li>A simple SVG example:</li>
+      </ul>
+        <br><pre><code data-trim>&lt;svg width="100%" height="100%"&gt;
+ &lt;rect x="85" y="5" width="40" height="40" fill="rgba(255, 0, 0, 1.0)"&gt;&lt;/rect&gt;
+&lt;/svg&gt;</code></pre>
+      <svg width="100%" height="100%">
+        <rect x="50" y="10" width="400" height="120" stroke-width="1" stroke="black" fill="white"></rect>
+        <rect x="100" y="25" width="40" height="40" fill="rgba(255, 0, 0, 1.0)"></rect>
+      </svg>
+    </div>
+  </section>
+  <section>
+    <h2>SVG Elements and Shapes</h2>
+    <div style="text-align: left;">
+      <ul>
         <li>Some of the pre-defined shapes in SVG:
           <ul>
             <li>Rectangle <code>&lt;rect&gt;</code></li>
@@ -420,6 +494,7 @@ h1, .desc {
       </ul>
     </div>
   </section>
+
   <section>
     <h2>Styling SVG Elements and Shapes</h2>
     <div style="text-align: left;">
@@ -535,9 +610,6 @@ function displayCocoaButter() {
         <em>Empty Project</em></li>
     </ul>
     <img src="assets/img/startScreen.png" height="350px"/>
-    <p style="text-align: left;">Note: You can install WebStorm in the
-      <em>scratch</em> folder found in your <em>Home</em> directory. Follow the instructions in the
-      <em>Install-Linux-tar.txt</em> included in the downloaded <em>WebStorm</em> folder.</p>
   </section>
   <section>
     <h2>Quick Start Guide</h2>
