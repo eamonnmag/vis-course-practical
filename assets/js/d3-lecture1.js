@@ -26,7 +26,7 @@ VisualAnalytics.charts = {
             .append("g");
 
         svg.append("circle")
-            .style("fill", "#27aae1")
+            .style("fill", "#1abc9c")
             .attr("cx", 40)
             .attr("cy", 200)
             .attr("r", 15);
@@ -35,28 +35,28 @@ VisualAnalytics.charts = {
             .attr("d", d3.svg.symbol()
                 .size(200)
                 .type("cross"))
-            .style("fill", "#27aae1")
+            .style("fill", "#1abc9c")
             .attr("transform", "translate(90,200)");
 
         svg.append("path")
             .attr("d", d3.svg.symbol()
                 .size(220)
                 .type("square"))
-            .style("fill", "#27aae1")
+            .style("fill", "#1abc9c")
             .attr("transform", "translate(240,200)");
 
         svg.append("path")
             .attr("d", d3.svg.symbol()
                 .size(200)
                 .type("triangle-up"))
-            .style("fill", "#27aae1")
+            .style("fill", "#1abc9c")
             .attr("transform", "translate(140,200)");
 
         svg.append("path")
             .attr("d", d3.svg.symbol()
                 .size(200)
                 .type("triangle-down"))
-            .style("fill", "#27aae1")
+            .style("fill", "#1abc9c")
             .attr("transform", "translate(190,200)");
 
 
@@ -64,7 +64,7 @@ VisualAnalytics.charts = {
             .attr("d", d3.svg.symbol()
                 .size(220)
                 .type("diamond"))
-            .style("fill", "#27aae1")
+            .style("fill", "#1abc9c")
             .attr("transform", "translate(290,200)");
 
     },
