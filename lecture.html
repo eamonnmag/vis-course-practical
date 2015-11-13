@@ -664,8 +664,62 @@ svg.append("path")
             <section id="letsdraw-lines">
                 <h3>Lines</h3>
 
-                <div id="d3-line" class="canvas pull-left"></div>
+                <ul style="font-size: 16px; list-style: none" class="pull-left">
+                    <li>linear
+                        <div id="d3-line-linear" style="height: 50px; width: 100px"></div>
+                    </li>
 
+                    <li>basis
+                        <div id="d3-line-basis" style="height: 50px; width: 100px"></div>
+                    </li>
+
+                    <li>basis-open
+                        <div id="d3-line-basis-open" style="height: 50px; width: 100px"></div>
+                    </li>
+
+                    <li>basis-closed
+                        <div id="d3-line-basis-closed" style="height: 50px; width: 100px"></div>
+                    </li>
+
+
+                    </ul>
+
+                <ul style="font-size: 16px; list-style: none" class="pull-left">
+
+                    <li>step-before
+                        <div id="d3-line-stepb" style="height: 50px; width: 100px"></div>
+                    </li>
+
+                    <li>step-after
+                        <div id="d3-line-stepa" style="height: 50px; width: 100px"></div>
+                    </li>
+
+
+
+                    <li>bundle
+                        <div id="d3-line-bundle" style="height: 50px; width: 100px"></div>
+                    </li>
+                </ul>
+
+                <ul style="font-size: 16px; list-style: none" class="pull-left">
+                    <li>cardinal
+                        <div id="d3-line-cardinal" style="height: 50px; width: 100px"></div>
+                    </li>
+
+
+                    <li>cardinal-open
+                        <div id="d3-line-cardinal-open" style="height: 50px; width: 100px"></div>
+                    </li>
+
+                    <li>cardinal-closed
+                        <div id="d3-line-cardinal-closed" style="height: 50px; width: 100px"></div>
+                    </li>
+
+
+                </ul>
+
+
+                <div class="pull-right" style="width: 500px">
                 <pre><code>
 var line = d3.svg.line()
     .interpolate("basis") // there are many different interpolators
@@ -676,16 +730,19 @@ var line = d3.svg.line()
         return d.y;
     });
 
+var svg = d3.select("#canvas-id").append("rect").attr({'width':200, 'height': 200'});
 svg.append("path")
-    .attr("d", line([{x:0, y:10}, {x:20, y:10}]))
-    .style({'stroke': 'red', 'stroke-width': 2, 'stroke-linecap': 'round});
+    .attr("d", line([{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}]))
+    .style({'stroke': 'white', 'stroke-width': 2, 'stroke-linecap': 'round'});
 
                 </code></pre>
+                </div>
             </section>
 
             <section id="letsdraw-ex">
                 <h3>Exercise 1</h3>
-                <p>Your first exercise.<br/>Draw a house, cat, dog, cell, whatever you want with d3 using rect, circle, path, lines.</p>
+                <p>Your first exercise.<br/>Draw a house, cat, dog, cell, whatever you want with d3 using rect, circle, path, lines.</p><br/>
+                <p>Prize for the most original :)</p>
             </section>
 
         </section>
@@ -870,11 +927,11 @@ var svg = d3.select(placement + " svg g");
 
                 <div class="pull-right" style="width:450px">
                     <p class="text-small">In the previous example, d3 just looks at the index of the items in the array.</p>
-
                     <p class="text-small">This is fine, but not enough for more complex use cases where we normally want to provide our own index.</p>
                 </div>
 
         </section>
+
         </section>
 
 
@@ -898,6 +955,7 @@ var svg = d3.select(placement + " svg g");
 
             <p>Let's plot it...</p>
         </section>
+        <section id="basicplot-container">
         <section id="basicplot">
             <h3>First step: plot the data</h3>
 
@@ -905,21 +963,21 @@ var svg = d3.select(placement + " svg g");
                 <div id="dot-plot-2" class="canvas pull-left"></div>
                 <div class="explanation pull-right">
     <pre><code>var svg = d3.select(placement).append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g");
+    .attr("width", width)
+    .attr("height", height)
+    .append("g");
 
-        svg.selectAll("circle")
-        .data(data)
-        .enter().append("circle")
-        .attr("class", "dot")
-        .attr("cx", function (d) {
+svg.selectAll("circle")
+    .data(data)
+    .enter().append("circle")
+    .attr("class", "dot")
+    .attr("cx", function (d) {
         return d.x;
-        })
-        .attr("cy", function (d) {
+    })
+    .attr("cy", function (d) {
         return d.y;
-        })
-        .attr("r", 5);</code></pre>
+    })
+    .attr("r", 5);</code></pre>
                 </div>
 
                 <div class="cf"></div>
@@ -927,6 +985,23 @@ var svg = d3.select(placement + " svg g");
                     than our
                     canvas size.</p>
             </div>
+        </section>
+        <section id="exercise-2">
+            <h3>Exercise 2</h3>
+
+            <p class="text-small">2.1 - Create a function to load in data as an array, display using circles.</p>
+            <p class="text-small">2.2 - Update the items in the array, and update the display every 2 seconds.</p>
+
+            <br/>
+            Tip
+            <br/>
+<pre><code>setInterval(
+    function(){
+    //updatecode
+    },
+    2000) // run this function ever 2000 milliseconds
+</code></pre>
+        </section>
         </section>
         <section id="scales">
 
@@ -1065,31 +1140,49 @@ svg.selectAll("circle")
                 <p style="font-size: .8em">Wouldn't it be great if we now knew something about the value range...</p>
             </section>
 
+
+            <section id="exercise-3">
+                <h3>Exercise 3</h3>
+
+                <p class="text-small">Add scales to your plot from Exercise 2.</p>
+            </section>
+
+
         </section>
-        <section id="axes">
-            <h3>Enter Axes...</h3>
+        <section id="axes-container">
 
-            <div id="dot-plot-4" class="canvas pull-left"></div>
-            <div class="explanation pull-right">
-<pre><code data-trim style="max-height: 100%">var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .tickPadding(4);
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .tickPadding(10);
+            <section id="axes">
+                <h3>Enter Axes...</h3>
 
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + y.range()[0] + ")")
-    .call(xAxis);
+                <div id="dot-plot-4" class="canvas pull-left"></div>
+                <div class="explanation pull-right">
+    <pre><code data-trim style="max-height: 100%">var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickPadding(4);
 
-svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis);</code></pre>
-            </div>
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickPadding(10);
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + y.range()[0] + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);</code></pre>
+                </div>
+            </section>
+
+            <section id="exercise-4">
+                <h3>Exercise 4</h3>
+
+                <p class="text-small">Add axes to your plot from Exercise 3.</p>
+            </section>
         </section>
         <section id="data-loading-example">
 
@@ -1209,13 +1302,18 @@ d3.json("assets/data/chocolate.json", function (data) {
                         zoom, brushing and animation!</p>
                 </div>
             </section>
+
+
+            <section id="exercise-5">
+                <h3>Exercise 5</h3>
+                <p class="text-small">Modify your code from exercise 4 to load <a href="https://raw.githubusercontent.com/eamonnmag/d3-biodatavis-course/master/assets/data/chocolate.json" target="_blank">this file</a> as your data source.</p>
+            </section>
         </section>
 
         <section id="mouse-title">
 
             <section id="mouse-intro">
                 <h3>Mouse Events</h3>
-
                 <p>I want to click on things...</p>
             </section>
 
@@ -1280,6 +1378,11 @@ d3.json("assets/data/chocolate.json", function (data) {
                 </p>
             </section>
 
+            <section id="exercise-6">
+                <h3>Exercise 6</h3>
+                <p class="text-small">Add mouse events to your plot from Exercise 5.</p>
+            </section>
+
         </section>
 
         <section id="zooming">
@@ -1342,6 +1445,12 @@ d3.json("assets/data/chocolate.json", function (data) {
     .attr('fill', 'rgba(1,1,1,0)');</code></pre>
                 <div id="zooming-2" style="height: 400px"></div>
             </section>
+
+
+            <section id="exercise-7">
+                <h3>Exercise 7</h3>
+                <p class="text-small">Add zooming to your plot from Exercise 6.</p>
+            </section>
         </section>
 
         <section id="brushing">
@@ -1397,6 +1506,37 @@ d3.json("assets/data/chocolate.json", function (data) {
     });
 }</code></pre>
                 <p>This code grabs the extent from the brush and calculates which elements are within the bounds.</p>
+            </section>
+
+            <section id="exercise-8">
+                <h3>Exercise 8</h3>
+                <p class="text-small">Add brushing to your plot from Exercise 7.</p>
+            </section>
+        </section>
+
+        <section id="linking_visualizations_container">
+
+            <section id="linking_visualizations">
+                <h3>Linking Visualizations</h3>
+                <p>(This is actually easy)</p>
+            </section>
+
+            <section id="linking_visualizations_example">
+                <ul style="list-style:none">
+                <li>We have enable brushing in our last plot, which means we've enabled selection.</li><br/>
+
+                <li>Now we can get more information about these data points and visualise more.</li><br/>
+
+                <li>Overview first, details on demand...key infovis paradigm from Ben Shneiderman.</li>
+                </ul>
+            </section>
+
+            <section id="linking_visualizations_libraries">
+                <p class="text-small">For more high-performance systems, it can be useful to use something
+                    like <a href="http://square.github.io/crossfilter/" target="_blank">crossfilter</a> with d3 to provide fast grouping functions.</p>
+
+                <img src="https://cloud.githubusercontent.com/assets/282396/9885825/7d3d017e-5be7-11e5-9436-82103bb7b935.gif"><br/>
+                <p>There are utility libraries out there such as dc.js to provide plots etc. on top of crossfilter and d3.js. e.g. <a href="http://46.101.34.144/dashboard/data/" target="_blank">this is a project I just handed over</a>.</p>
             </section>
         </section>
 
@@ -1579,28 +1719,6 @@ d3.json("assets/data/chocolate.json", function (data) {
 
         </section>
 
-        <section id="linking_visualizations_container">
-
-            <section id="linking_visualizations">
-                <h3>Linking Visualizations</h3>
-                <p>(This is actually easy)</p>
-            </section>
-
-            <section id="linking_visualizations_example">
-
-            </section>
-
-            <section id="linking_visualizations_libraries">
-                <p class="text-small">For more high-performance systems, it can be useful to use something
-                like <a href="http://square.github.io/crossfilter/" target="_blank">crossfilter</a> with d3 to provide fast grouping functions.</p>
-
-                <img src="https://cloud.githubusercontent.com/assets/282396/9885825/7d3d017e-5be7-11e5-9436-82103bb7b935.gif"><br/>
-                <p>There are utility libraries out there such as dc.js to provide plots etc. on top of crossfilter and d3.js. e.g. <a href="http://46.101.34.144/dashboard/data/" target="_blank">this is a project I just handed over</a>.</p>
-            </section>
-        </section>
-
-
-
         <section>
             <p style="text-align: left">
                 There are a huge number of examples online. Check them out. The best way to learn about D3 is to play
@@ -1680,6 +1798,7 @@ d3.json("assets/data/chocolate.json", function (data) {
 <script src="assets/js/enter_update.js"></script>
 <script src="assets/js/d3-parallel-coords.js"></script>
 <script src="assets/js/d3-scatter-plot-matrix.js"></script>
+<script src="assets/js/d3-primitives.js"></script>
 
 <script src="assets/js/graph.js"></script>
 <script src="assets/js/d3-connect4.js"></script>
@@ -1703,6 +1822,22 @@ d3.json("assets/data/chocolate.json", function (data) {
     var slideEvents = {
         "start": function() { graph.createNetworkVisualization('assets/data/sample-network.json','#slide1_graph', 500, 270); },
         "letsdraw-1": function() { VisualAnalytics.charts.plotDotPlot1("#dot-plot-1", 400, 400); },
+        "letsdraw-lines": function() {
+
+            primitives.create_line_chart("#d3-line-linear", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "linear");
+            primitives.create_line_chart("#d3-line-basis", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "basis");
+            primitives.create_line_chart("#d3-line-basis-open", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "basis-open");
+            primitives.create_line_chart("#d3-line-basis-closed", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "basis-closed");
+            primitives.create_line_chart("#d3-line-stepb", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "step-before");
+            primitives.create_line_chart("#d3-line-stepa", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "step-after");
+            primitives.create_line_chart("#d3-line-monotone", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "monotone");
+            primitives.create_line_chart("#d3-line-bundle", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "bundle");
+            primitives.create_line_chart("#d3-line-cardinal", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "cardinal");
+            primitives.create_line_chart("#d3-line-cardinal-open", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "cardinal-open");
+            primitives.create_line_chart("#d3-line-cardinal-closed", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "cardinal-closed");
+
+
+        },
         "basicplot": function() { VisualAnalytics.charts.plotDotPlot2("#dot-plot-2", 400, 400); },
         "scale-2": function() { VisualAnalytics.charts.plotDotPlot3("#dot-plot-3", 400, 400); },
         "axes": function() { VisualAnalytics.charts.plotDotPlot4("#dot-plot-4", 400, 400); },
