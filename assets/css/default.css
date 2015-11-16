@@ -13,7 +13,8 @@ body {
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #ecf0f1; }
+  color: #ecf0f1;
+}
 
 ::selection {
   color: #ecf0f1;
@@ -134,4 +135,9 @@ margin-bottom: 20px;
 
 .text-large {
   font-size: 1em !important;
+}
+
+.line {
+  stroke: white;
+  fill: none;
 }

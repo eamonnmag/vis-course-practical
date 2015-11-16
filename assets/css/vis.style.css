@@ -16,7 +16,7 @@ circle.dot {
 }
 
 .axis text {
-    font: 10px sans-serif;
+    font-size: 10px;
     fill: white;
 }
 
@@ -174,5 +174,5 @@ path.fc.area {
 }
 
 text.active {
-    fill: #1abc9c;
+    fill: 1abc9c;
 }

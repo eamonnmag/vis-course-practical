@@ -23,7 +23,8 @@ var primitives = (function () {
             var svg = d3.select(placement).append("svg").attr({'width': 200, 'height': 50});
 
             svg.append("path").attr("d", get_line(interpolation)(data))
-                .style({'stroke': 'white', 'fill': 'none', 'stroke-width': 2, 'stroke-linecap': 'round'});
+                .attr('class', 'line')
+                .style({'stroke-width': 2, 'stroke-linecap': 'round'});
         }
     }
 

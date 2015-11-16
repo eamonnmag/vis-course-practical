@@ -196,30 +196,29 @@
             <section>
                 <h3>Example: HTML</h3>
     <pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
-        &lt;html&gt;
-        &lt;!-- The content between the &lt;html&gt; and &lt;/html&gt; describes the web page --&gt;
-        &lt;head&gt;
-        &lt;!-- &lt;head&gt;&lt;/head&gt; handles all the head elements --&gt;
-        &lt;!-- &lt;head&gt;&lt;/head&gt; also provides the information about the page --&gt;
-        &lt;!-- Tags that can be inside &lt;head&gt; element: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;,
-        &lt;script&gt;, &lt;noscript&gt;, &lt;base&gt; --&gt;
-        &lt;!-- &lt;title&gt;&lt;/title&gt; gives the title of the page --&gt;
-        &lt;title&gt;Visual Analytics&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-        &lt;!-- The content between the &lt;body&gt; and &lt;/body&gt; is the visible page content --&gt;
-        &lt;h1&gt;Visual Analytics&lt;/h1&gt;
-        &lt;p class="desc"&gt;Examples of &lt;em&gt;visualisation&lt;/em&gt;:&lt;/p&gt;
-        &lt;!-- Valid class or id: Must start with a letter and can be followed by letter, digits, hypens, and
-        underscores --&gt;
-        &lt;div id="iAmUnique1" class="desc"&gt;
+&lt;html&gt;
+&lt;!-- The content between the &lt;html&gt; and &lt;/html&gt; describes the web page --&gt;
+&lt;head&gt;
+    &lt;!-- &lt;head&gt;&lt;/head&gt; handles all the head elements --&gt;
+    &lt;!-- &lt;head&gt;&lt;/head&gt; also provides the information about the page --&gt;
+    &lt;!-- Tags that can be inside &lt;head&gt; element: &lt;title&gt;, &lt;style&gt;, &lt;meta&gt;, &lt;link&gt;,
+    &lt;script&gt;, &lt;noscript&gt;, &lt;base&gt; --&gt;
+    &lt;!-- &lt;title&gt;&lt;/title&gt; gives the title of the page --&gt;
+    &lt;title&gt;Visual Analytics&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- The content between the &lt;body&gt; and &lt;/body&gt; is the visible page content --&gt;
+    &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+    &lt;p class="desc"&gt;Examples of &lt;em&gt;visualisation&lt;/em&gt;:&lt;/p&gt;
+    &lt;!-- Valid class or id: Must start with a letter and can be followed by letter, digits, hypens, and underscores --&gt;
+    &lt;div id="iAmUnique1" class="desc"&gt;
         &lt;ul&gt;
-        &lt;li&gt;Parallel coordinates&lt;/li&gt;
-        &lt;li&gt;Scatter plots&lt;/li&gt;
+            &lt;li&gt;Parallel coordinates&lt;/li&gt;
+            &lt;li&gt;Scatter plots&lt;/li&gt;
         &lt;/ul&gt;
-        &lt;/div&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;</code></pre>
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
             </section>
             <section>
                 <h3>Example: HTML</h3>
@@ -293,22 +292,22 @@
                     </ul>
 <pre><code data-trim>selector {
     property: value;
-    }
+}
 
-    selectorA, selectorB {
+selectorA, selectorB {
     property: value;
-    }</code></pre>
+}</code></pre>
                     <ul>
                         <li>For example:</li>
                     </ul>
       <pre><code data-trim>p {
-          font-size: 24px;
-          }
+    font-size: 24px;
+}
 
-          h1, .desc {
-          color: #F179D1;
-          font-weight: bold;
-          }</code></pre>
+h1, .desc {
+    color: #F179D1;
+    font-weight: bold;
+}</code></pre>
                 </div>
             </section>
             <section id="css-selectors">
@@ -322,8 +321,8 @@
                 <p style="text-align: left;"><b>Class selectors</b>: match elements of any type assigned to a specific
                     class</p>
 					<pre><code data-trim>
-                        .desc /* Selects elements with class "desc" */
-                        .desc.highlight /* Selects hightlighted desc */</code></pre>
+.desc /* Selects elements with class "desc" */
+.desc.highlight /* Selects hightlighted desc */</code></pre>
                 <p style="text-align: left;"><b>ID selectors</b>: match the element with the specific ID</p>
                 <pre><code data-trim>#iAmUnique1 /* Selects element with ID "iAmUnique1" */</code></pre>
                 <p style="text-align: left;"><b>Combination</b>: combined to target specific elements</p>
@@ -338,27 +337,28 @@
                         <li>Embed the CSS in the HTML</li>
                     </ul>
       <pre><code data-trim>
-          &lt;head&gt;
-          &lt;style type="text/css"&gt;
-          h1 { font-size: 16px; }
-          &lt;/style&gt;
-          &lt;/head&gt;</code></pre>
+&lt;head&gt;
+    &lt;style type="text/css"&gt;
+        h1 { font-size: 16px; }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
                     <ul>
                         <li>For example:</li>
                     </ul>
 <pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
+&lt;html&gt;
     &lt;head&gt;
-    &lt;title&gt;Visual Analytics&lt;/title&gt;
-    &lt;!-- Embedding the CSS in the HTML --&gt;
-    &lt;style type="text/css"&gt;
-    h1 { font-size: 16px; }
-    &lt;/style&gt;
+        &lt;title&gt;Visual Analytics&lt;/title&gt;
+        &lt;!-- Embedding the CSS in the HTML --&gt;
+        &lt;style type="text/css"&gt;
+            h1 { font-size: 16px; }
+        &lt;/style&gt;
     &lt;/head&gt;
+
     &lt;body&gt;
-    &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+        &lt;h1&gt;Visual Analytics&lt;/h1&gt;
     &lt;/body&gt;
-    &lt;/html&gt;</code></pre>
+&lt;/html&gt;</code></pre>
                 </div>
             </section>
             <section id="referencing-styles-2">
@@ -370,23 +370,23 @@
                         <li>Reference an external stylesheet from the HTML</li>
                     </ul>
         <pre><code data-trim>
-            &lt;head&gt;
-            &lt;link rel="stylesheet" href="style.css"&gt;
-            &lt;/head&gt;</code></pre>
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
                     <ul>
                         <li>For example:</li>
                     </ul>
 <pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
+&lt;html&gt;
     &lt;head&gt;
-    &lt;title&gt;Visual Analytics&lt;/title&gt;
-    &lt;!-- Reference an external stylesheet from the HTML --&gt;
-    &lt;link rel="stylesheet" href="style.css"&gt;
+        &lt;title&gt;Visual Analytics&lt;/title&gt;
+        &lt;!-- Reference an external stylesheet from the HTML --&gt;
+        &lt;link rel="stylesheet" href="style.css"&gt;
     &lt;/head&gt;
     &lt;body&gt;
-    &lt;h1&gt;Visual Analytics&lt;/h1&gt;
+        &lt;h1&gt;Visual Analytics&lt;/h1&gt;
     &lt;/body&gt;
-    &lt;/html&gt;</code></pre>
+&lt;/html&gt;</code></pre>
                 </div>
             </section>
             <section id="referencing-styles-3">
@@ -402,15 +402,15 @@
                         <li>For example:</li>
                     </ul>
 <pre><code data-trim style="max-height: 100%">&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
+&lt;html&gt;
     &lt;head&gt;
-    &lt;title&gt;Visual Analytics&lt;/title&gt;
+        &lt;title&gt;Visual Analytics&lt;/title&gt;
     &lt;/head&gt;
     &lt;body&gt;
-    &lt;!-- Attach inline styles --&gt;
-    &lt;h1 style="color: red; font-size: 24px;"&gt;Visual Analytics&lt;/h1&gt;
+        &lt;!-- Attach inline styles --&gt;
+        &lt;h1 style="color: red; font-size: 24px;"&gt;Visual Analytics&lt;/h1&gt;
     &lt;/body&gt;
-    &lt;/html&gt;</code></pre>
+&lt;/html&gt;</code></pre>
                 </div>
             </section>
         </section>
@@ -430,7 +430,7 @@
                             <li>SVG is <b>XML-based</b> therefore all elements must have a closing tag:</li>
                         </ul>
             <pre><code data-trim>&lt;element&gt;&lt;/element&gt; &lt;!-- Element with closing tag --&gt;
-                &lt;element/&gt; &lt;!-- Element with self-closing tag --&gt;
+&lt;element/&gt; &lt;!-- Element with self-closing tag --&gt;
             </code></pre>
                         <ul>
                             <li>Coordinate system starts at the top-left corner</li>
@@ -471,8 +471,8 @@
                         <li>A simple SVG example:</li>
                     </ul>
                     <br><pre><code data-trim>&lt;svg width="100%" height="100%"&gt;
-                    &lt;rect x="85" y="5" width="40" height="40" fill="rgba(255, 0, 0, 1.0)"&gt;&lt;/rect&gt;
-                    &lt;/svg&gt;</code></pre>
+&lt;rect x="85" y="5" width="40" height="40" fill="rgba(255, 0, 0, 1.0)"&gt;&lt;/rect&gt;
+&lt;/svg&gt;</code></pre>
                     <svg width="100%" height="100%">
                         <rect x="50" y="10" width="400" height="120" stroke-width="1" stroke="black"
                               fill="white"></rect>
@@ -520,10 +520,10 @@
                     </ul>
                     <pre><code>&lt;rect x="85" y="5" width="40" height="40" class="mySvgStyle" /&gt;</code></pre>
       <pre><code>.mySvgStyle {
-          fill: red;
-          stroke: blue;
-          stroke-width: 5;
-          }</code></pre>
+    fill: red;
+    stroke: blue;
+    stroke-width: 5;
+}</code></pre>
                 </div>
             </section>
             <section>
@@ -544,21 +544,15 @@
                         </g>
                     </svg>
                     <br><pre><code data-trim>&lt;svg width="800" height="220"&gt;
-                    &lt;!-- The order when the elements are called determines the ordering of the objects --&gt;
-                    &lt;rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"&gt;&lt;/rect&gt;
-                    &lt;!-- &lt;g&gt; groups the shapes together allowing you to transform and style the whole group as
-                    a single shape --&gt;
-                    &lt;g transform="scale(3) translate(100, 10)"&gt;
-                    &lt;circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)" stroke="rgba(127, 201, 127, 0.5)"
-                    stroke-width="5"&gt;&lt;/circle&gt;
-                    &lt;ellipse cx="65" cy="25" rx="35" ry="15" fill="rgba(190, 174, 212, 0.7)" stroke="rgba(190, 174,
-                    212, 0.5)"
-                    stroke-width="5"&gt;&lt;/ellipse&gt;
-                    &lt;rect x="85" y="5" width="40" height="40" fill="rgba(253, 192, 134, 0.7)" stroke="rgba(253, 192,
-                    134, 0.5)"
-                    stroke-width="5"&gt;&lt;/rect&gt;
-                    &lt;/g&gt;
-                    &lt;/svg&gt;</code></pre>
+    &lt;!-- The order when the elements are called determines the ordering of the objects --&gt;
+    &lt;rect x="250" y="10" width="500" height="200" stroke-width="1" stroke="black" fill="white"&gt;&lt;/rect&gt;
+    &lt;!-- &lt;g&gt; groups the shapes together allowing you to transform and style the whole group as a single shape --&gt;
+    &lt;g transform="scale(3) translate(100, 10)"&gt;
+        &lt;circle cx="25" cy="25" r="20" fill="rgba(127, 201, 127, 0.7)" stroke="rgba(127, 201, 127, 0.5)" stroke-width="5"&gt;&lt;/circle&gt;
+        &lt;ellipse cx="65" cy="25" rx="35" ry="15" fill="rgba(190, 174, 212, 0.7)" stroke="rgba(190, 174, 212, 0.5)" stroke-width="5"&gt;&lt;/ellipse&gt;
+        &lt;rect x="85" y="5" width="40" height="40" fill="rgba(253, 192, 134, 0.7)" stroke="rgba(253, 192, 134, 0.5)" stroke-width="5"&gt;&lt;/rect&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
                 </div>
             </section>
         </section>
@@ -576,42 +570,42 @@
                             <li>Directly in the HTML, between two <code>script</code> tags</li>
                         </ul>
             <pre><code data-trim>&lt;body&gt;
-                &lt;script type="text/javascript"&gt;
-                alert("Hello, world!");
-                &lt;/script&gt;
-                &lt;/body&gt;</code></pre>
+    &lt;script type="text/javascript"&gt;
+        alert("Hello, world!");
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
                         <ul>
                             <li>Stored in a separate file with a <i>.js</i> suffix, and then referenced in the HTML</li>
                         </ul>
             <pre><code data-trim>&lt;head&gt;
-                &lt;title&gt;Page Title&lt;/title&gt;
-                &lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;
-                &lt;/head&gt;</code></pre>
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;script type="text/javascript" src="script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
                     </ul>
                 </div>
             </section>
             <section>
                 <h3>Example: JavaScript</h3>
       <pre><code data-trim style="max-height: 100%">/* Declaring a variable of an array of objects */
-          var myChocolate = [
-          {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
-          {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
+var myChocolate = [
+    {"type": "milk", "cocoa_butter": 15, "quantity": 13 },
+    {"type": "sweet", "cocoa_butter": 18, "quantity": 8 }];
 
-          /* A function to loop through the array and display the cocoa butter content */
-          function displayCocoaButter() {
-          var index;
-          // Loop through the array of objects
-          for (index = 0; index < myChocolate.length; index++) {
-          /* Create a &lt;p&gt; element */
-          var _p = document.createElement("p");
-          /* Get the cocoa butter content and add it to the &lt;text&gt; node */
-          var _text = document.createTextNode("Cocoa butter content: " + myChocolate[index].cocoa_butter);
-          /* Add the created &lt;text&gt; node to the &lt;p&gt; element */
-          _p.appendChild(_text);
-          /* Add the created &lt;p&gt; element to &lt;body&gt; */
-          document.body.appendChild(_p);
-          }
-          }</code></pre>
+/* A function to loop through the array and display the cocoa butter content */
+function displayCocoaButter() {
+    var index;
+    // Loop through the array of objects
+    for (index = 0; index < myChocolate.length; index++) {
+        /* Create a &lt;p&gt; element */
+        var _p = document.createElement("p");
+        /* Get the cocoa butter content and add it to the &lt;text&gt; node */
+        var _text = document.createTextNode("Cocoa butter content: " + myChocolate[index].cocoa_butter);
+        /* Add the created &lt;text&gt; node to the &lt;p&gt; element */
+        _p.appendChild(_text);
+        /* Add the created &lt;p&gt; element to &lt;body&gt; */
+        document.body.appendChild(_p);
+    }
+}</code></pre>
             </section>
             <section>
                 <h3>Example: JavaScript</h3>
@@ -657,6 +651,12 @@ svg.append("path")
 
             <section id="letsdraw-rect">
                 <h3>Rectangles</h3>
+
+<pre><code>var svg = d3.select("div_id").append("svg").attr({'width':200, 'height':200});
+svg.append("rect")
+    .attr({'width': 30, 'height':30, 'x': 10, 'y': 10})
+    .style({"fill":"black"});
+</code></pre>
             </section>
 
 
@@ -755,15 +755,15 @@ svg.append("path")
                 <div id="enter-example-1" class="canvas pull-left"></div>
                 <div class="explanation pull-right">
         <pre><code>var svg = d3.select("body").append("svg")
-            .attr("width", 400)
-            .attr("height", 400)
-            .append("g");
+    .attr("width", 400)
+    .attr("height", 400)
+    .append("g");
 
-            svg.append("circle")
-            .attr("r", 20)
-            .attr("cx", 30)
-            .attr("cy", 40)
-            .style("fill", "#27aae1");</code></pre>
+svg.append("circle")
+    .attr("r", 20)
+    .attr("cx", 30)
+    .attr("cy", 40)
+    .style("fill", "#27aae1");</code></pre>
                 </div>
             </section>
             <section id="enter-s2">
@@ -838,7 +838,7 @@ svg.selectAll("data-circle")
 
             <section id="enter-4">
                 <h3>The Enter/Update/Exit Pattern</h3>
-                <img src="assets/img/d3-enter-exit.png" alt="Enter-Exit-Update"
+                <img src="assets/img/d3-enter-exit.png" alt="Enter-Exit-Update" width="600"
                      style="background: none; border: none; box-shadow: none"/>
             </section>
 
@@ -1423,7 +1423,6 @@ d3.json("assets/data/chocolate.json", function (data) {
 
             <section id="zooming-example-1">
                 <p>This works...</p>
-
                 <div id="zooming-1" style="height: 400px"></div>
                 <p>...but there's an issue. The zooming is attached only to the groups, not the whole
                     display, so we have to be focused on a node for zooming to be activate. Not ideal...</p>
@@ -1468,7 +1467,7 @@ d3.json("assets/data/chocolate.json", function (data) {
             <section id="brushing-explain">
                 <h3>What is brushing</h3>
 
-                <p>Only the coolest thing ever :)</p>
+                <p>A method of selection in visualizations...</p>
 
                 <div id="brushing-1" style="height: 400px"></div>
             </section>
@@ -1516,6 +1515,7 @@ d3.json("assets/data/chocolate.json", function (data) {
 
             <section id="brushing-fcarea">
                 <h3>Apples Stock Price</h3>
+                <p class="text-small">Edit the code <a href="https://jsfiddle.net/eamonnmag/3rumhgga/embedded/result/" target="_blank">here</a>.</p>
                 <div id="fc-area" style="height: 400px"></div>
             </section>
 
@@ -1539,7 +1539,7 @@ d3.json("assets/data/chocolate.json", function (data) {
                 <br/>
                 <div id="parallel-coords-canvas" class="canvas" style="height: 500px"></div>
 
-                <p class="text-small">Simply uses some of the techniques already shown here - scales, and brushing.</p>
+                <p class="text-small">Simply uses some of the techniques already shown here - scales, and brushing. Let's check <a href="https://jsfiddle.net/eamonnmag/o4tvekLg/" target="_blank">the code</a>.</p>
             </section>
 
             <section id="parcoords-example">
@@ -1547,15 +1547,15 @@ d3.json("assets/data/chocolate.json", function (data) {
                 <br/>
                 <p class="text-small">You can use my code directly which deals with rendering of multiple inter-related parallel coordinates,
                     or use <a href="https://syntagmatic.github.io/parallel-coordinates/" target="_blank">this</a> one which is very nice!</p>
-
-
-
             </section>
 
             <section id="scatterplot-matrices">
-                <h3>Scatterplot Matrices</h3>
+                <h3>Scatter plot Matrices</h3>
 
                 <div id="scatter-matrix-canvas" class="canvas" style="height: 600px"></div>
+
+                <p class="text-small">Let's check <a href="https://jsfiddle.net/eamonnmag/4eubvrkc/" target="_blank">the code</a>.</p>
+
             </section>
 
         </section>
@@ -1571,7 +1571,6 @@ d3.json("assets/data/chocolate.json", function (data) {
 
                 <div id="graph-1" class="canvas" style="height: 500px;"></div>
                 <p>Look cool, but get cluttered very quickly, and don't scale well.</p>
-
             </section>
 
             <section id="graphs-2">
@@ -1923,8 +1922,6 @@ d3.json("assets/data/chocolate.json", function (data) {
 
 <script>
 
-
-
     Reveal.initialize({
         transition: 'linear',
         dependencies: [
@@ -2082,8 +2079,7 @@ d3.json("assets/data/chocolate.json", function (data) {
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 
         // manually fire all d3 charts off so they appear in the PDF
-        for(slideID in slideEvents) {
-            console.log(slideEvents[slideID]);
+        for(var slideID in slideEvents) {
             slideEvents[slideID]();
         }
     }
