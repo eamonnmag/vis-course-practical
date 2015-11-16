@@ -1,18 +1,19 @@
 /**
  * Created by eamonnmaguire on 16/11/15.
+ * Modified from http://bost.ocks.org/mike/miserables/
  */
 
-var matrix = (function () {
+var matrix_x = (function () {
 
     var margin = {top: 80, right: 0, bottom: 10, left: 80},
-        width = 800,
-        height = 450, svg;
+        width = 700,
+        height = 400, svg;
 
     var nodes = undefined;
 
     var x = d3.scale.ordinal().rangeBands([0, width]),
         z = d3.scale.linear().domain([0, 4]).clamp(true),
-        c = d3.scale.ordinal().range(["#1abc9c", "#27ae60", "#e67e22", "#bdc3c7", "#f39c12"]);
+        c = d3.scale.ordinal().range(["#1abc9c", "#27ae60", "#e67e22", "#bdc3c7", "#f39c12", "#e74c3c", "#9b59b6","#2980b9"]);
 
     var order = function(orders, value) {
         x.domain(orders[value]);
@@ -56,7 +57,7 @@ var matrix = (function () {
         d3.selectAll("text").classed("active", false);
     };
 
-    function row(row) {
+    var row = function(row) {
         var cell = d3.select(this).selectAll(".cell")
             .data(row.filter(function (d) {
                 return d.z;
@@ -76,20 +77,21 @@ var matrix = (function () {
             })
             .on("mouseover", mouseover)
             .on("mouseout", mouseout);
-    }
+    };
 
     return {
 
         render: function (placement, url) {
 
-           svg = d3.select(placement).append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .style("margin-left", -margin.left + "px")
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
             d3.json(url, function (data) {
+
+                svg = d3.select(placement).append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .style("margin-left", -margin.left + "px")
+                    .append("g")
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
                 var matrix = [], n = data.nodes.length;
 
                 nodes = data.nodes;
@@ -178,8 +180,6 @@ var matrix = (function () {
                 d3.select("#order").on("change", function () {
                     order(orders, this.value);
                 });
-
-
             })
         }
     }

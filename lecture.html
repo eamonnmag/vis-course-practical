@@ -1642,15 +1642,19 @@ d3.json("assets/data/chocolate.json", function (data) {
 
             <section id="network_visualization_heatmaps">
                 <h3>Matrices</h3>
-                <p>'Low-tech' and lose some of the spatial information, but are more compact/</p>
+                <p>'Low-tech' and lose some of the spatial information, but are more compact. We can also do cool things like cluster etc.</p>
 
                 <div id="matrix" class="canvas pull-left" style="width: 600px; margin: 0 auto; height: 500px"></div>
 
-                <select id="order" class="pull-right">
-                    <option value="name">by Name</option>
-                    <option value="count">by Frequency</option>
-                    <option value="group">by Cluster</option>
-                </select>
+
+                <div class="pull-right" style="background-color: #35495e; padding: 20px">
+                    <span style="font-size: 14px">Sort by: </span><br/>
+                    <select id="order" class="pull-right">
+                        <option value="name">by Name</option>
+                        <option value="count">by Frequency</option>
+                        <option value="group">by Cluster</option>
+                    </select>
+                </div>
             </section>
 
         </section>
@@ -1659,11 +1663,10 @@ d3.json("assets/data/chocolate.json", function (data) {
 
             <section id="linking_visualizations">
                 <h3>Linking Visualizations</h3>
-                <p>(This is actually easy)</p>
             </section>
 
             <section id="linking_visualizations_example">
-                <ul style="list-style:none">
+                <ul style="list-style:none; font-size: .7em">
                 <li>We have enable brushing in our last plot, which means we've enabled selection.</li><br/>
 
                 <li>Now we can get more information about these data points and visualise more.</li><br/>
@@ -1673,15 +1676,78 @@ d3.json("assets/data/chocolate.json", function (data) {
             </section>
 
             <section id="linking_visualizations_plot">
-                <h3>Let's plot chocolate prices over a year for selected data.</h3>
+                <h4>Let's plot chocolate prices over a year for selected data.</h4>
 
+                <div id="link-example" class="canvas pull-left"></div>
+                <div class="explanation pull-right">
+<pre><code data-trim style="max-height: 100%; overflow: auto">...
+.on("brushend", function () {
+    if (addLinking) {
+        plot_detailed(placement, selected, 300, 60);
+    }
+});</code></pre>
+
+<pre><code data-trim style="max-height: 400px; overflow: auto">plot_detailed: function (placement, selection, width, height) {
+    d3.selectAll(".link_detail_plot").remove();
+    for (var selected_idx in selection) {
+
+        var svg = d3.select(placement).append("svg")
+            .attr({
+                "width": width+30,
+                "height": height+20,
+                "id": "detail-" + selected_idx,
+                "class": "link_detail_plot"
+            })
+            .append("g")
+            .attr('transform', 'translate(20,0)');
+
+        // let's generate some random data.
+        var dataset = [];
+        for (var i = 0; i < 12; i++) {
+            var newNumber = Math.random() * 60;
+            dataset.push({x: i, y: newNumber});
+        }
+
+
+        // our X and Y scales
+        var x = d3.scale.linear()
+            .domain(d3.extent(dataset, function (d) {
+                return d.x
+        }))
+        .range([0, width]);
+
+
+        var y = d3.scale.linear()
+            .domain([0, d3.max(dataset, function (d) {
+                return d.y
+            })])
+        .range([height, 0]);
+
+        // now add all our bars...
+        svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selected_idx)).attr('x', 0).transition().attr('height', function (d, i) {
+            return height - y(d.y);
+        }).attr('width', 10).attr('x', function (d, i) {
+            return x(d.x);
+        }).attr('y', function (d) {
+            return y(d.y)
+        });
+
+    // axes etc...removed for clarity
+
+    svg.append("text").text(selected_idx).attr({'x':5, y: 10})
+
+    }
+}
+</code></pre>
+                </div>
             </section>
+
 
             <section id="linking_visualizations_libraries">
                 <p class="text-small">For more high-performance systems, it can be useful to use something
                     like <a href="http://square.github.io/crossfilter/" target="_blank">crossfilter</a> with d3 to provide fast grouping functions.</p>
 
-                <img src="https://cloud.githubusercontent.com/assets/282396/9885825/7d3d017e-5be7-11e5-9436-82103bb7b935.gif"><br/>
+                <a href=""><img src="https://cloud.githubusercontent.com/assets/282396/9885825/7d3d017e-5be7-11e5-9436-82103bb7b935.gif"></a> <br/>
                 <p>There are utility libraries out there such as dc.js to provide plots etc. on top of crossfilter and d3.js. e.g. <a href="http://46.101.34.144/dashboard/data/" target="_blank">this is a project I just handed over</a>.</p>
             </section>
         </section>
@@ -1951,7 +2017,11 @@ d3.json("assets/data/chocolate.json", function (data) {
         },
 
         "network_visualization_heatmaps": function() {
-           matrix.render("#matrix", "assets/data/sample-network.json");
+            matrix_x.render("#matrix", "assets/data/sample-network.json");
+        },
+
+        "linking_visualizations_plot": function() {
+            VisualAnalytics.lecture2.loadAndDisplay("#link-example", 400, 300, true, false, false, true, true);
         },
         "animation-connect4": function() { Connect4.utils.draw("#connect4", 500, 500); },
         "final-scatter": function() {

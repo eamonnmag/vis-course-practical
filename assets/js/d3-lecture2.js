@@ -13,12 +13,12 @@ var xAxis, yAxis;
 var chocolates;
 var zoom;
 var brush;
-var selected ={};
+var selected = {};
 
 
 VisualAnalytics.lecture2 = {
 
-    loadAndDisplay: function (placement, w, h, addMouse, addZoom, addRect, brushingOn) {
+    loadAndDisplay: function (placement, w, h, addMouse, addZoom, addRect, brushingOn, addLinking) {
         width = w;
         height = h;
 
@@ -34,10 +34,10 @@ VisualAnalytics.lecture2 = {
             yAxis = d3.svg.axis().scale(y).orient("left").tickPadding(2);
 
             var zoom = d3.behavior.zoom()
-                    .x(x)
-                    .y(y)
-                    .scaleExtent([1, 5])
-                    .on("zoom", VisualAnalytics.lecture2.zoomed);
+                .x(x)
+                .y(y)
+                .scaleExtent([1, 5])
+                .on("zoom", VisualAnalytics.lecture2.zoomed);
 
 
             svg = d3.select(placement).append("svg")
@@ -47,11 +47,11 @@ VisualAnalytics.lecture2 = {
                 .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
 
 
-            if(addZoom) {
+            if (addZoom) {
                 svg.call(zoom);
             }
 
-            if(addRect){
+            if (addRect) {
                 svg.append('rect')
                     .attr('width', width)
                     .attr('height', height)
@@ -94,19 +94,19 @@ VisualAnalytics.lecture2 = {
                     return d.name;
                 });
 
-            if(brushingOn){
+            if (brushingOn) {
                 brush = d3.svg.brush()
                     .x(x)
                     .y(y)
-                    .on("brushstart", function() {
+                    .on("brushstart", function () {
                         console.log("Resetting selected var");
                         selected = {};
                     })
                     .on("brush", VisualAnalytics.lecture2.brushed)
-                    .on("brushend", function() {
-                        console.log("Selected");
-                        console.log(Object.keys(selected))
-
+                    .on("brushend", function () {
+                        if (addLinking) {
+                            VisualAnalytics.lecture2.plot_detailed(placement, selected, 300, 60);
+                        }
                     });
 
                 svg.append("g")
@@ -116,27 +116,89 @@ VisualAnalytics.lecture2 = {
 
             if (addMouse) {
 
-                chocolateEnter.on("mouseover",function (d) {
+                chocolateEnter.on("mouseover", function (d) {
                     d3.select(this).style("stroke-width", "1px").style("stroke", "white");
-                }).on("mouseout",function (d) {
-                        d3.select(this).style("stroke", "none");
-                    }).on("click", function (d) {
-                        alert("Hi, you clicked on " + d.name);
-                    })
+                }).on("mouseout", function (d) {
+                    d3.select(this).style("stroke", "none");
+                }).on("click", function (d) {
+                    alert("Hi, you clicked on " + d.name);
+                })
             }
 
 
         });
     },
 
-    brushed: function() {
+    plot_detailed: function (placement, selection, width, height) {
+        d3.selectAll(".link_detail_plot").remove();
+        for (var selected_idx in selection) {
+
+            var svg = d3.select(placement).append("svg").attr({
+                "width": width+30,
+                "height": height+20,
+                "id": "detail-" + selected_idx,
+                "class": "link_detail_plot"
+            }).append("g").attr('transform', 'translate(20,0)');
+
+
+            var dataset = [];
+            for (var i = 0; i < 12; i++) {
+                var newNumber = Math.random() * 60;
+                dataset.push({x: i, y: newNumber});
+            }
+
+            var x = d3.scale.linear()
+                .domain(d3.extent(dataset, function (d) {
+                    return d.x
+                }))
+                .range([0, width]);
+
+            var y = d3.scale.linear()
+                .domain([0, d3.max(dataset, function (d) {
+                    return d.y
+                })])
+                .range([height, 0]);
+
+            svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selected_idx)).attr('x', 0).transition().attr('height', function (d, i) {
+                return height - y(d.y);
+            }).attr('width', 10).attr('x', function (d, i) {
+                return x(d.x);
+            }).attr('y', function (d) {
+                return y(d.y)
+            });
+
+            var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom")
+                .tickPadding(4);
+
+            var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left")
+                .tickPadding(2).ticks(3);
+
+            svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + y.range()[0] + ")")
+                .call(xAxis);
+
+            svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+
+            svg.append("text").text(selected_idx).attr({'x':5, y: 10})
+
+        }
+    },
+
+    brushed: function () {
 
         var extent = brush.extent();
         d3.selectAll("g.chocolatenode").select("circle").style("fill", function (d) {
             d.selected = (d.x > x(extent[0][0]) && d.x < x(extent[1][0]))
                 && (d.y < y(extent[0][1]) && d.y > y(extent[1][1]));
 
-            if(d.selected) {
+            if (d.selected) {
                 selected[d.name] = d;
             }
             return d.selected ? "#F15D2F" : colors(d.manufacturer);
@@ -149,7 +211,9 @@ VisualAnalytics.lecture2 = {
     zoomed: function () {
         d3.selectAll("g.x.axis").call(xAxis);
         d3.selectAll("g.y.axis").call(yAxis);
-        svg.selectAll("g.chocolatenode").attr("transform", function(d){return "translate(" + x(d.price) + "," + y(d.rating) + ")scale(" + d3.event.scale + ")"});
+        svg.selectAll("g.chocolatenode").attr("transform", function (d) {
+            return "translate(" + x(d.price) + "," + y(d.rating) + ")scale(" + d3.event.scale + ")"
+        });
     },
 
     calculateXScale: function (data, width) {
@@ -235,11 +299,11 @@ VisualAnalytics.lecture2 = {
                 return d.name;
             })
 
-        chocolateEnter.on("mouseover",function (d) {
+        chocolateEnter.on("mouseover", function (d) {
             d3.select(this).style("stroke-width", "1px").style("stroke", "white");
         }).on("mouseout", function (d) {
-                d3.select(this).style("stroke", "none");
-            });
+            d3.select(this).style("stroke", "none");
+        });
 
         chocolate.transition().duration(500)
             .attr('transform', function (d) {

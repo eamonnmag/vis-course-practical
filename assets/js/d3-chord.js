@@ -32,10 +32,10 @@ var chord = (function() {
             svg.append("circle")
                 .attr("r", outerRadius);
 
-            d3.csv('assets/data/cities.csv', function(cities) {
-                d3.json("assets/data/matrix.json", function(matrix) {
-                    cities = cities.slice(0,22);
-                    matrix = matrix.slice(0,22);
+            d3.csv('assets/data/cities.csv', function(context) {
+                d3.json("assets/data/matrix.json", function(interaction_matrix) {
+                    context = context.slice(0,22);
+                    matrix = interaction_matrix.slice(0,22);
                     // Compute the chord layout.
                     layout.matrix(matrix);
 
@@ -48,7 +48,7 @@ var chord = (function() {
 
                     // Add a mouseover title.
                     group.append("title").text(function(d, i) {
-                        return cities[i].name + ": " + formatPercent(d.value) + " of origins";
+                        return context[i].name + ": " + formatPercent(d.value) + " of origins";
                     });
 
                     // Add the group arc.
@@ -56,7 +56,7 @@ var chord = (function() {
                         .attr("id", function(d, i) { return "group" + i; })
                         .attr("d", arc)
                         .style("cursor", "pointer")
-                        .style("fill", function(d, i) { return cities[i].color; });
+                        .style("fill", function(d, i) { return context[i].color; });
 
                     // Add a text label.
                     var groupText = group.append("text")
@@ -65,7 +65,7 @@ var chord = (function() {
 
                     groupText.append("textPath")
                         .attr("xlink:href", function(d, i) { return "#group" + i; })
-                        .text(function(d, i) { return cities[i].name; });
+                        .text(function(d, i) { return context[i].name; });
 
                     // Remove the labels that don't fit. :(
                     groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
@@ -76,16 +76,16 @@ var chord = (function() {
                         .data(layout.chords)
                         .enter().append("path")
                         .attr("class", "chord")
-                        .style("fill", function(d) { return cities[d.source.index].color; })
+                        .style("fill", function(d) { return context[d.source.index].color; })
                         .attr("d", path);
 
                     // Add an elaborate mouseover title for each chord.
                     chord.append("title").text(function(d) {
-                        return cities[d.source.index].name
-                            + " → " + cities[d.target.index].name
+                        return context[d.source.index].name
+                            + " → " + context[d.target.index].name
                             + ": " + formatPercent(d.source.value)
-                            + "\n" + cities[d.target.index].name
-                            + " → " + cities[d.source.index].name
+                            + "\n" + context[d.target.index].name
+                            + " → " + context[d.source.index].name
                             + ": " + formatPercent(d.target.value);
                     });
 
