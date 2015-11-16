@@ -1558,9 +1558,6 @@ d3.json("assets/data/chocolate.json", function (data) {
                 <div id="scatter-matrix-canvas" class="canvas" style="height: 600px"></div>
             </section>
 
-            <section id="glyphs">
-                <h3>Glyph-based visualization</h3>
-            </section>
         </section>
 
         <section id="network_visualization_container">
@@ -1768,7 +1765,7 @@ d3.json("assets/data/chocolate.json", function (data) {
 
             <section id="final-scatter">
 
-                <h3>A nice animating set of updating data...</h3>
+                <h3>A nice animation of updating data...</h3>
 
                 <div id="dot-plot-animated" class="canvas pull-left" style="height: 600px">
                 </div>
@@ -1994,9 +1991,9 @@ d3.json("assets/data/chocolate.json", function (data) {
         "mouse-event-example": function() { VisualAnalytics.lecture2.loadAndDisplay("#mouse-event-plot", 800, 300, true, false, false); },
         "zooming-example-1": function() { VisualAnalytics.lecture2.loadAndDisplay("#zooming-1", 800, 300, true, true, false); },
         "zooming-example-2": function() { VisualAnalytics.lecture2.loadAndDisplay("#zooming-2", 800, 300, true, true, true); },
-        "zooming-fcarea": function() { createFCAreaChart("#fc-area-zoom", 800, 400, {'scale': d3.scale.linear(), 'context': false, 'zoom': true}); },
+        "zooming-fcarea": function() { area_chart.createFCAreaChart("#fc-area-zoom", 800, 400, {'scale': d3.scale.linear(), 'context': false, 'zoom': true}); },
         "brushing-explain": function() { VisualAnalytics.lecture2.loadAndDisplay("#brushing-1", 800, 300, true, false, false, true); },
-        "brushing-fcarea": function() { createFCAreaChart("#fc-area", 800, 400, {'scale': d3.scale.linear(), 'context': true, 'zoom': false}); },
+        "brushing-fcarea": function() { area_chart.createFCAreaChart("#fc-area", 800, 400, {'scale': d3.scale.linear(), 'context': true, 'zoom': false}); },
         "parcoords": function() {
             d3.select("#parallel-coords-canvas").html("");
             parallel_coordinates.loadAndDraw("#parallel-coords-canvas", ["assets/data/patients-1.csv"], 900, 300, ["patient"], {"colorGroup":"patient", "colors": d3.scale.ordinal().range(["#1abc9c", "#f39c12", "#e67e22", "#ccc"])});
