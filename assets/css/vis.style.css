@@ -160,3 +160,19 @@ circle.dot {
 .Patient3 {
     fill: #e74c3c;
 }
+
+path.fc.area {
+    fill: #1abc9c;
+}
+
+.hive-axis {
+    stroke: white;
+}
+
+#circle:hover path.fade {
+    opacity: .1;
+}
+
+text.active {
+    fill: #1abc9c;
+}

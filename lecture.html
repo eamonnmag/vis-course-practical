@@ -24,8 +24,7 @@
         text {
             stroke: none;
             fill: #fff;
-            font-size: 10px;
-            font-family: "Helvetica Neue"
+            font-size: 9px;
         }
 
         .label {
@@ -1447,6 +1446,12 @@ d3.json("assets/data/chocolate.json", function (data) {
             </section>
 
 
+
+            <section id="zooming-fcarea">
+                <h3>Apples Stock Price</h3>
+                <div id="fc-area-zoom" style="height: 400px"></div>
+            </section>
+
             <section id="exercise-7">
                 <h3>Exercise 7</h3>
                 <p class="text-small">Add zooming to your plot from Exercise 6.</p>
@@ -1508,10 +1513,146 @@ d3.json("assets/data/chocolate.json", function (data) {
                 <p>This code grabs the extent from the brush and calculates which elements are within the bounds.</p>
             </section>
 
+
+            <section id="brushing-fcarea">
+                <h3>Apples Stock Price</h3>
+                <div id="fc-area" style="height: 400px"></div>
+            </section>
+
+
+
             <section id="exercise-8">
                 <h3>Exercise 8</h3>
                 <p class="text-small">Add brushing to your plot from Exercise 7.</p>
             </section>
+        </section>
+
+        <section id="multidimensional">
+
+            <section>
+                <h3>Multidimensional Visualization</h3>
+
+            </section>
+
+            <section id="parcoords">
+                <h3>Parallel Coordinates</h3>
+                <br/>
+                <div id="parallel-coords-canvas" class="canvas" style="height: 500px"></div>
+
+                <p class="text-small">Simply uses some of the techniques already shown here - scales, and brushing.</p>
+            </section>
+
+            <section id="parcoords-example">
+                <p class="text-small">Most of the work has been done for you..., there are already a few parallel coordinate implementations that can be used out of the box.</p>
+                <br/>
+                <p class="text-small">You can use my code directly which deals with rendering of multiple inter-related parallel coordinates,
+                    or use <a href="https://syntagmatic.github.io/parallel-coordinates/" target="_blank">this</a> one which is very nice!</p>
+
+
+
+            </section>
+
+            <section id="scatterplot-matrices">
+                <h3>Scatterplot Matrices</h3>
+
+                <div id="scatter-matrix-canvas" class="canvas" style="height: 600px"></div>
+            </section>
+
+            <section id="glyphs">
+                <h3>Glyph-based visualization</h3>
+            </section>
+        </section>
+
+        <section id="network_visualization_container">
+
+            <section id="network_visualization">
+                <h3>Network Visualization</h3>
+            </section>
+
+            <section id="graphs">
+                <h3>Graph Layouts</h3>
+
+                <div id="graph-1" class="canvas" style="height: 500px;"></div>
+                <p>Look cool, but get cluttered very quickly, and don't scale well.</p>
+
+            </section>
+
+            <section id="graphs-2">
+                <h3>Creating Graphs</h3>
+
+                <p>Data given as an array of nodes and links.</p>
+                <div id="graph-2-example" class="canvas pull-left"></div>
+                <div class="explanation pull-right">
+<pre><code data-trim style="max-height: 100%">{
+    "nodes": [
+    {
+        "id": 0,
+        "name": "Myriel",
+        "group": 1,
+        "showLabel": true
+    },
+    {
+        "id": 1,
+        "name": "Napoleon",
+        "group": 1,
+        "showLabel": true,
+        "nodetype": "cross"
+    }
+],
+"links": [
+    {
+        "source": 0,
+        "target": 1,
+        "value": 10
+    }
+]
+}</code></pre>
+                </div>
+            </section>
+
+            <section id="network-layouts">
+                <h3>Your Choice of Layouts</h3>
+
+                <p>There are a number of layouts that D3 gives you for free.</p>
+                <ul>
+                    <li><a href="https://github.com/mbostock/d3/wiki/Force-Layout" target="_blank">Force directed layout</a>: this is what you've seen so far. Nodes have resistance to other nodes calculated based on the weight on the link and 'charge'.</li>
+                    <li><a href="https://github.com/mbostock/d3/wiki/Cluster-Layout" target="_blank">Cluster</a>: for dendrogram layouts.</li>
+                    <li><a href="https://github.com/mbostock/d3/wiki/Tree-Layout" target="_blank">Tree</a>: for nice tree layouts.</li>
+                    <li><a href="https://github.com/mbostock/d3/wiki/Treemap-Layout" target="_blank">Treemap</a>: recursive partitioning of a space to match the tree layout with space filled by the value of sub nodes.</li>
+                    <li><a href="https://github.com/mbostock/d3/wiki/Pack-Layout" target="_blank">Pack</a>: for sunburst style layouts.</li>
+                </ul>
+            </section>
+
+            <section id="network_visualization_hive">
+                <h3>Hive Plots</h3>
+                <p class="text-small">Useful for tidying up clutter, but can be difficult to interpret initially.</p>
+
+                <div id="hive-plot" class="canvas" style="width: 500px; margin: 0 auto; height: 500px"></div>
+
+                <p class="text-small">The idea is that each axis has a different meaning, e.g. all nodes with just outgoing connections, all nodes with just incoming connections, and nodes with both, e.g. <a href="http://www.konstantinkashin.com/data/hiv-hiveplot.html" target="_blank">HIV Plot</a></p>
+
+            </section>
+
+            <section id="network_visualization_chord">
+                <h3>Chord layouts</h3>
+                <p>Chromosome interactions?</p>
+
+                <div id="chord" class="canvas" style="width: 500px; margin: 0 auto; height: 500px"></div>
+            </section>
+
+            <section id="network_visualization_heatmaps">
+                <h3>Matrices</h3>
+                <p>'Low-tech' and lose some of the spatial information, but are more compact/</p>
+
+                <div id="matrix" class="canvas pull-left" style="width: 600px; margin: 0 auto; height: 500px"></div>
+
+                <select id="order" class="pull-right">
+                    <option value="name">by Name</option>
+                    <option value="count">by Frequency</option>
+                    <option value="group">by Cluster</option>
+                </select>
+            </section>
+
         </section>
 
         <section id="linking_visualizations_container">
@@ -1529,6 +1670,11 @@ d3.json("assets/data/chocolate.json", function (data) {
 
                 <li>Overview first, details on demand...key infovis paradigm from Ben Shneiderman.</li>
                 </ul>
+            </section>
+
+            <section id="linking_visualizations_plot">
+                <h3>Let's plot chocolate prices over a year for selected data.</h3>
+
             </section>
 
             <section id="linking_visualizations_libraries">
@@ -1623,101 +1769,7 @@ d3.json("assets/data/chocolate.json", function (data) {
         </section>
 
 
-        <section id="multidimensional">
 
-            <section>
-            <h3>Multidimensional Visualization</h3>
-
-            </section>
-
-            <section id="parcoords">
-                <h3>Parallel Coordinates</h3>
-                <br/>
-                <div id="parallel-coords-canvas" class="canvas" style="height: 500px"></div>
-
-                <p class="text-small">Simply uses some of the techniques already shown here - scales, and brushing.</p>
-            </section>
-
-            <section id="parcoords-example">
-                <p class="text-small">Most of the work has been done for you..., there are already a few parallel coordinate implementations that can be used out of the box.</p>
-                <br/>
-                <p class="text-small">You can use my code directly which deals with rendering of multiple inter-related parallel coordinates,
-                    or use <a href="https://syntagmatic.github.io/parallel-coordinates/" target="_blank">this</a> one which is very nice!</p>
-
-
-
-            </section>
-
-            <section id="scatterplot-matrices">
-                <h3>Scatterplot Matrices</h3>
-
-                <div id="scatter-matrix-canvas" class="canvas" style="height: 600px"></div>
-            </section>
-
-            <section id="glyphs">
-                <h3>Glyph-based visualization</h3>
-            </section>
-        </section>
-
-        <section id="network_visualization_container">
-
-            <section id="network_visualization">
-                <h3>Network Visualization</h3>
-            </section>
-
-            <section id="graphs">
-                <h3>Graph Layouts</h3>
-
-                <div id="graph-1" class="canvas" style="height: 500px;"></div>
-                <p>Look cool, but get cluttered very quickly, and don't scale well.</p>
-
-
-            </section>
-
-            <section id="graphs-2">
-                <h3>Creating Graphs</h3>
-
-                <div id="graph-2-example" class="canvas pull-left"></div>
-                <div class="explanation pull-right">
-<pre><code data-trim style="max-height: 100%">var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .tickPadding(4);
-
-    var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .tickPadding(10);
-
-    svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + y.range()[0] + ")")
-    .call(xAxis);
-
-    svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis);</code></pre>
-                </div>
-
-
-            </section>
-
-            <section id="network_visualization_hive">
-                <h3>Hive Plots</h3>
-                <p>Useful for tidying up clutter, but difficult to interpret</p>
-            </section>
-
-            <section id="network_visualization_chord">
-                <h3>Chord layouts</h3>
-                <p>Chromosomes anyone?</p>
-            </section>
-
-            <section id="network_visualization_heatmaps">
-                <h3>Matrices</h3>
-                <p>'Low-tech' and lose some of the spatial information, but are more compact/</p>
-            </section>
-
-        </section>
 
         <section>
             <p style="text-align: left">
@@ -1799,8 +1851,11 @@ d3.json("assets/data/chocolate.json", function (data) {
 <script src="assets/js/d3-parallel-coords.js"></script>
 <script src="assets/js/d3-scatter-plot-matrix.js"></script>
 <script src="assets/js/d3-primitives.js"></script>
-
-<script src="assets/js/graph.js"></script>
+<script src="assets/js/d3-fcarea.js"></script>
+<script src="assets/js/lib/d3.hive.min.js"></script>
+<script src="assets/js/d3-graph.js"></script>
+<script src="assets/js/d3-chord.js"></script>
+<script src="assets/js/d3-matrix.js"></script>
 <script src="assets/js/d3-connect4.js"></script>
 
 <script>
@@ -1873,13 +1928,30 @@ d3.json("assets/data/chocolate.json", function (data) {
         "mouse-event-example": function() { VisualAnalytics.lecture2.loadAndDisplay("#mouse-event-plot", 800, 300, true, false, false); },
         "zooming-example-1": function() { VisualAnalytics.lecture2.loadAndDisplay("#zooming-1", 800, 300, true, true, false); },
         "zooming-example-2": function() { VisualAnalytics.lecture2.loadAndDisplay("#zooming-2", 800, 300, true, true, true); },
+        "zooming-fcarea": function() { createFCAreaChart("#fc-area-zoom", 800, 400, {'scale': d3.scale.linear(), 'context': false, 'zoom': true}); },
         "brushing-explain": function() { VisualAnalytics.lecture2.loadAndDisplay("#brushing-1", 800, 300, true, false, false, true); },
+        "brushing-fcarea": function() { createFCAreaChart("#fc-area", 800, 400, {'scale': d3.scale.linear(), 'context': true, 'zoom': false}); },
         "parcoords": function() {
             d3.select("#parallel-coords-canvas").html("");
             parallel_coordinates.loadAndDraw("#parallel-coords-canvas", ["assets/data/patients-1.csv"], 900, 300, ["patient"], {"colorGroup":"patient", "colors": d3.scale.ordinal().range(["#1abc9c", "#f39c12", "#e67e22", "#ccc"])});
         },
         "graphs": function() {
             graph.createNetworkVisualization('assets/data/sample-network.json', '#graph-1', 900, 270);
+        },
+        "graphs-2": function() {
+            graph.createNetworkVisualization('assets/data/simple-network.json', '#graph-2-example', 300, 270);
+        },
+        "network_visualization_hive": function() {
+            d3.select('#hive-plot').html('');
+            graph.create_hive_visualization('#hive-plot', {}, 500, 500);
+        },
+
+        "network_visualization_chord": function() {
+            chord.render_plot("#chord");
+        },
+
+        "network_visualization_heatmaps": function() {
+           matrix.render("#matrix", "assets/data/sample-network.json");
         },
         "animation-connect4": function() { Connect4.utils.draw("#connect4", 500, 500); },
         "final-scatter": function() {
