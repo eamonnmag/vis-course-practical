@@ -1111,13 +1111,13 @@ myScale("eamonn"); // will output "maguire"</code></pre>
                 <div id="dot-plot-3" class="canvas pull-left"></div>
                 <div class="explanation pull-right">
 <pre><code data-trim style="max-height: 100%">var margin = {top: 20, right: 20, bottom: 20, left: 30};
-var x = d3.scale.linear()
+var xScale = d3.scale.linear()
     .domain(d3.extent(data, function (d) {
         return d.x;
 }))
 .range([0, width - margin.left - margin.right]);
 
-var y = d3.scale.linear()
+var yScale = d3.scale.linear()
     .domain(d3.extent(data, function (d) {
         return d.y;
     }))
@@ -1129,10 +1129,10 @@ svg.selectAll("circle")
     .data(data).enter().append("circle")
     .attr("class", "dot")
     .attr("cx", function (d) {
-        return x(d.x);
+        return xScale(d.x);
     })
     .attr("cy", function (d) {
-        return y(d.y);
+        return yScale(d.y);
     }).attr("r", 5);</code></pre>
                 </div>
                 <div class="cf"></div>
@@ -1157,23 +1157,23 @@ svg.selectAll("circle")
                 <div id="dot-plot-4" class="canvas pull-left"></div>
                 <div class="explanation pull-right">
     <pre><code data-trim style="max-height: 100%">var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom")
-        .tickPadding(4);
+    .scale(xScale)
+    .orient("bottom")
+    .tickPadding(4);
 
-    var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left")
-        .tickPadding(10);
+var yAxis = d3.svg.axis()
+    .scale(yScale)
+    .orient("left")
+    .tickPadding(10);
 
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + y.range()[0] + ")")
-        .call(xAxis);
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + yScale.range()[0] + ")")
+    .call(xAxis);
 
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);</code></pre>
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);</code></pre>
                 </div>
             </section>
 
@@ -1245,13 +1245,13 @@ d3.json("assets/data/chocolate.json", function (data) {
         var svg = d3.select(placement).append("svg").attr("width", width).attr("height", height).append("g")
             .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
 
-        var x = d3.scale.linear()
+        var xScale = d3.scale.linear()
             .domain(d3.extent(data, function (d) {
                 return d.price;
             }))
             .range([0, width - margins.left - margins.right]);
 
-        var y = d3.scale.linear()
+        var yScale = d3.scale.linear()
             .domain(d3.extent(data, function (d) {
                 return d.rating;
             }))
@@ -1259,10 +1259,10 @@ d3.json("assets/data/chocolate.json", function (data) {
 
         var colors = d3.scale.category10();
 
-        var xAxis = d3.svg.axis().scale(x).orient("bottom").tickPadding(2);
-        var yAxis = d3.svg.axis().scale(y).orient("left").tickPadding(2);
+        var xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickPadding(2);
+        var yAxis = d3.svg.axis().scale(yScale).orient("left").tickPadding(2);
 
-        svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")").call(xAxis);
+        svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + yScale.range()[0] + ")").call(xAxis);
         svg.append("g").attr("class", "y axis").call(yAxis);
 
         svg.append("text").attr("fill", "#414241").attr("text-anchor", "end")
@@ -1272,7 +1272,7 @@ d3.json("assets/data/chocolate.json", function (data) {
 
         var chocolateEnter = chocolate.enter().append("g").attr("class", "node")
             .attr('transform', function (d) {
-                return "translate(" + x(d.price) + "," + y(d.rating) + ")";
+                return "translate(" + xScale(d.price) + "," + yScale(d.rating) + ")";
         });
 
         chocolateEnter.append("circle").attr("r", 5).attr("class", "dot")
@@ -1397,8 +1397,8 @@ d3.json("assets/data/chocolate.json", function (data) {
                     In D3, it's pretty easy once you start thinking about things in terms of transforms and scales.</p>
 
 <pre><code>var zoom = d3.behavior.zoom() // we first define our zoom behaviour
-    .x(x) // assign our x scale
-    .y(y) // assign our y scale
+    .x(xScale) // assign our x scale
+    .y(yScale) // assign our y scale
     .scaleExtent([1, 5]) // how far we can scale in or out
     .on("zoom", function() { // what happens when we zoom
     // we want to select all our nodes and make them bigger according to the scale factor recorded by d3,
@@ -1408,7 +1408,7 @@ d3.json("assets/data/chocolate.json", function (data) {
     svg.selectAll("g.chocolatenode").attr("transform", function(d){
     // we can still get access to the data properties of the items,
     // so pulling out the price and rating is very easy.
-    return "translate(" + x(d.price) + "," + y(d.rating) + ")scale(" + d3.event.scale + ")"
+    return "translate(" + xScale(d.price) + "," + yScale(d.rating) + ")scale(" + d3.event.scale + ")"
     });
     });</code></pre>
 
@@ -1706,14 +1706,14 @@ d3.json("assets/data/chocolate.json", function (data) {
 
 
         // our X and Y scales
-        var x = d3.scale.linear()
+        var xScale = d3.scale.linear()
             .domain(d3.extent(dataset, function (d) {
                 return d.x
         }))
         .range([0, width]);
 
 
-        var y = d3.scale.linear()
+        var yScale = d3.scale.linear()
             .domain([0, d3.max(dataset, function (d) {
                 return d.y
             })])
@@ -1721,11 +1721,11 @@ d3.json("assets/data/chocolate.json", function (data) {
 
         // now add all our bars...
         svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selected_idx)).attr('x', 0).transition().attr('height', function (d, i) {
-            return height - y(d.y);
+            return height - yScale(d.y);
         }).attr('width', 10).attr('x', function (d, i) {
-            return x(d.x);
+            return xScale(d.x);
         }).attr('y', function (d) {
-            return y(d.y)
+            return yScale(d.y)
         });
 
     // axes etc...removed for clarity
