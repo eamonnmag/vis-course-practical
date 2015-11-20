@@ -1939,8 +1939,8 @@ d3.json("assets/data/chocolate.json", function (data) {
 <script src="assets/js/lib/head.min.js"></script>
 <script src="assets/js/lib/reveal.min.js"></script>
 <script src="assets/js/lib/d3.v3.js"></script>
-<script src="assets/js/d3-lecture1.js"></script>
-<script src="assets/js/d3-lecture2.js"></script>
+<script src="assets/js/d3-basic-plots.js"></script>
+<script src="assets/js/d3-chocolates.js"></script>
 <script src="assets/js/enter_update.js"></script>
 <script src="assets/js/d3-parallel-coords.js"></script>
 <script src="assets/js/d3-scatter-plot-matrix.js"></script>
@@ -1968,7 +1968,7 @@ d3.json("assets/data/chocolate.json", function (data) {
 
     var slideEvents = {
         "start": function() { graph.createNetworkVisualization('assets/data/sample-network.json','#slide1_graph', 500, 270); },
-        "letsdraw-1": function() { VisualAnalytics.charts.plotDotPlot1("#dot-plot-1", 400, 400); },
+        "letsdraw-1": function() { d3_basic_plots.plotDotPlot1("#dot-plot-1", 400, 400); },
         "letsdraw-lines": function() {
 
             primitives.create_line_chart("#d3-line-linear", [{x:0, y:10}, {x:20, y:10}, {x:40, y:40}, {x:60, y:60}], "linear");
@@ -1988,9 +1988,9 @@ d3.json("assets/data/chocolate.json", function (data) {
         "letsdraw-rect": function() {
             primitives.create_rectangles("#canvas-rectangles", [{'width': 30, 'height':30, 'x': 10, 'y': 10}])
         },
-        "basicplot": function() { VisualAnalytics.charts.plotDotPlot2("#dot-plot-2", 400, 400); },
-        "scale-2": function() { VisualAnalytics.charts.plotDotPlot3("#dot-plot-3", 400, 400); },
-        "axes": function() { VisualAnalytics.charts.plotDotPlot4("#dot-plot-4", 400, 400); },
+        "basicplot": function() { d3_basic_plots.plotDotPlot2("#dot-plot-2", 400, 400); },
+        "scale-2": function() { d3_basic_plots.plotDotPlot3("#dot-plot-3", 400, 400); },
+        "axes": function() { d3_basic_plots.plotDotPlot4("#dot-plot-4", 400, 400); },
         "enter-s1": function() {
             d3.select("#enter-example-1").html("");
             var svg = d3.select("#enter-example-1").append("svg")
