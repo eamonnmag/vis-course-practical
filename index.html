@@ -611,6 +611,34 @@ function displayCocoaButter() {
                 <h3>Example: JavaScript</h3>
                 <img src="assets/img/gettingStartedJavaScript.png" height="450px"/>
             </section>
+
+            <section id="js-style">
+                <h4>JavaScript Code Style tips</h4>
+
+                <p class="text-small">
+                    Generally, I write my code using the 'module' pattern.
+
+<pre><code data-trim style="max-height: 100%">/* visualization module */
+var visualization = (function(){
+    /* Everything here is private */
+    var draw_circles = function(options){// do stuff};
+    var draw_rectangles = function(options){// do stuff};
+
+    /* Everything in the return is public, so this is your API */
+    return {
+        do_vis: function(placement, data_url, options) {
+            // my code
+        }
+    }
+})()
+
+/* Call the method */
+visualization.do_vis('#myCanvas', '/api/genomes/get?id=1', {'width':100, 'height':100});
+/* No one can access your private methods, so the only method you need to ensure always works and stays consistent are your public methods */
+
+</code></pre>
+                </p>
+            </section>
         </section>
 
         <section id="d3-fund">
@@ -655,8 +683,12 @@ svg.append("path")
 <pre><code>var svg = d3.select("div_id").append("svg").attr({'width':200, 'height':200});
 svg.append("rect")
     .attr({'width': 30, 'height':30, 'x': 10, 'y': 10})
-    .style({"fill":"black"});
+    .style({"fill":"white"});
 </code></pre>
+
+                <div id="canvas-rectangles" class="canvas">
+
+                </div>
             </section>
 
 
@@ -988,18 +1020,18 @@ svg.selectAll("circle")
         <section id="exercise-2">
             <h3>Exercise 2</h3>
 
-            <p class="text-small">2.1 - Create a function to load in data as an array, display using circles.</p>
-            <p class="text-small">2.2 - Update the items in the array, and update the display every 2 seconds.</p>
+            <p class="text-small">2.1 - Create a function to load in data from an array, and display circles to represent each point.</p>
+            <p class="text-small">2.2 - Allow for updates to the displayed data (pass in a new array).</p>
 
-            <br/>
-            Tip
-            <br/>
-<pre><code>setInterval(
-    function(){
-    //updatecode
-    },
-    2000) // run this function ever 2000 milliseconds
-</code></pre>
+            <!--<br/>-->
+            <!--Tip-->
+            <!--<br/>-->
+<!--<pre><code>setInterval(-->
+    <!--function(){-->
+    <!--//updatecode-->
+    <!--},-->
+    <!--2000) // run this function ever 2000 milliseconds-->
+<!--</code></pre>-->
         </section>
         </section>
         <section id="scales">
@@ -1953,6 +1985,9 @@ d3.json("assets/data/chocolate.json", function (data) {
 
 
         },
+        "letsdraw-rect": function() {
+            primitives.create_rectangles("#canvas-rectangles", [{'width': 30, 'height':30, 'x': 10, 'y': 10}])
+        },
         "basicplot": function() { VisualAnalytics.charts.plotDotPlot2("#dot-plot-2", 400, 400); },
         "scale-2": function() { VisualAnalytics.charts.plotDotPlot3("#dot-plot-3", 400, 400); },
         "axes": function() { VisualAnalytics.charts.plotDotPlot4("#dot-plot-4", 400, 400); },
@@ -1984,12 +2019,12 @@ d3.json("assets/data/chocolate.json", function (data) {
         },
         "enter-5": function() {enter_update_basic.create_update_canvas("#enter-example-3", 300, 300);},
         "enter-6": function() {enter_update_keys.create_update_canvas("#enter-example-4", 300, 300);},
-        "data-loading-2": function() { VisualAnalytics.lecture2.loadAndDisplay("#dot-plot-loading", 800, 400); },
-        "mouse-event-example": function() { VisualAnalytics.lecture2.loadAndDisplay("#mouse-event-plot", 800, 300, true, false, false); },
-        "zooming-example-1": function() { VisualAnalytics.lecture2.loadAndDisplay("#zooming-1", 800, 300, true, true, false); },
-        "zooming-example-2": function() { VisualAnalytics.lecture2.loadAndDisplay("#zooming-2", 800, 300, true, true, true); },
+        "data-loading-2": function() { d3_chocolates.loadAndDisplay("#dot-plot-loading", 800, 400); },
+        "mouse-event-example": function() { d3_chocolates.loadAndDisplay("#mouse-event-plot", 800, 300, true, false, false); },
+        "zooming-example-1": function() { d3_chocolates.loadAndDisplay("#zooming-1", 800, 300, true, true, false); },
+        "zooming-example-2": function() { d3_chocolates.loadAndDisplay("#zooming-2", 800, 300, true, true, true); },
         "zooming-fcarea": function() { area_chart.createFCAreaChart("#fc-area-zoom", 800, 400, {'scale': d3.scale.linear(), 'context': false, 'zoom': true}); },
-        "brushing-explain": function() { VisualAnalytics.lecture2.loadAndDisplay("#brushing-1", 800, 300, true, false, false, true); },
+        "brushing-explain": function() { d3_chocolates.loadAndDisplay("#brushing-1", 800, 300, true, false, false, true); },
         "brushing-fcarea": function() { area_chart.createFCAreaChart("#fc-area", 800, 400, {'scale': d3.scale.linear(), 'context': true, 'zoom': false}); },
         "parcoords": function() {
             d3.select("#parallel-coords-canvas").html("");
@@ -2015,18 +2050,19 @@ d3.json("assets/data/chocolate.json", function (data) {
         },
 
         "linking_visualizations_plot": function() {
-            VisualAnalytics.lecture2.loadAndDisplay("#link-example", 400, 300, true, false, false, true, true);
+            d3_chocolates.loadAndDisplay("#link-example", 400, 300, true, false, false, true, true);
         },
         "animation-connect4": function() { Connect4.utils.draw("#connect4", 500, 500); },
         "final-scatter": function() {
-            VisualAnalytics.lecture2.animateScatterPlot("#dot-plot-animated", 500, 400);
+            d3_chocolates.animateScatterPlot("#dot-plot-animated", 500, 400);
 
-            setInterval(function() {
+            setTimeout(function() {
+                var chocolates = d3_chocolates.getChocolates();
                 for(var chocolateIndex in chocolates) {
-                    chocolates[chocolateIndex].rating = VisualAnalytics.lecture2.getRandomInt(0,5);
-                    chocolates[chocolateIndex].price = VisualAnalytics.lecture2.getRandomInt(0,100);
+                    chocolates[chocolateIndex].rating = d3_chocolates.getRandomInt(0,5);
+                    chocolates[chocolateIndex].price = d3_chocolates.getRandomInt(0,100);
                 }
-                VisualAnalytics.lecture2.update(chocolates);
+                d3_chocolates.update(chocolates);
             }, 3000);
         },
         "scatterplot-matrices": function() {
