@@ -1590,6 +1590,15 @@ d3.json("assets/data/chocolate.json", function (data) {
 
             </section>
 
+            <section id="glyphs">
+                <h3>Glyphs</h3>
+
+                <div id="glyphs-canvas" class="canvas" style="height: 500px; width: 700px; margin: 0 auto"></div>
+
+                <!--<p class="text-small">Let's check <a href="https://jsfiddle.net/eamonnmag/4eubvrkc/" target="_blank">the code</a>.</p>-->
+
+            </section>
+
         </section>
 
         <section id="network_visualization_container">
@@ -1948,6 +1957,7 @@ d3.json("assets/data/chocolate.json", function (data) {
 <script src="assets/js/d3-fcarea.js"></script>
 <script src="assets/js/lib/d3.hive.min.js"></script>
 <script src="assets/js/d3-graph.js"></script>
+<script src="assets/js/d3-glyphs.js"></script>
 <script src="assets/js/d3-chord.js"></script>
 <script src="assets/js/d3-matrix.js"></script>
 <script src="assets/js/d3-connect4.js"></script>
@@ -2029,6 +2039,9 @@ d3.json("assets/data/chocolate.json", function (data) {
         "parcoords": function() {
             d3.select("#parallel-coords-canvas").html("");
             parallel_coordinates.loadAndDraw("#parallel-coords-canvas", ["assets/data/patients-1.csv"], 900, 300, ["patient"], {"colorGroup":"patient", "colors": d3.scale.ordinal().range(["#1abc9c", "#f39c12", "#e67e22", "#ccc"])});
+        },
+        "glyphs": function() {
+           gene_glyphs.create_glyph_visualization("#glyphs-canvas", "assets/data/gene-data.csv", {'width': 600, 'height': 400});
         },
         "graphs": function() {
             graph.createNetworkVisualization('assets/data/sample-network.json', '#graph-1', 900, 270);

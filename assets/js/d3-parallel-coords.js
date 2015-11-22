@@ -78,13 +78,14 @@ var parallel_coordinates = (function () {
     };
 
     return {
-        loadAndDraw: function (placement, files, width , height, ordinalColumns, options) {
+
+        loadAndDraw: function (placement, files, width, height, ordinalColumns, options) {
             if (options) {
                 if (options.colorGroup) {
                     colorGroupColumn = options.colorGroup;
                 }
 
-                if(options.colors) {
+                if (options.colors) {
                     colors = options.colors;
                 } else {
                     colors = d3.scale.category10();
