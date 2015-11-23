@@ -329,6 +329,7 @@ var d3_chocolates = (function () {
         getChocolates: function() {
             return chocolates;
         }
+
     }
 })
 ();
