@@ -88,13 +88,11 @@ var d3_chocolates = (function () {
                     .scaleExtent([1, 5])
                     .on("zoom", zoomed);
 
-
                 svg = d3.select(placement).append("svg")
                     .attr("width", width)
                     .attr("height", height)
                     .append("g")
                     .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
-
 
                 if (addZoom) {
                     svg.call(zoom);
@@ -162,8 +160,6 @@ var d3_chocolates = (function () {
                                     selected[d.name] = d;
                                 }
                                 return d.selected ? "#F15D2F" : colors(d.manufacturer);
-
-
                             });
 
                         })
@@ -223,7 +219,7 @@ var d3_chocolates = (function () {
                     })])
                     .range([height, 0]);
 
-                svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selected_idx)).attr('x', 0).transition().attr('height', function (d, i) {
+                svg.selectAll("rect").data(dataset).enter().append("rect").style("fill", colors(selection[selected_idx].manufacturer)).attr('x', 0).transition().attr('height', function (d, i) {
                     return height - y(d.y);
                 }).attr('width', 10).attr('x', function (d, i) {
                     return x(d.x);
