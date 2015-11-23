@@ -151,7 +151,22 @@ var d3_chocolates = (function () {
                             console.log("Resetting selected var");
                             selected = {};
                         })
-                        .on("brush", brushed)
+                        .on("brush", function () {
+
+                            var extent = brush.extent();
+                            d3.selectAll("g.chocolatenode").select("circle").style("fill", function (d) {
+                                d.selected = (d.x > x(extent[0][0]) && d.x < x(extent[1][0]))
+                                    && (d.y < y(extent[0][1]) && d.y > y(extent[1][1]));
+
+                                if (d.selected) {
+                                    selected[d.name] = d;
+                                }
+                                return d.selected ? "#F15D2F" : colors(d.manufacturer);
+
+
+                            });
+
+                        })
                         .on("brushend", function () {
                             if (addLinking) {
                                 d3_chocolates.plot_detailed(placement, selected, 300, 60);
@@ -303,7 +318,7 @@ var d3_chocolates = (function () {
                 .attr("dy", -10)
                 .text(function (d) {
                     return d.name;
-                })
+                });
 
             chocolateEnter.on("mouseover", function (d) {
                 d3.select(this).style("stroke-width", "1px").style("stroke", "white");
