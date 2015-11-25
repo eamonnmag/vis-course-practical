@@ -83,6 +83,7 @@ var matrix_x = (function () {
 
         render: function (placement, url) {
 
+            d3.select(placement).html('');
             d3.json(url, function (data) {
 
                 svg = d3.select(placement).append("svg")
